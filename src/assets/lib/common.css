@@ -1,0 +1,66 @@
+body,
+div,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+p,
+span,
+i,
+em,
+form,
+input,
+button,
+table,
+caption,
+section,
+select,
+ul,
+li,
+td,
+tr,
+hr,
+br,
+header,
+footer,
+main {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+em {
+  font-style: normal;
+}
+
+input {
+  outline: none;
+  background-color: transparent;
+}
+
+input:hover, input:active {
+  outline: none;
+}
+
+.no-display {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
