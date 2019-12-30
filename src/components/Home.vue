@@ -1,18 +1,32 @@
 <template>
 <div class="home">
-  <div class="input-box c-edition">
+  <div class="input-box c-edition strip">
     <input
       class="input"
       id="addTodo"
       type="text"
+      autocomplete="off"
       v-model="todoData.input"
       :placeholder="todoData.inputPlaceHolder"
     >
     <div class="ctrl-box">
-      <div class="add-btn" @click="addTodo({text: todoData.input, id: createId()})"></div>
+      <div class="small-btn" @click="addTodo({text: todoData.input, id: createId()})"></div>
     </div>
   </div>
-  <div class="list c-edition" v-for="todo in todos" v-bind:key="todo.id">{{todo.text}}</div>
+  <div class="list c-edition strip" v-for="todo in todos" v-bind:key="todo.id">
+    <div class="ctrl-box">
+      <div
+        :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
+        @click="toggleDone({id: todo.id, done: todo.done})"
+      ></div>
+    </div>
+    <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">
+      {{todo.text}}
+    </span>
+    <div class="ctrl-box">
+      <div class="small-btn"></div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -37,6 +51,7 @@ export default {
   methods: {
     ...mapMutations([
       'addTodo',
+      'toggleDone',
     ]),
 
     createId() {
@@ -50,15 +65,18 @@ export default {
 .home {
   width: 100%;
 
-  .input-box {
+  .strip {
     display: flex;
     flex-wrap: nowrap;
-    margin: 36px auto;
     padding: 0 24px;
-    height: 64px;
     border-radius: 8px;
     border: 1px solid #efefef;
     box-shadow: 0 4px 12px #ededef;
+  }
+
+  .input-box {
+    margin: 36px auto;
+    height: 64px;
 
     .input {
       flex: 1;
@@ -66,28 +84,42 @@ export default {
       border: none;
       font-size: 18px;
     }
-
-    .ctrl-box {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      height: 100%;
-
-      .add-btn {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background-color: #eee;
-      }
-    }
   }
 
   .list {
     margin: 12px auto;
     height: 56px;
-    border-radius: 8px;
-    border: 1px solid #efefef;
-    box-shadow: 0 4px 12px #ededef;
+
+    .done-todo-btn{
+      background-color: #eee;
+    }
+
+    .todo-txt {
+      display: inline-block;
+      flex: 1;
+      padding: 0 16px;
+      height: 100%;
+      line-height: 56px;
+
+      &.done-todo-txt {
+        color: #999;
+      }
+    }
   }
+}
+
+.ctrl-box {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.small-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }
 </style>
