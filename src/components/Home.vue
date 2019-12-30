@@ -5,11 +5,11 @@
       class="input"
       id="addTodo"
       type="text"
-      v-model="input"
-      :placeholder="inputPlaceHolder"
+      v-model="todoData.input"
+      :placeholder="todoData.inputPlaceHolder"
     >
     <div class="ctrl-box">
-      <div class="add-btn" @click="addTodo"></div>
+      <div class="add-btn" @click="addTodo({text: todoData.input, id: createId()})"></div>
     </div>
   </div>
   <div class="list c-edition" v-for="todo in todos" v-bind:key="todo.id">{{todo.text}}</div>
@@ -17,27 +17,29 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 export default {
   name: 'Home',
   data() {
     return {
-      inputPlaceHolder: '在这里添加TODO',
-      input: '',
+      todoData: {
+        inputPlaceHolder: '在这里添加TODO',
+        input: '',
+      },
     };
   },
   computed: {
-    todos() {
-      return this.$store.state.todos;
-    },
+    ...mapState([
+      'todos',
+    ]),
   },
   methods: {
-    addTodo() {
-      this.$store.commit({
-        type: 'addTodo',
-        text: this.input,
-      });
-    },
-    createRandomId() {
+    ...mapMutations([
+      'addTodo',
+    ]),
+
+    createId() {
       return `${(Math.random() * 10000000).toString(16).substr(0, 4)}-${(new Date()).getTime()}-${Math.random().toString().substr(2, 5)}`;
     },
   },
