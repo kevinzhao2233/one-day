@@ -13,6 +13,7 @@ const store = new Vuex.Store({
       { id: 2, text: 'lunch', done: true },
       { id: 3, text: 'breakfast', done: false },
     ],
+    will: true,
   },
   getters: {
 
