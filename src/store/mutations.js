@@ -1,8 +1,8 @@
 const mutations = {
 
-  // 添加 TODO || 直接向数组中 push 即可
+  // 添加 TODO || 直接插入到数组首位
   addTodo(state, payload) {
-    state.todos.push({
+    state.todos.unshift({
       id: payload.id,
       text: payload.text,
       done: false,
