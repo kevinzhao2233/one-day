@@ -24,7 +24,11 @@
       {{todo.text}}
     </span>
     <div class="ctrl-box">
-      <div class="small-btn"></div>
+      <div
+        class="small-btn"
+        @click="delTodo({id: todo.id})"
+      >
+      </div>
     </div>
   </div>
 </div>
@@ -52,6 +56,7 @@ export default {
     ...mapMutations([
       'addTodo',
       'toggleDone',
+      'delTodo',
     ]),
 
     createId() {
