@@ -59,6 +59,7 @@ export default {
       'delTodo',
     ]),
 
+    // 生成一个不会重复的id值
     createId() {
       return `${(Math.random() * 10000000).toString(16).substr(0, 4)}-${(new Date()).getTime()}-${Math.random().toString().substr(2, 5)}`;
     },
@@ -105,9 +106,11 @@ export default {
       padding: 0 16px;
       height: 100%;
       line-height: 56px;
+      font-size: 18px;
 
       &.done-todo-txt {
         color: #999;
+        text-decoration-line: line-through;
       }
     }
   }

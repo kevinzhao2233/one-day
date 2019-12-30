@@ -9,11 +9,10 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     todos: [
-      { id: 1, text: 'dinner', done: true },
-      { id: 2, text: 'lunch', done: true },
-      { id: 3, text: 'breakfast', done: false },
+      { id: 1, text: '点击左侧小按钮，可以完成这项TODO', done: false },
+      { id: 2, text: '这是一项已经完成的TODO', done: true },
+      { id: 3, text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false },
     ],
-    will: true,
   },
   getters: {
 
