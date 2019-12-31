@@ -32,6 +32,12 @@ export default {
       'formatSec',
     ]),
   },
+
+  mounted() {
+    this.$store.dispatch({
+      type: 'decreaseTimeAsync',
+    });
+  },
 };
 </script>
 
@@ -55,12 +61,15 @@ export default {
     position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 400px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background-color: #fff;
 
     .time {
-      margin-top: 160px;
+      // margin-top: 160px;
       color: #ff5b8f;
       font-size: 66px;
     }

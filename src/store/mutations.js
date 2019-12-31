@@ -20,6 +20,26 @@ const mutations = {
     const willDeleteTodo = state.todos.findIndex(todo => todo.id === payload.id);
     state.todos.splice(willDeleteTodo, 1);
   },
+
+  // 倒计时-分钟 || 直接减一即可，异步进行计算的部分在action中
+  decreaseMin(state) {
+    state.time.min -= 1;
+  },
+
+  // 倒计时-秒 || 直接减一
+  decreaseSec(state) {
+    const sec = state.time.sec;
+    if (sec === 0) {
+      state.time.sec = 59;
+    } else {
+      state.time.sec -= 1;
+    }
+  },
+
+  // 时间到 || 给标志
+  timeOver(state) {
+    state.time.isTimeOver = true;
+  },
 };
 
 export default mutations;

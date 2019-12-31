@@ -14,8 +14,9 @@ const store = new Vuex.Store({
       { id: 3, text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false },
     ],
     time: {
-      min: 2,
-      sec: 0,
+      min: 1,
+      sec: 7,
+      isTimeOver: false,
     },
   },
   getters: {
@@ -35,7 +36,7 @@ const store = new Vuex.Store({
     formatSec: (state) => {
       const sec = state.time.sec;
       let strSec = '';
-      if (sec < 10 || sec > -1) {
+      if (sec < 10 && sec >= 0) {
         strSec = `0${sec}`;
       } else {
         strSec = `${sec}`;
