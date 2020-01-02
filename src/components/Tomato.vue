@@ -16,27 +16,54 @@
     </svg>
     <div class="time-box">
       <span class="time">{{formatMin}}:{{formatSec}}</span>
+      <div class="control-box">
+        <i class="btn" v-show="time.status === 1 || time.status === 3" @click="handleStart">a</i>
+        <i class="btn" v-show="time.status === 2" @click="handleStop">s</i>
+        <i class="btn" v-show="time.status === 3" @click="handleRestart">r</i>
+        <i class="btn" v-show="time.status === 4" @click="handleJump">j</i>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'Tomato',
 
   computed: {
+    ...mapState([
+      'time',
+    ]),
+
     ...mapGetters([
       'formatMin',
       'formatSec',
     ]),
   },
 
-  mounted() {
-    this.$store.dispatch({
-      type: 'decreaseTimeAsync',
-    });
+  methods: {
+    handleStart() {
+      this.$store.dispatch({
+        type: 'startTime',
+      });
+    },
+    handleStop() {
+      this.$store.dispatch({
+        type: 'stopTime',
+      });
+    },
+    handleRestart() {
+      this.$store.dispatch({
+        type: 'restartTime',
+      });
+    },
+    handleJump() {
+      this.$store.dispatch({
+        type: 'jumpTime',
+      });
+    },
   },
 };
 </script>
@@ -72,6 +99,28 @@ export default {
       // margin-top: 160px;
       color: #ff5b8f;
       font-size: 66px;
+      line-height: 90px;
+    }
+
+    .control-box {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 60%;
+      height: 40px;
+
+      .btn {
+        display: block;
+        width: 30%;
+        height: 100%;
+        background-color: #ffcfde;
+        text-align: center;
+        line-height: 40px;
+        -webkit-user-select:none; /*webkit浏览器*/
+        -moz-user-select:none; /*火狐*/
+        -ms-user-select:none; /*IE10*/
+        user-select:none;
+      }
     }
   }
 }

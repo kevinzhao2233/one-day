@@ -1,4 +1,6 @@
-import { ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER } from './mutations-types';
+import { ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
+  CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_END,
+  CHANGE_CURRENT_TIME } from './mutations-types';
 
 const mutations = {
   // 添加 TODO || 直接插入到数组首位
@@ -37,9 +39,36 @@ const mutations = {
     }
   },
 
+  // 设置当前计时
+  [CHANGE_CURRENT_TIME](state, payload) {
+    if (payload === 'restart') {
+      state.time.min = state.time.initMin;
+      state.time.sec = state.time.initSec;
+    } else if (payload === 'toRest') {
+      state.time.min = state.time.restMin;
+      state.time.sec = state.time.restSec;
+    } else {
+      // eslint-disable-next-line no-console
+      console.error('程序出问题了，CHANGE_CURRENT_TIME 必须有payload');
+    }
+  },
+
   // 时间到 || 给标志
   [TIME_OVER](state) {
     state.time.isTimeOver = true;
+  },
+
+  [CHANGE_STATUS_TO_RESTART](state) {
+    state.time.status = 1;
+  },
+  [CHANGE_STATUS_TO_START](state) {
+    state.time.status = 2;
+  },
+  [CHANGE_STATUS_TO_STOP](state) {
+    state.time.status = 3;
+  },
+  [CHANGE_STATUS_TO_END](state) {
+    state.time.status = 4;
   },
 };
 

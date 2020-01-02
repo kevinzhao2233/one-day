@@ -14,9 +14,15 @@ const store = new Vuex.Store({
       { id: 3, text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false },
     ],
     time: {
-      min: 1,
+      min: 0, // 当前番茄时间
       sec: 7,
-      isTimeOver: false,
+      initMin: 25, // 初始化工作番茄时间
+      initSec: 0,
+      restMin: 5, // 休息番茄时间
+      restSec: 0,
+      isTimeOver: false, // 番茄时间到
+      isAutoRest: true,
+      status: 1, // 1 番茄未开始、2 番茄已经开始、3 番茄暂停、4 休息番茄-只有跳过按钮
     },
   },
   getters: {
