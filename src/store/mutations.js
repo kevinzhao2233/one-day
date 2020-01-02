@@ -44,9 +44,11 @@ const mutations = {
     if (payload === 'restart') {
       state.time.min = state.time.initMin;
       state.time.sec = state.time.initSec;
+      state.time.tomatoStatus = 1;
     } else if (payload === 'toRest') {
       state.time.min = state.time.restMin;
       state.time.sec = state.time.restSec;
+      state.time.tomatoStatus = 2;
     } else {
       // eslint-disable-next-line no-console
       console.error('程序出问题了，CHANGE_CURRENT_TIME 必须有payload');
@@ -55,7 +57,7 @@ const mutations = {
 
   // 时间到 || 给标志
   [TIME_OVER](state) {
-    state.time.isTimeOver = true;
+    state.time.isTimeOver = !state.time.isTimeOver;
   },
 
   [CHANGE_STATUS_TO_RESTART](state) {

@@ -1,5 +1,5 @@
 import {
-  DECREASE_SEC, DECREASE_MIN, TIME_OVER,
+  DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
   CHANGE_CURRENT_TIME } from './mutations-types';
 
@@ -9,15 +9,22 @@ const actions = {
 
   // 倒计时开始 || 对state中时间进行判断，提交不同的 Mutation
   startTime({ state, commit }) {
-    commit(CHANGE_STATUS_TO_START);
+    if (state.time.tomatoStatus === 1) {
+      commit(CHANGE_STATUS_TO_START);
+    }
+    if (state.time.tomatoStatus === 2) {
+      commit(CHANGE_STATUS_TO_END);
+    }
     countDown = setInterval(() => {
       if (state.time.sec === 0 && state.time.min === 0) {
+        commit(CHANGE_CURRENT_TIME, 'toRest');
+        // 如果自动进行休息（默认设置）
         if (state.time.isAutoRest) {
           commit(CHANGE_STATUS_TO_END);
-          commit(CHANGE_CURRENT_TIME, 'toRest');
-          commit(TIME_OVER);
+          // eslint-disable-next-line no-console
+          console.log('自动进入休息番茄');
         } else {
-          commit(TIME_OVER);
+          commit(CHANGE_STATUS_TO_RESTART);
           clearInterval(countDown);
         }
       } else if (state.time.sec === 0 && state.time.min !== 0) {
