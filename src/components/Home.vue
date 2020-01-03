@@ -11,7 +11,10 @@
       :placeholder="todoData.inputPlaceHolder"
     >
     <div class="ctrl-box">
-      <div class="small-btn" @click="addTodo({text: todoData.input, id: createId()})"></div>
+      <div
+        class="small-btn"
+        @click="addTodo({text: todoData.input, id: getId(), buildTime: timeStemp()})"
+      ></div>
     </div>
   </div>
 
@@ -26,8 +29,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import ListContent from './widget/ListContent';
+import { getTimeStemp, createId } from '../assets/lib/myLib';
 
 export default {
   name: 'Home',
@@ -47,6 +51,20 @@ export default {
       'doneTodos',
       'undoneTodos',
     ]),
+  },
+  methods: {
+    ...mapMutations([
+      'addTodo',
+    ]),
+    timeStemp() {
+      const time = getTimeStemp();
+      return time;
+    },
+    // 生成一个不会重复的id值
+    getId() {
+      const id = createId();
+      return id;
+    },
   },
 };
 </script>

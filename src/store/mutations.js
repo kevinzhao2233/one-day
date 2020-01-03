@@ -9,6 +9,7 @@ const mutations = {
       id: payload.id,
       text: payload.text,
       done: false,
+      buildTime: payload.buildTime,
     });
   },
 

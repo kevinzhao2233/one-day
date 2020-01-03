@@ -9,9 +9,9 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     todos: [
-      { id: 1, text: '点击左侧小按钮，可以完成这项TODO', done: false },
-      { id: 2, text: '这是一项已经完成的TODO', done: true },
-      { id: 3, text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false },
+      { id: '4a62-1578023489693-96275', text: '点击左侧小按钮，可以完成这项TODO', done: false, buildTime: 1578023489693 },
+      { id: '9ef6-1578023533541-82955', text: '这是一项已经完成的TODO', done: true, buildTime: 1578023533541 },
+      { id: '9015-1578023554287-79471', text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false, buildTime: 1578023554287 },
     ],
     time: {
       min: 0, // 当前番茄时间

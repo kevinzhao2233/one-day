@@ -22,7 +22,6 @@
 <script>
 import { mapMutations } from 'vuex';
 
-
 export default {
   name: 'ListContent',
   props: {
@@ -31,19 +30,8 @@ export default {
     },
   },
 
-  computed: {
-    // ...mapState([
-    //   'todos',
-    // ]),
-
-    // ...mapGetters([
-    //   'doneTodos',
-    //   'undoneTodos',
-    // ]),
-  },
   methods: {
     ...mapMutations([
-      'addTodo',
       'toggleDone',
       'delTodo',
     ]),
@@ -57,7 +45,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .list {
   margin: 12px auto;
   height: 56px;
@@ -79,20 +67,5 @@ export default {
       text-decoration-line: line-through;
     }
   }
-}
-
-.ctrl-box {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.small-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  cursor: pointer;
 }
 </style>
