@@ -3,7 +3,7 @@
   <div class="ctrl-box">
     <div
        :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
-       @click="toggleDone({id: todo.id, done: todo.done})"
+       @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
      ></div>
   </div>
   <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">
@@ -21,6 +21,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import { getTimeStemp } from '../../assets/lib/myLib';
 
 export default {
   name: 'ListContent',
@@ -36,12 +37,16 @@ export default {
       'delTodo',
     ]),
 
+    timeStemp() {
+      const time = getTimeStemp();
+      return time;
+    },
+
     // 生成一个不会重复的id值
     createId() {
       return `${(Math.random() * 10000000).toString(16).substr(0, 4)}-${(new Date()).getTime()}-${Math.random().toString().substr(2, 5)}`;
     },
   },
-
 };
 </script>
 

@@ -13,7 +13,12 @@
     <div class="ctrl-box">
       <div
         class="small-btn"
-        @click="addTodo({text: todoData.input, id: getId(), buildTime: timeStemp()})"
+        @click="addTodo({
+          text: todoData.input,
+          id: getId(),
+          buildTime: timeStemp(),
+          lastUpdate: timeStemp()
+        })"
       ></div>
     </div>
   </div>
@@ -46,16 +51,19 @@ export default {
       },
     };
   },
+
   computed: {
     ...mapGetters([
       'doneTodos',
       'undoneTodos',
     ]),
   },
+
   methods: {
     ...mapMutations([
       'addTodo',
     ]),
+    // 生产时间戳
     timeStemp() {
       const time = getTimeStemp();
       return time;

@@ -20,23 +20,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-.c-edition {
-  width: 1026px;
-  margin: 0 auto;
-}
-
-.ctrl-box {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.small-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
 </style>

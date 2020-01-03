@@ -1,6 +1,6 @@
 import { ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME } from './mutations-types';
+  CHANGE_CURRENT_TIME, SORTED_TODOS } from './mutations-types';
 
 const mutations = {
   // 添加 TODO || 直接插入到数组首位
@@ -10,6 +10,7 @@ const mutations = {
       text: payload.text,
       done: false,
       buildTime: payload.buildTime,
+      lastUpdate: payload.lastUpdate,
     });
   },
 
@@ -17,12 +18,19 @@ const mutations = {
   [TOGGLE_DONE](state, payload) {
     const willToggleDone = state.todos.findIndex(todo => todo.id === payload.id);
     state.todos[willToggleDone].done = !payload.done;
+    state.todos[willToggleDone].lastUpdate = payload.lastUpdate;
+    state.todos.sort((a, b) => b.lastUpdate - a.lastUpdate);
   },
 
   // 删除一项 TODO || 通过 id，找到要删除的下标，用splice删除。如果使用delete删除会将被删项都变成 undefined，无法用 v-for
   [DEL_TODO](state, payload) {
     const willDeleteTodo = state.todos.findIndex(todo => todo.id === payload.id);
     state.todos.splice(willDeleteTodo, 1);
+  },
+
+  // 对 todos 根据 lastupdate排序
+  [SORTED_TODOS](state) {
+    state.todos.sort((a, b) => a.lastUpdate - b.lastUpdate);
   },
 
   // 倒计时-分钟 || 直接减一即可，异步进行计算的部分在action中
