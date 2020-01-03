@@ -27,6 +27,9 @@ const store = new Vuex.Store({
     },
   },
   getters: {
+    doneTodos: state => state.todos.filter(todo => todo.done),
+    undoneTodos: state => state.todos.filter(todo => !todo.done),
+
     formatMin: (state) => {
       const min = state.time.min;
       let strMin = '';
