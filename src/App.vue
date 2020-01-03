@@ -20,8 +20,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-.c-edition {
-  width: 1026px;
-  margin: 0 auto;
-}
 </style>

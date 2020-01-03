@@ -9,9 +9,9 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     todos: [
-      { id: 1, text: '点击左侧小按钮，可以完成这项TODO', done: false },
-      { id: 2, text: '这是一项已经完成的TODO', done: true },
-      { id: 3, text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false },
+      { id: '1578026976920-85058-1f6d', text: '点击左侧小按钮，可以完成这项TODO', done: false, buildTime: 1578026976920, lastUpdate: 1578026976920 },
+      { id: '1578027011004-77892-363b', text: '这是一项已经完成的TODO', done: false, buildTime: 1578027011004, lastUpdate: 1578027011004 },
+      { id: '1578027031614-38447-9025', text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false, buildTime: 1578027031614, lastUpdate: 1578027031614 },
     ],
     time: {
       min: 0, // 当前番茄时间
@@ -27,6 +27,9 @@ const store = new Vuex.Store({
     },
   },
   getters: {
+    doneTodos: state => state.todos.filter(todo => todo.done),
+    undoneTodos: state => state.todos.filter(todo => !todo.done),
+
     formatMin: (state) => {
       const min = state.time.min;
       let strMin = '';

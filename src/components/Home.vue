@@ -1,5 +1,6 @@
 <template>
 <div class="home">
+  <!-- 输入框组件 -->
   <div class="input-box c-edition strip">
     <input
       class="input"
@@ -10,35 +11,38 @@
       :placeholder="todoData.inputPlaceHolder"
     >
     <div class="ctrl-box">
-      <div class="small-btn" @click="addTodo({text: todoData.input, id: createId()})"></div>
-    </div>
-  </div>
-  <div class="list c-edition strip" v-for="todo in todos" v-bind:key="todo.id">
-    <div class="ctrl-box">
-      <div
-        :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
-        @click="toggleDone({id: todo.id, done: todo.done})"
-      ></div>
-    </div>
-    <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">
-      {{todo.text}}
-    </span>
-    <div class="ctrl-box">
       <div
         class="small-btn"
-        @click="delTodo({id: todo.id})"
-      >
-      </div>
+        @click="addTodo({
+          text: todoData.input,
+          id: getId(),
+          buildTime: timeStemp(),
+          lastUpdate: timeStemp()
+        })"
+      ></div>
     </div>
+  </div>
+
+  <!-- List -->
+  <div v-for="undoneTodo in undoneTodos" :key="undoneTodo.id">
+    <ListContent :todo="undoneTodo"/>
+  </div>
+  <div v-for="doneTodo in doneTodos" :key="doneTodo.id">
+    <ListContent :todo="doneTodo"/>
   </div>
 </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
+import ListContent from './widget/ListContent';
+import { getTimeStemp, createId } from '../assets/lib/myLib';
 
 export default {
   name: 'Home',
+  components: {
+    ListContent,
+  },
   data() {
     return {
       todoData: {
@@ -47,21 +51,27 @@ export default {
       },
     };
   },
+
   computed: {
-    ...mapState([
-      'todos',
+    ...mapGetters([
+      'doneTodos',
+      'undoneTodos',
     ]),
   },
+
   methods: {
     ...mapMutations([
       'addTodo',
-      'toggleDone',
-      'delTodo',
     ]),
-
+    // 生产时间戳
+    timeStemp() {
+      const time = getTimeStemp();
+      return time;
+    },
     // 生成一个不会重复的id值
-    createId() {
-      return `${(Math.random() * 10000000).toString(16).substr(0, 4)}-${(new Date()).getTime()}-${Math.random().toString().substr(2, 5)}`;
+    getId() {
+      const id = createId();
+      return id;
     },
   },
 };
@@ -91,43 +101,5 @@ export default {
       font-size: 18px;
     }
   }
-
-  .list {
-    margin: 12px auto;
-    height: 56px;
-
-    .done-todo-btn{
-      background-color: #eee;
-    }
-
-    .todo-txt {
-      display: inline-block;
-      flex: 1;
-      padding: 0 16px;
-      height: 100%;
-      line-height: 56px;
-      font-size: 18px;
-
-      &.done-todo-txt {
-        color: #999;
-        text-decoration-line: line-through;
-      }
-    }
-  }
-}
-
-.ctrl-box {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.small-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  cursor: pointer;
 }
 </style>
