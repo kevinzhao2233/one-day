@@ -30,7 +30,8 @@
           text: todoData.input,
           id: getId(),
           buildTime: timeStemp(),
-          lastUpdate: timeStemp()
+          lastUpdate: timeStemp(),
+          colorLabel: todoData.currentColor,
         })"
       ></div>
     </div>

@@ -11,6 +11,7 @@ const mutations = {
       done: false,
       buildTime: payload.buildTime,
       lastUpdate: payload.lastUpdate,
+      color: payload.colorLabel,
     });
   },
 

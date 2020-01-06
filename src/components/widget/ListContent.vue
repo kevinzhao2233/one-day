@@ -1,6 +1,7 @@
 <template>
 <div class="list c-edition strip">
   <div class="ctrl-box">
+    <div class="color-label" :style="{ background: todo.done ? '#fff' : todo.color }"></div>
     <div
        :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
        @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
@@ -55,8 +56,15 @@ export default {
   margin: 12px auto;
   height: 56px;
 
-  .done-todo-btn{
+  .done-todo-btn {
     background-color: #eee;
+  }
+
+  .color-label {
+    margin:0 14px 0 -24px;
+    width: 10px;
+    height: 100%;
+    border-radius: 8px 0px 0px 8px;
   }
 
   .todo-txt {
