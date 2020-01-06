@@ -21,11 +21,13 @@
 </template>
 
 <script>
+
 import { mapMutations } from 'vuex';
 import { getTimeStemp } from '../../assets/lib/myLib';
 
 export default {
   name: 'ListContent',
+
   props: {
     todo: {
       type: Object,
