@@ -11,6 +11,7 @@
 }
 
 .small-btn {
+  margin: 0 8px 0 0;
   width: 26px;
   height: 26px;
   border-radius: 50%;

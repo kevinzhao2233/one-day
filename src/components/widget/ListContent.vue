@@ -62,7 +62,7 @@ export default {
   .todo-txt {
     display: inline-block;
     flex: 1;
-    padding: 0 16px;
+    padding: 0 6px;
     height: 100%;
     line-height: 56px;
     font-size: 18px;
