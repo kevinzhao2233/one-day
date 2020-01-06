@@ -4,9 +4,12 @@
   <AddTodoList/>
 
   <!-- List -->
-  <div v-for="undoneTodo in undoneTodos" :key="undoneTodo.id">
-    <ListContent :todo="undoneTodo"/>
-  </div>
+  <draggable v-model="todos" :options="{ forceFallvack: true }">
+    <div v-for="todo in todos" :key="todo.id">
+      <ListContent :todo="todo" v-if="!todo.done"/>
+    </div>
+  </draggable>
+
   <div v-for="doneTodo in doneTodos" :key="doneTodo.id">
     <ListContent :todo="doneTodo"/>
   </div>
@@ -14,6 +17,7 @@
 </template>
 
 <script>
+import draggable from 'vuedraggable';
 import { mapGetters } from 'vuex';
 import ListContent from './widget/ListContent';
 import AddTodoList from './widget/AddTodoList';
@@ -23,6 +27,7 @@ export default {
   components: {
     ListContent,
     AddTodoList,
+    draggable,
   },
 
   computed: {
@@ -30,6 +35,26 @@ export default {
       'doneTodos',
       'undoneTodos',
     ]),
+
+    undoneTodos: {
+      get() {
+        return this.$store.getters.undoneTodos;
+      },
+      set(value) {
+        // eslint-disable-next-line no-console
+        console.log(value);
+        this.$store.commit('updateTodos', value);
+      },
+    },
+
+    todos: {
+      get() {
+        return this.$store.state.todos;
+      },
+      set(value) {
+        this.$store.commit('updateTodos', value);
+      },
+    },
   },
 };
 </script>
