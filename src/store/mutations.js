@@ -37,8 +37,6 @@ const mutations = {
   // 更新 todos
   [UPDATE_TODOS](state, payload) {
     state.todos = JSON.parse(JSON.stringify(payload));
-    // eslint-disable-next-line no-console
-    console.log(state.todos);
   },
 
 

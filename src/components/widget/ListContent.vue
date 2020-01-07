@@ -12,7 +12,7 @@
   </span>
   <div class="ctrl-box">
     <div
-      class="small-btn"
+      class="small-btn del-btn"
       @click="delTodo({id: todo.id})"
     >
     </div>
@@ -55,8 +55,24 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-  margin: 12px auto;
-  height: 56px;
+  margin: 24px auto;
+  height: 60px;
+  transition: all .3s ease-out;
+
+  &:hover {
+    box-shadow: 0 20px 24px -18px rgba(255, 163, 192, 0.603);
+
+    .del-btn {
+      opacity: 1;
+      visibility: visible
+    }
+  }
+
+  .del-btn {
+    visibility: hidden;
+    opacity: .2;
+    transition: all .3s ease-out;
+  }
 
   .done-todo-btn {
     background-color: #eee;
@@ -74,7 +90,7 @@ export default {
     flex: 1;
     padding: 0 6px;
     height: 100%;
-    line-height: 56px;
+    line-height: 60px;
     font-size: 18px;
 
     &.done-todo-txt {
