@@ -25,6 +25,14 @@ const store = new Vuex.Store({
       tomatoStatus: 1, // （番茄状态） 1 工作状态、2 休息状态
       status: 1, // （按钮状态） 1 番茄未开始、2 番茄已经开始、3 番茄暂停、4 休息番茄-只有跳过按钮
     },
+    colors: {
+      color1: '#ff4e88',
+      color2: '#ff6700',
+      color3: '#ffe300',
+      color4: '#6fff9e',
+      color5: '#3f68ff',
+      color6: '#a04cf7',
+    },
   },
   getters: {
     doneTodos: state => state.todos.filter(todo => todo.done),

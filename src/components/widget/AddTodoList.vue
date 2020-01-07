@@ -5,6 +5,13 @@
       id="addTodo"
       type="text"
       autocomplete="off"
+      @keyup.enter="addTodo({
+        text: todoData.input,
+        id: getId(),
+        buildTime: timeStemp(),
+        lastUpdate: timeStemp(),
+        colorLabel: todoData.currentColor,
+      })"
       v-model="todoData.input"
       :placeholder="todoData.inputPlaceHolder"
     >
@@ -39,7 +46,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import { getTimeStemp, createId } from '@/assets/lib/myLib';
 
 export default {
@@ -52,16 +59,14 @@ export default {
         input: '',
         currentColor: '#fff',
       },
-      colors: {
-        color1: '#ff4e88',
-        color2: '#ff6700',
-        color3: '#ffe300',
-        color4: '#6fff9e',
-        color5: '#3f68ff',
-        color6: '#a04cf7',
-      },
       isShowColorLabel: false,
     };
+  },
+
+  computed: {
+    ...mapState([
+      'colors',
+    ]),
   },
 
   methods: {

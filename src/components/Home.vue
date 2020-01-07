@@ -4,7 +4,7 @@
   <AddTodoList/>
 
   <!-- List -->
-  <draggable v-model="todos" :options="{ forceFallvack: true }">
+  <draggable v-model="todos" forceFallvack: true>
     <div v-for="todo in todos" :key="todo.id">
       <ListContent :todo="todo" v-if="!todo.done"/>
     </div>
@@ -41,8 +41,6 @@ export default {
         return this.$store.getters.undoneTodos;
       },
       set(value) {
-        // eslint-disable-next-line no-console
-        console.log(value);
         this.$store.commit('updateTodos', value);
       },
     },

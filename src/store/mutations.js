@@ -5,14 +5,16 @@ import { ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
 const mutations = {
   // 添加 TODO || 直接插入到数组首位
   [ADD_TODO](state, payload) {
-    state.todos.unshift({
-      id: payload.id,
-      text: payload.text,
-      done: false,
-      buildTime: payload.buildTime,
-      lastUpdate: payload.lastUpdate,
-      color: payload.colorLabel,
-    });
+    if (payload.text.trim() !== '') {
+      state.todos.unshift({
+        id: payload.id,
+        text: payload.text,
+        done: false,
+        buildTime: payload.buildTime,
+        lastUpdate: payload.lastUpdate,
+        color: payload.colorLabel,
+      });
+    }
   },
 
   // 切换一条 TODO 的完成状态 || 通过 id，找到要删除的下标，用splice删除，根据 lastUpdate
@@ -37,8 +39,6 @@ const mutations = {
   // 更新 todos
   [UPDATE_TODOS](state, payload) {
     state.todos = JSON.parse(JSON.stringify(payload));
-    // eslint-disable-next-line no-console
-    console.log(state.todos);
   },
 
 
