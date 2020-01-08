@@ -1,10 +1,12 @@
 <template>
-  <div class="input-box c-edition strip">
+  <div :class="inputIsFocused ? 'input-box c-edition strip focused' : 'input-box c-edition strip'">
     <input
       class="input"
       id="addTodo"
       type="text"
       autocomplete="off"
+      @focus="foucusInput()"
+      @blur="unFocusInput()"
       @keyup.enter="addTodo({
         text: todoData.input,
         id: getId(),
@@ -60,6 +62,7 @@ export default {
         currentColor: '#ff6700',
       },
       isShowColorLabel: false,
+      inputIsFocused: false,
     };
   },
 
@@ -82,6 +85,14 @@ export default {
       this.todoData.currentColor = color;
     },
 
+    foucusInput() {
+      this.inputIsFocused = true;
+    },
+
+    unFocusInput() {
+      this.inputIsFocused = false;
+    },
+
     // 生产时间戳
     timeStemp() {
       const time = getTimeStemp();
@@ -99,18 +110,24 @@ export default {
 
 <style lang="scss">
 @import '../../assets/lib/scss/mixins.scss';
+
 .strip {
   display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 0 24px;
-    border-radius: 8px;
-    border: 1px solid #efefef;
-    box-shadow: 0 4px 12px #ededef;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0 24px;
+  border-radius: 8px;
+  border: 1px solid #efefef;
+  box-shadow: 0 4px 12px #ededef;
+  transition: all .4s ease-out;
 
-    @include respond-to(lg) {
-      width: 1026px;
-    }
+  &.focused {
+    box-shadow: 0 16px 24px -12px #d2d2d4;
+  }
+
+  @include respond-to(lg) {
+    width: 1026px;
+  }
 
     .color-label {
       position: relative;
