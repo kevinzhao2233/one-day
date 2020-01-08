@@ -54,24 +54,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/lib/scss/mixins.scss';
+
 .list {
   margin: 24px auto;
+  width: 100%;
   height: 60px;
   transition: all .3s ease-out;
 
-  &:hover {
-    box-shadow: 0 20px 24px -18px rgba(255, 163, 192, 0.603);
-
+  @include respond-to(lg) {
     .del-btn {
-      opacity: 1;
-      visibility: visible
+      opacity: .2;
+      visibility: hidden;
+      transition: all .3s ease-out;
     }
-  }
 
-  .del-btn {
-    visibility: hidden;
-    opacity: .2;
-    transition: all .3s ease-out;
+    &:hover {
+      box-shadow: 0 20px 24px -18px rgba(255, 163, 192, 0.603);
+
+      .del-btn {
+        opacity: 1;
+        visibility: visible
+      }
+    }
   }
 
   .done-todo-btn {
@@ -92,6 +97,9 @@ export default {
     height: 100%;
     line-height: 60px;
     font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     &.done-todo-txt {
       color: #999;
