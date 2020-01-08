@@ -57,7 +57,7 @@ export default {
       todoData: {
         inputPlaceHolder: '在这里添加TODO',
         input: '',
-        currentColor: '#fff',
+        currentColor: '#ff6700',
       },
       isShowColorLabel: false,
     };
@@ -98,13 +98,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/lib/scss/mixins.scss';
 .strip {
-    display: flex;
+  display: flex;
     flex-wrap: nowrap;
+    width: 100%;
     padding: 0 24px;
     border-radius: 8px;
     border: 1px solid #efefef;
     box-shadow: 0 4px 12px #ededef;
+
+    @include respond-to(lg) {
+      width: 1026px;
+    }
 
     .color-label {
       position: relative;

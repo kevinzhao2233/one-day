@@ -1,18 +1,28 @@
 <template>
-<div class="home">
+<div class="home c-edition">
   <!-- 输入框组件 -->
   <AddTodoList/>
 
   <!-- List -->
   <draggable v-model="todos" forceFallvack: true>
-    <div v-for="todo in todos" :key="todo.id">
-      <ListContent :todo="todo" v-if="!todo.done"/>
-    </div>
+    <transition-group name="fade"
+      enter-active-class="animated zoomIn"
+      leave-active-class="animated fadeOutRight">
+      <div v-for="todo in todos" :key="todo.id">
+        <ListContent :todo="todo" v-if="!todo.done"/>
+      </div>
+    </transition-group>
   </draggable>
 
-  <div v-for="doneTodo in doneTodos" :key="doneTodo.id">
-    <ListContent :todo="doneTodo"/>
-  </div>
+  <br>
+  <transition-group name="fade"
+    enter-active-class="animated zoomIn"
+    leave-active-class="animated fadeOutRight"
+  >
+    <div v-for="doneTodo in doneTodos" :key="doneTodo.id">
+      <ListContent :todo="doneTodo"/>
+    </div>
+  </transition-group>
 </div>
 </template>
 
@@ -58,7 +68,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/lib/scss/mixins.scss';
+
+// 覆盖默认时间
+.animated {animation-duration: 0.5s;}
+
 .home {
   width: 100%;
+  overflow: hidden;
+
+  @include respond-to(lg) {
+    width: 1026px;
+  }
 }
 </style>
