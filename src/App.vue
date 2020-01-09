@@ -5,6 +5,7 @@
     <router-view name="tomato"/>
     <router-view name="login"/>
     <router-view name="statistic"/>
+    <router-view name="notdefine"/>
   </div>
 </template>
 

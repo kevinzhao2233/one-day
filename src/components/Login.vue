@@ -55,6 +55,16 @@ export default {
       }
     },
   },
+
+  mounted() {
+    if (this.$router.params) {
+      // eslint-disable-next-line no-console
+      console.log(this.$router.params);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log('????');
+    }
+  },
 };
 </script>
 

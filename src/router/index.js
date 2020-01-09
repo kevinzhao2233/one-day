@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Tomato from '@/components/Tomato';
 import Statistic from '@/components/Statistic';
 import Login from '@/components/Login';
+import Notdefine from '@/components/NotDefine';
 
 Vue.use(Router);
 
@@ -40,6 +41,13 @@ export default new Router({
       components: {
         header: Header,
         statistic: Statistic,
+      },
+    },
+    {
+      path: '*',
+      name: 'NotDefine',
+      components: {
+        notdefine: Notdefine,
       },
     },
   ],

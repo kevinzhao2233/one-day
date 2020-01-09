@@ -4,8 +4,8 @@
     logo
   </div>
   <div class="right-con">
-    <router-link class="link" to="/statistic"></router-link>
-    <router-link class="link" to="/login"></router-link>
+    <router-link class="link" :to="{ name: 'Statistic' }"></router-link>
+    <router-link class="link" :to="{ name: 'Login' }"></router-link>
   </div>
 </div>
 </template>
