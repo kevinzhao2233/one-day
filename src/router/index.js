@@ -46,9 +46,7 @@ export default new Router({
     {
       path: '*',
       name: 'NotDefine',
-      components: {
-        notdefine: Notdefine,
-      },
+      components: Notdefine,
     },
   ],
 });

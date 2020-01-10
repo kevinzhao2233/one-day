@@ -6,7 +6,7 @@
       <span class="tit select">Sign Up</span>
     </div>
     <div class="login">
-      <form class="login-form" action="login" method="post">
+      <form class="login-form" >
         <div class="input-box">
           <span :class="isFocusedUsername ? 'descript active' : 'descript'">Username</span>
           <input @focus="handleFocus('isFocusedUsername')"
@@ -24,7 +24,7 @@
             name="password" id="password" autocomplete="off">
         </div>
         <a href="" class="forget">Forget?</a>
-        <input class="sub-btn" type="submit" value="LOGIN">
+        <input class="sub-btn" @click="submit" type="button" value="LOGIN">
       </form>
     </div>
     <div class="signup"></div>
@@ -42,6 +42,7 @@ export default {
         username: '',
         password: '',
       },
+      temp: '123',
     };
   },
 
@@ -53,6 +54,22 @@ export default {
       if (this.loginData[data] === '') {
         this[isFocused] = false;
       }
+    },
+    submit() {
+      this.$axios({
+        method: 'post',
+        url: '/api/getApp', // 接口地址
+        data: {
+          username: this.loginData.username,
+          password: this.loginData.password,
+        },
+      })
+        .then((response) => {
+          // eslint-disable-next-line no-console
+          console.log(response, 'success'); // 成功的返回
+        })
+        // eslint-disable-next-line no-console
+        .catch(error => console.log(error, 'error')); // 失败的返回
     },
   },
 
