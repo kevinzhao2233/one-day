@@ -65,6 +65,7 @@ export default {
   width: 100%;
   height: 60px;
   transition: all .3s ease-out;
+  background-color: $cl-aux1;
 
   @include respond-to(lg) {
     .del-btn {

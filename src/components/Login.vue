@@ -79,7 +79,12 @@ export default {
 @import '../assets/lib/scss/config.scss';
 
 .login-box {
+  margin: 10% auto;
+  padding: 40px 0;
   width: 300px;
+  border-radius: 12px;
+  background-color: $cl-aux1;
+  box-shadow: 0 12px 40px -10px $cl-shallow1;
 
   .title {
     width: 100%;
@@ -167,7 +172,8 @@ export default {
         height: 46px;
         border: none;
         border-radius: 100px;
-        background-color: #ffb5cd;
+        background: linear-gradient(-120deg, $cl-main1, $cl-shallow1);
+        box-shadow: 0 12px 12px -8px $cl-shallow1;
         font-size: 16px;
         color: #fff;
         cursor: pointer;

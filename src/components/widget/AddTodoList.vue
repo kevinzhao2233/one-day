@@ -117,6 +117,7 @@ export default {
   flex-wrap: nowrap;
   width: 100%;
   padding: 0 24px;
+  background-color: $cl-aux1;
   border-radius: 8px;
   border: 1px solid $cl-aux2;
   box-shadow: 0 4px 12px $cl-aux3;

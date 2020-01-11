@@ -25,6 +25,7 @@ export default {
   padding: 0 24px;
   width: 100%;
   height: 64px;
+  background-color: $cl-aux1;
   box-shadow: 0 4px 12px $cl-aux3;
 
   .right-con {
