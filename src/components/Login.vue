@@ -57,12 +57,12 @@ export default {
     },
     submit() {
       this.$axios({
-        method: 'post',
-        url: '/api/getApp', // 接口地址
-        data: {
-          username: this.loginData.username,
-          password: this.loginData.password,
-        },
+        method: 'get',
+        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/temp', // 接口地址
+        // data: {
+        //   username: this.loginData.username,
+        //   password: this.loginData.password,
+        // },
       })
         .then((response) => {
           // eslint-disable-next-line no-console
@@ -72,20 +72,12 @@ export default {
         .catch(error => console.log(error, 'error')); // 失败的返回
     },
   },
-
-  mounted() {
-    if (this.$router.params) {
-      // eslint-disable-next-line no-console
-      console.log(this.$router.params);
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('????');
-    }
-  },
 };
 </script>
 
 <style lang="scss">
+@import '../assets/lib/scss/config.scss';
+
 .login-box {
   width: 300px;
 

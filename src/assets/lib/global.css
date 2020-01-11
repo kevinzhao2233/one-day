@@ -1,3 +1,8 @@
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .c-edition {
   width: 1026px;
   margin: 0 auto;

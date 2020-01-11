@@ -109,7 +109,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/lib/scss/mixins.scss';
+@import '@/assets/lib/scss/mixins.scss';
+@import '@/assets/lib/scss/config.scss';
 
 .strip {
   display: flex;
@@ -117,12 +118,12 @@ export default {
   width: 100%;
   padding: 0 24px;
   border-radius: 8px;
-  border: 1px solid #efefef;
-  box-shadow: 0 4px 12px #ededef;
+  border: 1px solid $cl-aux2;
+  box-shadow: 0 4px 12px $cl-aux3;
   transition: all .4s ease-out;
 
   &.focused {
-    box-shadow: 0 16px 24px -12px #d2d2d4;
+    box-shadow: 0 16px 24px -12px $cl-aux4;
   }
 
   @include respond-to(lg) {
@@ -142,8 +143,8 @@ export default {
         width: 220px;
         height: 50px;
         border-radius: 12px;
-        background-color: #FFF;
-        box-shadow: 0 8px 16px -2px #DDD;
+        background-color: $cl-aux1;
+        box-shadow: 0 8px 16px -2px $cl-aux4;
         cursor: default;
 
         .color {

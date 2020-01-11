@@ -4,10 +4,11 @@
   <AddTodoList/>
 
   <!-- List -->
+  <!-- 未完成的TODO -->
   <draggable v-model="todos" forceFallvack: true>
-    <transition-group name="fade"
+    <transition-group name="flip-list"
       enter-active-class="animated zoomIn"
-      leave-active-class="animated fadeOutRight">
+      leave-active-class="animated zoomOut">
       <div v-for="todo in todos" :key="todo.id">
         <ListContent :todo="todo" v-if="!todo.done"/>
       </div>
@@ -15,9 +16,10 @@
   </draggable>
 
   <br>
-  <transition-group name="fade"
+  <!-- 已经完成的TODO -->
+  <transition-group name="flip-list"
     enter-active-class="animated zoomIn"
-    leave-active-class="animated fadeOutRight"
+    leave-active-class="animated zoomOut"
   >
     <div v-for="doneTodo in doneTodos" :key="doneTodo.id">
       <ListContent :todo="doneTodo"/>
@@ -72,6 +74,10 @@ export default {
 
 // 覆盖默认时间
 .animated {animation-duration: 0.5s;}
+
+.flip-list-move {
+  transition: transform .5s;
+}
 
 .home {
   width: 100%;
