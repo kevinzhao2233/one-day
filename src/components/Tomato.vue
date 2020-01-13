@@ -6,7 +6,7 @@
     <div class="time-box">
       <span class="time">{{formatMin}}:{{formatSec}}</span>
       <div class="control-box">
-        <i class="btn fa fa-play" v-show="time.status === 1 || time.status === 3" 
+        <i class="btn fa fa-play" v-show="time.status === 1 || time.status === 3"
           @click="handleStart"></i>
         <i class="btn fa fa-pause" v-show="time.status === 2" @click="handleStop"></i>
         <i class="btn fa fa-undo" v-show="time.status === 3" @click="handleRestart"></i>
