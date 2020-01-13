@@ -1,15 +1,18 @@
 <template>
 <div class="list c-edition strip">
+  <!-- 颜色标签和完成按钮 -->
   <div class="ctrl-box">
     <div class="color-label" :style="{ background: todo.done ? '#fff' : todo.color }"></div>
     <div
-       :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
-       @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
-     ></div>
+      :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
+      @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
+    ></div>
   </div>
+  <!-- 文本内容 -->
   <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">
     {{todo.text}}
   </span>
+  <!-- 删除按钮 -->
   <div class="ctrl-box">
     <div
       class="small-btn del-btn"
@@ -54,6 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/lib/scss/config.scss';
 @import '../../assets/lib/scss/mixins.scss';
 
 .list {
@@ -61,6 +65,7 @@ export default {
   width: 100%;
   height: 60px;
   transition: all .3s ease-out;
+  background-color: $cl-aux1;
 
   @include respond-to(lg) {
     .del-btn {
@@ -70,7 +75,7 @@ export default {
     }
 
     &:hover {
-      box-shadow: 0 20px 24px -18px rgba(255, 163, 192, 0.603);
+      box-shadow: 0 20px 24px -18px $cl-shallow1;
 
       .del-btn {
         opacity: 1;
@@ -80,7 +85,7 @@ export default {
   }
 
   .done-todo-btn {
-    background-color: #eee;
+    background-color: $cl-aux3;
   }
 
   .color-label {
@@ -102,7 +107,7 @@ export default {
     text-overflow: ellipsis;
 
     &.done-todo-txt {
-      color: #999;
+      color: $cl-font2;
       text-decoration-line: line-through;
     }
   }

@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/lib/scss/config.scss';
+
 .content {
   position: relative;
   display: flex;
@@ -76,7 +78,7 @@ export default {
   align-items: center;
   width: 720px;
   height: 840px;
-  background-color: #eef;
+  background-color: $cl-aux5;
 
   .svg {
     margin: 0;
@@ -93,11 +95,11 @@ export default {
     width: 240px;
     height: 240px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: $cl-aux1;
 
     .time {
       // margin-top: 160px;
-      color: #ff5b8f;
+      color: $cl-main1;
       font-size: 66px;
       line-height: 90px;
     }
@@ -113,7 +115,7 @@ export default {
         display: block;
         width: 30%;
         height: 100%;
-        background-color: #ffcfde;
+        background-color: $cl-shallow1;
         text-align: center;
         line-height: 40px;
         -webkit-user-select:none; /*webkit浏览器*/
