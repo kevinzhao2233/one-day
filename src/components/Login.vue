@@ -173,7 +173,14 @@ export default {
         margin-top: 36px;
         width: 5em;
         font-size: 14px;
-        color: $cl-font2;
+        color: $cl-font4;
+
+        &:visited {
+          color: $cl-font4;
+        }
+        &:hover {
+          color: $cl-font2;
+        }
       }
 
       .sub-btn {
