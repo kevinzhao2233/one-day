@@ -25,6 +25,10 @@
       <ListContent :todo="doneTodo"/>
     </div>
   </transition-group>
+
+  <footer class="footer">
+    <SmallTomato/>
+  </footer>
 </div>
 </template>
 
@@ -33,12 +37,14 @@ import draggable from 'vuedraggable';
 import { mapGetters } from 'vuex';
 import ListContent from './widget/ListContent';
 import AddTodoList from './widget/AddTodoList';
+import SmallTomato from './widget/SmallTomato';
 
 export default {
   name: 'Home',
   components: {
     ListContent,
     AddTodoList,
+    SmallTomato,
     draggable,
   },
 
@@ -80,11 +86,19 @@ export default {
 }
 
 .home {
+  padding-bottom: 160px;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 
   @include respond-to(lg) {
     width: 1026px;
+  }
+
+  .footer {
+    position: fixed;
+    width: inherit;
+    bottom: 0;
   }
 }
 </style>
