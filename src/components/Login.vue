@@ -1,46 +1,60 @@
 <template>
   <div class="login-box">
     <div class="title">
-      <span class="tit select active">Login</span>
+      <span class="tit select active">{{ msg.login }}</span>
       <span class="tit">/</span>
-      <span class="tit select">Sign Up</span>
+      <span class="tit select">{{ msg.signup }}</span>
     </div>
     <div class="login">
       <form class="login-form" >
-        <div class="input-box">
-          <span :class="isFocusedUsername ? 'descript active' : 'descript'">Username</span>
-          <input @focus="handleFocus('isFocusedUsername')"
-            @blur="handleBlur('isFocusedUsername', 'username')"
-            v-model="loginData.username"
-            class="input" type="text"
-            name="username" id="username" autocomplete="off">
-        </div>
-        <div class="input-box">
-          <span :class="isFocusedPassword ? 'descript active': 'descript'">Password</span>
-          <input @focus="handleFocus('isFocusedPassword')"
-            @blur="handleBlur('isFocusedPassword', 'password')"
-            v-model="loginData.password"
-            class="input" type="password"
-            name="password" id="password" autocomplete="off">
-        </div>
-        <a href="" class="forget">Forget?</a>
-        <input class="sub-btn" @click="submit" type="button" value="LOGIN">
+        <InputBox
+          :inputTitle="msg.email"
+          :loginData="loginData.email"
+          :inputType="inputType.text"
+        />
+        <InputBox
+          :inputTitle="msg.password"
+          :loginData="loginData.password"
+          :inputType="inputType.password"
+        />
+        <a href="" class="forget">{{ msg.forget }}</a>
+        <input class="sub-btn" @click="loginSubmit" type="button" value="登录">
       </form>
     </div>
-    <div class="signup"></div>
+    <div class="signup">
+    </div>
   </div>
 </template>
 
 <script>
+import InputBox from './widget/InputBox';
+
 export default {
   name: 'Login',
+  components: {
+    InputBox,
+  },
   data() {
     return {
-      isFocusedUsername: false,
+      isFocusedEmail: false,
       isFocusedPassword: false,
       loginData: {
-        username: '',
+        email: '',
         password: '',
+      },
+      inputType: {
+        email: 'email',
+        text: 'text',
+        password: 'password',
+        number: 'number',
+      },
+      msg: {
+        login: '登录',
+        email: '邮箱',
+        username: '用户名',
+        password: '密码',
+        signup: '注册',
+        forget: '忘记密码？',
       },
       temp: '123',
     };
@@ -55,12 +69,28 @@ export default {
         this[isFocused] = false;
       }
     },
-    submit() {
+    loginSubmit() {
       this.$axios({
-        method: 'get',
-        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/temp', // 接口地址
+        method: 'post',
+        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/login', // 接口地址
         // data: {
-        //   username: this.loginData.username,
+        //   email: this.loginData.email,
+        //   password: this.loginData.password,
+        // },
+      })
+        .then((response) => {
+          // eslint-disable-next-line no-console
+          console.log(response, 'success'); // 成功的返回
+        })
+        // eslint-disable-next-line no-console
+        .catch(error => console.log(error, 'error')); // 失败的返回
+    },
+    signupSubmit() {
+      this.$axios({
+        method: 'post',
+        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/signup', // 接口地址
+        // data: {
+        //   email: this.loginData.email,
         //   password: this.loginData.password,
         // },
       })
@@ -92,7 +122,7 @@ export default {
 
     .tit {
       font-size: 20px;
-      color: #bbb;
+      color: $cl-font3;
       line-height: 80px;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -104,7 +134,7 @@ export default {
       }
 
       &.active {
-        color: #ff81a9;
+        color: $cl-main1;
       }
     }
   }
@@ -118,52 +148,12 @@ export default {
       flex-direction: column;
       width: 100%;
 
-      .input-box {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-start;
-        margin: 0;
-        width: 100%;
-        height: 80px;
-
-        .descript {
-          position: absolute;
-          bottom: 0;
-          font-size: 18px;
-          color: #ff81a9;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-          z-index: 10;
-          transition: all .3s linear;
-
-          &.active {
-            bottom: 28px;
-            font-size: 12px;
-            transition: all .3s linear;
-          }
-        }
-
-        .input {
-          flex: 0 0 auto;
-          width: 100%;
-          height: 28px;
-          border: none;
-          border-bottom: 2px solid #bbb;
-          letter-spacing: 1px;
-          font-size: 14px;
-          z-index: 20;
-        }
-      }
-
       .forget {
         display: inline-block;
         margin-top: 36px;
-        width: 4em;
+        width: 5em;
         font-size: 14px;
+        color: $cl-font2;
       }
 
       .sub-btn {
@@ -173,9 +163,9 @@ export default {
         border: none;
         border-radius: 100px;
         background: linear-gradient(-120deg, $cl-main1, $cl-shallow1);
-        box-shadow: 0 12px 12px -8px $cl-shallow1;
+        box-shadow: 0 12px 24px -14px $cl-main1;
         font-size: 16px;
-        color: #fff;
+        color: $cl-aux1;
         cursor: pointer;
       }
     }
