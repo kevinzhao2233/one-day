@@ -1,27 +1,33 @@
 <template>
   <div class="login-box">
     <div class="title">
-      <span class="tit select active">{{ msg.login }}</span>
+      <span :class="!isSignup ? 'tit select active' : 'tit select'"
+        @click="changeToLogin()">{{ msg.login }}</span>
       <span class="tit">/</span>
-      <span class="tit select">{{ msg.signup }}</span>
+      <span :class="isSignup? 'tit select active' : 'tit select'"
+        @click="changeToSignup()">{{ msg.signup }}</span>
     </div>
     <div class="login">
       <form class="login-form" >
-        <InputBox
-          :inputTitle="msg.email"
-          :loginData="loginData.email"
-          :inputType="inputType.text"
-        />
-        <InputBox
-          :inputTitle="msg.password"
-          :loginData="loginData.password"
-          :inputType="inputType.password"
-        />
+        <transition-group name="flip-list"
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut">
+          <InputBox :key="1"
+            :inputTitle="msg.email" :loginData="loginData.email"
+            :inputType="inputType.text"/>
+          <InputBox :key="2" v-if="isSignup"
+            :inputTitle="msg.username" :loginData="loginData.username"
+            :inputType="inputType.text"/>
+          <InputBox :key="3"
+            :inputTitle="msg.password" :loginData="loginData.password"
+            :inputType="inputType.password"/>
+          <InputBox :key="4" v-if="isSignup"
+            :inputTitle="msg.rewPassword" :loginData="loginData.rewPassword"
+            :inputType="inputType.password"/>
+        </transition-group>
         <a href="" class="forget">{{ msg.forget }}</a>
         <input class="sub-btn" @click="loginSubmit" type="button" value="登录">
       </form>
-    </div>
-    <div class="signup">
     </div>
   </div>
 </template>
@@ -36,11 +42,12 @@ export default {
   },
   data() {
     return {
-      isFocusedEmail: false,
-      isFocusedPassword: false,
+      isSignup: false,
       loginData: {
         email: '',
         password: '',
+        username: '',
+        rewPassword: '',
       },
       inputType: {
         email: 'email',
@@ -53,10 +60,10 @@ export default {
         email: '邮箱',
         username: '用户名',
         password: '密码',
+        rewPassword: '确认密码',
         signup: '注册',
         forget: '忘记密码？',
       },
-      temp: '123',
     };
   },
 
@@ -68,6 +75,12 @@ export default {
       if (this.loginData[data] === '') {
         this[isFocused] = false;
       }
+    },
+    changeToLogin() {
+      this.isSignup = false;
+    },
+    changeToSignup() {
+      this.isSignup = true;
     },
     loginSubmit() {
       this.$axios({
@@ -107,6 +120,13 @@ export default {
 
 <style lang="scss">
 @import '../assets/lib/scss/config.scss';
+
+// 覆盖默认时间
+.animated {animation-duration: 0.5s;}
+
+.flip-list-move {
+  transition: all .5s;
+}
 
 .login-box {
   margin: 10% auto;
