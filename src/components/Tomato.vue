@@ -1,26 +1,16 @@
 <template>
   <div class="content c-edition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="svg"  style="vector-effect: non-scaling-stroke;" stroke="null">
-      <g stroke="null">
-        <path
-          stroke="#ffffff"
-          id="svg_8"
-          d="m308.333438,54.980105c141.99872,-14.85511 262.6643,
-          199.09073 207.99812,295.75185c-54.66618,96.66112 -311.99718,
-          100.36962 -379.32991,8.77801c-67.33273,-91.59161 29.33307,
-          -289.67475 171.33179,-304.52986z"
-          stroke-width="0"
-          fill="#ffb5cd"
-        />
-      </g>
-    </svg>
+    <div class="svg svg-1"></div>
+    <div class="svg svg-2"></div>
+    <div class="svg svg-3"></div>
     <div class="time-box">
       <span class="time">{{formatMin}}:{{formatSec}}</span>
       <div class="control-box">
-        <i class="btn" v-show="time.status === 1 || time.status === 3" @click="handleStart">a</i>
-        <i class="btn" v-show="time.status === 2" @click="handleStop">s</i>
-        <i class="btn" v-show="time.status === 3" @click="handleRestart">r</i>
-        <i class="btn" v-show="time.status === 4" @click="handleJump">j</i>
+        <i class="btn fa fa-play" v-show="time.status === 1 || time.status === 3" 
+          @click="handleStart"></i>
+        <i class="btn fa fa-pause" v-show="time.status === 2" @click="handleStop"></i>
+        <i class="btn fa fa-undo" v-show="time.status === 3" @click="handleRestart"></i>
+        <i class="btn fa fa-forward" v-show="time.status === 4" @click="handleJump"></i>
       </div>
     </div>
   </div>
@@ -76,14 +66,27 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10%;
   width: 720px;
-  height: 840px;
+  height: 540px;
   background-color: $cl-aux5;
 
   .svg {
-    margin: 0;
-    width: 640px;
-    height: 500px;
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background-position: center center;
+    background-size: contain;
+
+    &.svg-1 {
+      background:  url('../assets/img/irregularity-1.svg') no-repeat;
+    }
+    &.svg-2 {
+      background:  url('../assets/img/irregularity-2.svg') no-repeat;
+    }
+    &.svg-3 {
+      background:  url('../assets/img/irregularity-3.svg') no-repeat;
+    }
   }
 
   .time-box {
@@ -101,7 +104,7 @@ export default {
       // margin-top: 160px;
       color: $cl-main1;
       font-size: 66px;
-      line-height: 90px;
+      line-height: 110px;
     }
 
     .control-box {
@@ -109,19 +112,23 @@ export default {
       justify-content: space-around;
       align-items: center;
       width: 60%;
-      height: 40px;
+      height: 42px;
 
       .btn {
         display: block;
-        width: 30%;
-        height: 100%;
-        background-color: $cl-shallow1;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 2px solid $cl-main1;
         text-align: center;
-        line-height: 40px;
+        line-height: 38px;
+        color: $cl-main1;
+        font-size: 20px;
         -webkit-user-select:none; /*webkit浏览器*/
         -moz-user-select:none; /*火狐*/
         -ms-user-select:none; /*IE10*/
         user-select:none;
+        cursor: pointer;
       }
     }
   }
