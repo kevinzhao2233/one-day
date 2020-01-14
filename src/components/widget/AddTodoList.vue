@@ -1,22 +1,25 @@
 <template>
-  <div :class="inputIsFocused ? 'input-box c-edition strip focused' : 'input-box c-edition strip'">
+  <div
+    :class="inputIsFocused ? 'input-box c-edition focused' : 'input-box c-edition'"
+  >
     <input
       class="input"
-      id="addTodo"
       type="text"
       autocomplete="off"
       @focus="foucusInput()"
       @blur="unFocusInput()"
-      @keyup.enter="addTodo({
-        text: todoData.input,
-        id: getId(),
-        buildTime: timeStemp(),
-        lastUpdate: timeStemp(),
-        colorLabel: todoData.currentColor,
-      })"
+      @keyup.enter="
+        addTodo({
+          text: todoData.input,
+          id: getId(),
+          buildTime: timeStemp(),
+          lastUpdate: timeStemp(),
+          colorLabel: todoData.currentColor
+        })
+      "
       v-model="todoData.input"
       :placeholder="todoData.inputPlaceHolder"
-    >
+    />
     <div class="ctrl-box">
       <div
         class="small-btn color-label"
@@ -29,19 +32,22 @@
             class="color"
             @click="selectColor(col)"
             :style="{ background: col }"
-            :key="index">
+            :key="index"
+          >
           </i>
         </div>
       </div>
       <div
-        class="small-btn"
-        @click="addTodo({
-          text: todoData.input,
-          id: getId(),
-          buildTime: timeStemp(),
-          lastUpdate: timeStemp(),
-          colorLabel: todoData.currentColor,
-        })"
+        class="small-btn icon fa fa-plus-circle"
+        @click="
+          addTodo({
+            text: todoData.input,
+            id: getId(),
+            buildTime: timeStemp(),
+            lastUpdate: timeStemp(),
+            colorLabel: todoData.currentColor
+          })
+        "
       ></div>
     </div>
   </div>
@@ -67,15 +73,11 @@ export default {
   },
 
   computed: {
-    ...mapState([
-      'colors',
-    ]),
+    ...mapState(['colors']),
   },
 
   methods: {
-    ...mapMutations([
-      'addTodo',
-    ]),
+    ...mapMutations(['addTodo']),
 
     addColorLabel() {
       this.isShowColorLabel = !this.isShowColorLabel;
@@ -104,24 +106,25 @@ export default {
       return id;
     },
   },
-
 };
 </script>
 
-<style lang="scss">
-@import '@/assets/lib/scss/mixins.scss';
-@import '@/assets/lib/scss/config.scss';
+<style lang="scss" scoped>
+@import "@/assets/lib/scss/mixins.scss";
+@import "@/assets/lib/scss/config.scss";
 
-.strip {
+.input-box {
   display: flex;
   flex-wrap: nowrap;
+  margin: 36px auto;
   width: 100%;
+  height: 64px;
   padding: 0 24px;
   background-color: $cl-aux1;
   border-radius: 8px;
   border: 1px solid $cl-aux2;
   box-shadow: 0 4px 12px $cl-aux3;
-  transition: all .4s ease-out;
+  transition: all 0.3s ease-out;
 
   &.focused {
     box-shadow: 0 16px 24px -12px $cl-aux4;
@@ -131,43 +134,52 @@ export default {
     width: 1026px;
   }
 
-    .color-label {
-      position: relative;
+  .input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    font-size: 18px;
+  }
 
-      .color-box {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        top: 26px;
-        right: -26px;
-        width: 220px;
-        height: 50px;
-        border-radius: 12px;
-        background-color: $cl-aux1;
-        box-shadow: 0 8px 16px -2px $cl-aux4;
-        cursor: default;
+  .color-label {
+    position: relative;
+    margin-right: 16px;
 
-        .color {
-          display: block;
-          width: 24px;
-          height: 24px;
-          border-radius: 8px;
-          cursor: pointer;
+    .color-box {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      top: 26px;
+      right: -26px;
+      width: 220px;
+      height: 50px;
+      border-radius: 12px;
+      background-color: $cl-aux1;
+      box-shadow: 0 8px 16px -2px $cl-aux4;
+      cursor: default;
+
+      .color {
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s linear;
+
+        &:hover {
+          width: 30px;
+          height: 30px;
+          box-shadow: 0 2px 8px -1px $cl-font3;
+          transition: all 0.2s linear;
         }
       }
     }
   }
+}
 
-  .input-box {
-    margin: 36px auto;
-    height: 64px;
-
-    .input {
-      flex: 1;
-      height: 100%;
-      border: none;
-      font-size: 18px;
-    }
-  }
+.icon {
+  color: $cl-main1;
+  font-size: 28px;
+}
 </style>

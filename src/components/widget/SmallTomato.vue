@@ -34,15 +34,15 @@ export default {
     display: block;
     width: 120px;
     height: 58px;
-    border: 2px solid $cl-main1;
+    // border: 2px solid $cl-main1;
     border-radius: 100px;
-    background-color: $cl-aux1;
+    background-color: $cl-main1;
     text-align: center;
-    box-shadow: 0 8px 36px -12px $cl-main1;
+    box-shadow: 0 8px 24px -6px $cl-main1;
 
     .time {
-      color: $cl-main1;
-      font-size: 24px;
+      color: $cl-aux1;
+      font-size: 26px;
       font-weight: 500;
       line-height: 56px;
       user-select: none;

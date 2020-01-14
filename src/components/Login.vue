@@ -83,42 +83,31 @@ export default {
       this.isSignup = true;
     },
     loginSubmit() {
-      this.$axios({
-        method: 'post',
-        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/login', // 接口地址
-        // data: {
-        //   email: this.loginData.email,
-        //   password: this.loginData.password,
-        // },
-      })
-        .then((response) => {
-          // eslint-disable-next-line no-console
-          console.log(response, 'success'); // 成功的返回
-        })
-        // eslint-disable-next-line no-console
-        .catch(error => console.log(error, 'error')); // 失败的返回
+      this.$router.push({ name: 'Home' });
     },
     signupSubmit() {
-      this.$axios({
-        method: 'post',
-        url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/signup', // 接口地址
-        // data: {
-        //   email: this.loginData.email,
-        //   password: this.loginData.password,
-        // },
-      })
-        .then((response) => {
-          // eslint-disable-next-line no-console
-          console.log(response, 'success'); // 成功的返回
-        })
-        // eslint-disable-next-line no-console
-        .catch(error => console.log(error, 'error')); // 失败的返回
+      this.$router.push({ name: 'Home' });
+
+      // this.$axios({
+      //   method: 'post',
+      //   url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/signup', // 接口地址
+      //   // data: {
+      //   //   email: this.loginData.email,
+      //   //   password: this.loginData.password,
+      //   // },
+      // })
+      //   .then((response) => {
+      //     // eslint-disable-next-line no-console
+      //     console.log(response, 'success'); // 成功的返回
+      //   })
+      //   // eslint-disable-next-line no-console
+      //   .catch(error => console.log(error, 'error')); // 失败的返回
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/lib/scss/config.scss';
 
 // 覆盖默认时间

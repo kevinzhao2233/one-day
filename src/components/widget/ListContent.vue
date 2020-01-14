@@ -1,10 +1,11 @@
 <template>
-<div class="list c-edition strip">
+<div class="list c-edition">
   <!-- 颜色标签和完成按钮 -->
   <div class="ctrl-box">
     <div class="color-label" :style="{ background: todo.done ? '#fff' : todo.color }"></div>
     <div
-      :class="todo.done ? 'small-btn done-todo-btn' : 'small-btn'"
+      :class="todo.done ? 'small-btn done-todo-btn fa fa-check-circle' :
+      'small-btn undone-toto-btn fa fa-check-circle'"
       @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
     ></div>
   </div>
@@ -15,7 +16,7 @@
   <!-- 删除按钮 -->
   <div class="ctrl-box">
     <div
-      class="small-btn del-btn"
+      class="small-btn del-btn fa fa-times-circle"
       @click="delTodo({id: todo.id})"
     >
     </div>
@@ -61,17 +62,31 @@ export default {
 @import '../../assets/lib/scss/mixins.scss';
 
 .list {
+  display: flex;
   margin: 24px auto;
+  padding: 0 24px;
   width: 100%;
   height: 60px;
-  transition: all .3s ease-out;
   background-color: $cl-aux1;
+  border-radius: 8px;
+  border: 1px solid $cl-aux2;
+  box-shadow: 0 4px 12px $cl-aux3;
+  transition: all .3s ease-out;
 
   @include respond-to(lg) {
     .del-btn {
       opacity: .2;
       visibility: hidden;
-      transition: all .3s ease-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: $cl-main1;
+      transition: all .2s linear;
+
+      &:hover {
+        font-size: 34px;
+      }
     }
 
     &:hover {
@@ -84,8 +99,22 @@ export default {
     }
   }
 
+  .undone-toto-btn {
+    font-size: 30px;
+    color: transparent;
+    transition: all .2s linear;
+
+    &:hover {
+      font-size: 34px;
+      color: $cl-main1;
+      transition: all .2s linear;
+    }
+  }
+
   .done-todo-btn {
-    background-color: $cl-aux3;
+    font-size: 30px;
+    color: $cl-font4;
+    // background-color: $cl-aux3;
   }
 
   .color-label {
