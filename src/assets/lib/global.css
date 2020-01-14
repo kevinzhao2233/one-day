@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.c-edition {
+  width: 1026px;
+  margin: 0 auto;
+}
+
+.ctrl-box {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.small-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px 0 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
