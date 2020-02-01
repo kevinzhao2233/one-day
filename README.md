@@ -6,7 +6,10 @@ A todolist based on vue
 
 ## 开发者
 ```bash
-git clone https://e.coding.net/slbb/todo-vue.git
+git clone https://e.coding.net/shuailibaba/todo-vue.git
+
 cd todo-vue
+
 npm install
 ```
+然后开始你的操作吧~~
