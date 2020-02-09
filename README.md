@@ -1,15 +1,8 @@
 # todo-vue
 
-A todolist based on vue
 
 一个集TODO、番茄钟、白噪声于一体的工具
+白噪声的功能将在不久后上线哦~~
 
 ## 开发者
-```bash
-git clone https://e.coding.net/shuailibaba/todo-vue.git
-
-cd todo-vue
-
-npm install
-```
-然后开始你的操作吧~~
+**开发者请移步dev分支，那里是属于你的天地**
