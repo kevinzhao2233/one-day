@@ -114,7 +114,6 @@ export default {
   .done-todo-btn {
     font-size: 30px;
     color: $cl-font4;
-    // background-color: $cl-aux3;
   }
 
   .color-label {
