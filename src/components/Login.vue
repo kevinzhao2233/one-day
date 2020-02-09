@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import InputBox from './widget/InputBox';
+import InputBox from './widget/InputBox.vue';
 
 export default {
   name: 'Login',
