@@ -35,9 +35,9 @@
 <script>
 import draggable from 'vuedraggable';
 import { mapGetters } from 'vuex';
-import ListContent from './widget/ListContent';
-import AddTodoList from './widget/AddTodoList';
-import SmallTomato from './widget/SmallTomato';
+import ListContent from './widget/ListContent.vue';
+import AddTodoList from './widget/AddTodoList.vue';
+import SmallTomato from './widget/SmallTomato.vue';
 
 export default {
   name: 'Home',

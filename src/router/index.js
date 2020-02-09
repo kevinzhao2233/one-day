@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home';
-import Header from '@/components/Header';
-import Tomato from '@/components/Tomato';
-import Statistic from '@/components/Statistic';
-import Login from '@/components/Login';
-import Notdefine from '@/components/NotDefine';
+import Home from '@/components/Home.vue';
+import Header from '@/components/Header.vue';
+import Tomato from '@/components/Tomato.vue';
+import Statistic from '@/components/Statistic.vue';
+import Login from '@/components/Login.vue';
+import Notdefine from '@/components/NotDefine.vue';
 
 Vue.use(Router);
 

@@ -1,7 +1,8 @@
 import {
   DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME } from './mutations-types';
+  CHANGE_CURRENT_TIME,
+} from './mutations-types';
 
 let countDown = null;
 

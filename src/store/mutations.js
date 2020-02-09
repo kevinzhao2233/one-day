@@ -1,6 +1,8 @@
-import { ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
+import {
+  ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME, UPDATE_TODOS } from './mutations-types';
+  CHANGE_CURRENT_TIME, UPDATE_TODOS,
+} from './mutations-types';
 
 const mutations = {
   // 添加 TODO || 直接插入到数组首位
@@ -19,7 +21,7 @@ const mutations = {
 
   // 切换一条 TODO 的完成状态 || 通过 id，找到要删除的下标，用splice删除，根据 lastUpdate
   [TOGGLE_DONE](state, payload) {
-    const willToggleDone = state.todos.findIndex(todo => todo.id === payload.id);
+    const willToggleDone = state.todos.findIndex((todo) => todo.id === payload.id);
     state.todos[willToggleDone].done = !payload.done;
     state.todos[willToggleDone].lastUpdate = payload.lastUpdate;
     state.todos.sort((a, b) => b.lastUpdate - a.lastUpdate);
@@ -27,7 +29,7 @@ const mutations = {
 
   // 删除一项 TODO || 通过 id，找到要删除的下标，用splice删除。如果使用delete删除会将被删项都变成 undefined，无法用 v-for
   [DEL_TODO](state, payload) {
-    const willDeleteTodo = state.todos.findIndex(todo => todo.id === payload.id);
+    const willDeleteTodo = state.todos.findIndex((todo) => todo.id === payload.id);
     state.todos.splice(willDeleteTodo, 1);
   },
 
@@ -52,7 +54,7 @@ const mutations = {
 
   // 倒计时-秒 || 直接减一
   [DECREASE_SEC](state) {
-    const sec = state.time.sec;
+    const { sec } = state.time;
     if (sec === 0) {
       state.time.sec = 59;
     } else {

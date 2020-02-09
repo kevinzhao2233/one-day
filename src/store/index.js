@@ -9,13 +9,19 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     todos: [
-      { id: '1578026976920-85058-1f6d', text: '点击左侧小按钮，可以完成这项TODO', done: false, buildTime: 1578026976920, lastUpdate: 1578026976920, color: '#ff4e88' },
-      { id: '1578027011004-77892-363b', text: '这是一项已经完成的TODO', done: true, buildTime: 1578027011004, lastUpdate: 1578027011004, color: '#ff6700' },
-      { id: '1578027031614-38447-9025', text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false, buildTime: 1578027031614, lastUpdate: 1578027031614, color: '#a04cf7' },
+      {
+        id: '1578026976920-85058-1f6d', text: '点击左侧小按钮，可以完成这项TODO', done: false, buildTime: 1578026976920, lastUpdate: 1578026976920, color: '#ff4e88',
+      },
+      {
+        id: '1578027011004-77892-363b', text: '这是一项已经完成的TODO', done: true, buildTime: 1578027011004, lastUpdate: 1578027011004, color: '#ff6700',
+      },
+      {
+        id: '1578027031614-38447-9025', text: '点击右侧可以删除这条TODO，但它还是未完成的', done: false, buildTime: 1578027031614, lastUpdate: 1578027031614, color: '#a04cf7',
+      },
     ],
     time: {
-      min: 0, // 当前番茄时间
-      sec: 4,
+      min: 25, // 当前番茄时间
+      sec: 0,
       initMin: 25, // 初始化工作番茄时间
       initSec: 0,
       restMin: 5, // 休息番茄时间
@@ -35,11 +41,11 @@ const store = new Vuex.Store({
     },
   },
   getters: {
-    doneTodos: state => state.todos.filter(todo => todo.done),
-    undoneTodos: state => state.todos.filter(todo => !todo.done),
+    doneTodos: (state) => state.todos.filter((todo) => todo.done),
+    undoneTodos: (state) => state.todos.filter((todo) => !todo.done),
 
     formatMin: (state) => {
-      const min = state.time.min;
+      const { min } = state.time;
       let strMin = '';
       if (min < 10 && min > -1) {
         strMin = `0${min}`;
@@ -52,7 +58,7 @@ const store = new Vuex.Store({
     },
 
     formatSec: (state) => {
-      const sec = state.time.sec;
+      const { sec } = state.time;
       let strSec = '';
       if (sec < 10 && sec >= 0) {
         strSec = `0${sec}`;
