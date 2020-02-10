@@ -11,6 +11,7 @@ html, body {
 .ctrl-box {
   flex: 0 0 auto;
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -19,7 +20,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 8px 0 0;
+  /* margin: 0 8px 0 0; */
   width: 26px;
   height: 26px;
   border-radius: 50%;

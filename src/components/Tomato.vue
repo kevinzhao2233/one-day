@@ -1,8 +1,6 @@
 <template>
   <div class="content c-edition">
-    <div class="svg svg-1"></div>
-    <div class="svg svg-2"></div>
-    <div class="svg svg-3"></div>
+    <div class="img-bg"></div>
     <div class="time-box">
       <span class="time">{{formatMin}}:{{formatSec}}</span>
       <div class="control-box">
@@ -68,25 +66,15 @@ export default {
   align-items: center;
   margin-top: 10%;
   width: 100%;
-  height: 540px;
+  height: 420px;
   background-color: $cl-aux5;
 
-  .svg {
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    background-position: center center;
-    background-size: contain;
-
-    &.svg-1 {
-      background:  url('../assets/img/irregularity-1.svg') no-repeat;
-    }
-    &.svg-2 {
-      background:  url('../assets/img/irregularity-2.svg') no-repeat;
-    }
-    &.svg-3 {
-      background:  url('../assets/img/irregularity-3.svg') no-repeat;
-    }
+  .img-bg {
+    width: 90%;
+    height: 90%;
+    background: center / contain no-repeat url('../assets/img/irregularity-1.svg'),
+                center / contain no-repeat url('../assets/img/irregularity-2.svg'),
+                center / contain no-repeat url('../assets/img/irregularity-3.svg');
   }
 
   .time-box {
@@ -95,8 +83,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background-color: $cl-aux1;
 

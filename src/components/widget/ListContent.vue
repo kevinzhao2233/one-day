@@ -65,7 +65,7 @@ export default {
   display: flex;
   margin: 24px auto;
   padding: 0 24px;
-  width: 100%;
+  width: 95%;
   height: 60px;
   background-color: $cl-aux1;
   border-radius: 8px;
@@ -73,16 +73,22 @@ export default {
   box-shadow: 0 4px 12px $cl-aux3;
   transition: all .3s ease-out;
 
+  .del-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: $cl-main1;
+  }
+
   @include respond-to(lg) {
+    &.list {
+      width: 100%;
+    }
     .del-btn {
       opacity: .2;
       visibility: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      color: $cl-main1;
-      transition: all .2s linear;
+      transition: all .1s linear;
 
       &:hover {
         font-size: 34px;

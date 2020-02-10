@@ -117,7 +117,7 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   margin: 36px auto;
-  width: 100%;
+  width: 95%;
   height: 64px;
   padding: 0 24px;
   background-color: $cl-aux1;
