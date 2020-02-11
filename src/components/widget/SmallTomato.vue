@@ -11,7 +11,6 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'SmallTomato',
-
   computed: {
     ...mapGetters([
       'formatMin',
@@ -33,8 +32,7 @@ export default {
   .content-box {
     display: block;
     width: 120px;
-    height: 58px;
-    // border: 2px solid $cl-main1;
+    height: 48px;
     border-radius: 100px;
     background-color: $cl-main1;
     text-align: center;
@@ -44,7 +42,7 @@ export default {
       color: $cl-aux1;
       font-size: 26px;
       font-weight: 500;
-      line-height: 56px;
+      line-height: 48px;
       user-select: none;
     }
   }

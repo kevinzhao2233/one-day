@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home.vue';
 import Header from '@/components/Header.vue';
+import Note from '@/components/Note.vue';
 import Tomato from '@/components/Tomato.vue';
 import Statistic from '@/components/Statistic.vue';
 import Login from '@/components/Login.vue';
@@ -25,6 +26,14 @@ export default new Router({
       components: {
         header: Header,
         tomato: Tomato,
+      },
+    },
+    {
+      path: '/note',
+      name: 'Note',
+      components: {
+        header: Header,
+        note: Note,
       },
     },
     {

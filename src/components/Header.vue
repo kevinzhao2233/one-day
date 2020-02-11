@@ -25,18 +25,24 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/lib/scss/config.scss';
+@import '../assets/lib/scss/mixins.scss';
 
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 2%;
   width: 100%;
-  height: 64px;
+  height: 54px;
   box-shadow: 0 4px 12px $cl-aux3;
+
+  @include respond-to(lg) {
+    padding: 0 24px;
+  }
 
   .left-con {
     .link {
       display: flex;
+      justify-content: center;
       align-items: center;
       width: 46px;
       height: 100%;
@@ -56,14 +62,19 @@ export default {
     .link {
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 36px;
       height: 100%;
-      margin: 0 16px;
+      margin: 0 8px;
       cursor: pointer;
 
       &:hover {
         margin-top: 4px;
         border-bottom: 4px solid $cl-main1;
+      }
+
+      @include respond-to(lg) {
+        margin: 0 16px;
       }
 
       .icon {

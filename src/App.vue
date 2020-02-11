@@ -3,6 +3,7 @@
     <router-view name="header"/>
     <router-view name="home"/>
     <router-view name="tomato"/>
+    <router-view name="note"/>
     <router-view name="login"/>
     <router-view name="statistic"/>
     <router-view name="notdefine"/>
