@@ -124,7 +124,7 @@ export default {
     flex: 1;
     height: 100%;
     border: none;
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 

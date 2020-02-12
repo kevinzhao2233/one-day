@@ -13,7 +13,9 @@
       ></div>
     </div>
     <!-- 文本内容 -->
-    <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">{{ todo.text }}</span>
+    <div class="todo-text-box">
+      <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">{{ todo.text }}</span>
+    </div>
     <!-- 删除按钮 -->
     <div class="ctrl-box">
       <div class="small-btn del-btn fa fa-times-circle" @click="delTodo({ id: todo.id })"></div>
@@ -126,20 +128,28 @@ export default {
     border-radius: 8px 0px 0px 8px;
   }
 
-  .todo-txt {
-    display: inline-block;
+  .todo-text-box {
+    display: flex;
     flex: 1;
-    padding: 0 6px;
+    align-items: center;
     height: 100%;
-    line-height: 60px;
-    font-size: 18px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    line-height: 24px;
 
-    &.done-todo-txt {
-      color: $cl-font2;
-      text-decoration-line: line-through;
+    .todo-txt {
+      display: inline-block;
+      display: -webkit-box;
+      padding: 0 6px;
+      font-size: 17px;
+      vertical-align: middle;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+
+      &.done-todo-txt {
+        color: $cl-font2;
+        text-decoration-line: line-through;
+      }
     }
   }
 }
