@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="inputIsFocused ? 'input-box c-edition focused' : 'input-box c-edition'"
-  >
+  <div :class="inputIsFocused ? 'input-box c-edition focused' : 'input-box c-edition'">
     <input
       class="input"
       type="text"
@@ -21,22 +19,8 @@
       :placeholder="todoData.inputPlaceHolder"
     />
     <div class="ctrl-box">
-      <div
-        class="small-btn color-label"
-        @click="addColorLabel()"
-        :style="{ background: todoData.currentColor }"
-      >
-        <div class="color-box" v-show="isShowColorLabel">
-          <i
-            v-for="(col, index) in colors"
-            class="color"
-            @click="selectColor(col)"
-            :style="{ background: col }"
-            :key="index"
-          >
-          </i>
-        </div>
-      </div>
+      <!-- 彩色标签组件 -->
+      <ColorLabel :colors="colors" @get-color-label="getColorLabel($event)"></ColorLabel>
       <div
         class="small-btn icon fa fa-plus-circle"
         @click="
@@ -56,9 +40,14 @@
 <script>
 import { mapState, mapMutations } from 'vuex';
 import { getTimeStemp, createId } from '@/assets/lib/myLib';
+import ColorLabel from './ColorLabel.vue';
 
 export default {
   name: 'AddTodoList',
+
+  components: {
+    ColorLabel,
+  },
 
   data() {
     return {
@@ -79,20 +68,16 @@ export default {
   methods: {
     ...mapMutations(['addTodo']),
 
-    addColorLabel() {
-      this.isShowColorLabel = !this.isShowColorLabel;
-    },
-
-    selectColor(color) {
-      this.todoData.currentColor = color;
-    },
-
     foucusInput() {
       this.inputIsFocused = true;
     },
 
     unFocusInput() {
       this.inputIsFocused = false;
+    },
+
+    getColorLabel(color) {
+      this.todoData.currentColor = color;
     },
 
     // 生产时间戳
@@ -127,6 +112,7 @@ export default {
   transition: all 0.3s ease-out;
 
   &.focused {
+    border: 1px solid $cl-shallow1;
     box-shadow: 0 16px 24px -12px $cl-aux4;
   }
 
@@ -139,42 +125,6 @@ export default {
     height: 100%;
     border: none;
     font-size: 18px;
-  }
-
-  .color-label {
-    position: relative;
-    margin-right: 16px;
-
-    .color-box {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      top: 26px;
-      right: -26px;
-      width: 220px;
-      height: 50px;
-      border-radius: 12px;
-      background-color: $cl-aux1;
-      box-shadow: 0 8px 16px -2px $cl-aux4;
-      cursor: default;
-
-      .color {
-        display: block;
-        width: 24px;
-        height: 24px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.2s linear;
-
-        &:hover {
-          width: 30px;
-          height: 30px;
-          box-shadow: 0 2px 8px -1px $cl-font3;
-          transition: all 0.2s linear;
-        }
-      }
-    }
   }
 }
 

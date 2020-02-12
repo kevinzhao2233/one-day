@@ -3,11 +3,12 @@
     <span :class="isFocused ? 'descript active' : 'descript'">{{ inputTitle }}</span>
     <input
       v-model="copyLoginData"
-      class="input" :type="inputType"
+      class="input"
+      :type="inputType"
       @focus="handleFocus('isFocused')"
       @blur="handleBlur('isFocused')"
       autocomplete="off"
-    >
+    />
   </div>
 </template>
 
@@ -41,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/lib/scss/config.scss';
+@import "@/assets/lib/scss/config.scss";
 
 .input-box {
   position: relative;
@@ -63,12 +64,12 @@ export default {
     -ms-user-select: none;
     user-select: none;
     z-index: 10;
-    transition: all .3s linear;
+    transition: all 0.3s linear;
 
     &.active {
       bottom: 28px;
       font-size: 12px;
-      transition: all .3s linear;
+      transition: all 0.3s linear;
     }
   }
 

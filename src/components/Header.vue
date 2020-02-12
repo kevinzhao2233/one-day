@@ -1,20 +1,20 @@
 <template>
-<div class="header">
-  <div class="left-con">
-    <router-link :to="{ name:'Home' }" class="link">
-      <i class="home fa fa-home"></i>
-    </router-link>
-    <!-- TODO: 这里需要一个 logo -->
+  <div class="header">
+    <div class="left-con">
+      <router-link :to="{ name: 'Home' }" class="link">
+        <i class="home fa fa-home"></i>
+      </router-link>
+      <!-- TODO: 这里需要一个 logo -->
+    </div>
+    <div class="right-con">
+      <router-link class="link" :to="{ name: 'Statistic' }">
+        <i class="icon fa fa-area-chart"></i>
+      </router-link>
+      <router-link class="link" :to="{ name: 'Login' }">
+        <i class="icon fa fa-user-o"></i>
+      </router-link>
+    </div>
   </div>
-  <div class="right-con">
-    <router-link class="link" :to="{ name: 'Statistic' }">
-      <i class="icon fa fa-area-chart"></i>
-    </router-link>
-    <router-link class="link" :to="{ name: 'Login' }">
-      <i class="icon fa fa-user-o"></i>
-    </router-link>
-  </div>
-</div>
 </template>
 
 <script>
@@ -24,8 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/lib/scss/config.scss';
-@import '../assets/lib/scss/mixins.scss';
+@import "../assets/lib/scss/config.scss";
+@import "../assets/lib/scss/mixins.scss";
 
 .header {
   display: flex;
