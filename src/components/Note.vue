@@ -1,7 +1,6 @@
 <template>
   <div class="content">
     note
-
   </div>
 </template>
 
@@ -11,6 +10,4 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-
-</style>
+<style lang="sass" scoped></style>

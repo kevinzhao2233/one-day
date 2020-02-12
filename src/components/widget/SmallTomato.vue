@@ -1,9 +1,9 @@
 <template>
-<div class="box">
-  <router-link :to="{ name: 'Tomato' }" class="content-box">
-    <span class="time">{{formatMin}}:{{formatSec}}</span>
-  </router-link>
-</div>
+  <div class="box">
+    <router-link :to="{ name: 'Tomato' }" class="content-box">
+      <span class="time">{{ formatMin }}:{{ formatSec }}</span>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -12,16 +12,13 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'SmallTomato',
   computed: {
-    ...mapGetters([
-      'formatMin',
-      'formatSec',
-    ]),
+    ...mapGetters(['formatMin', 'formatSec']),
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/lib/scss/config.scss';
+@import "@/assets/lib/scss/config.scss";
 
 .box {
   display: flex;

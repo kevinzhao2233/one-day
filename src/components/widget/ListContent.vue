@@ -4,16 +4,19 @@
     <div class="ctrl-box">
       <div class="color-label" :style="{ background: todo.done ? '#fff' : todo.color }"></div>
       <div
-        :class="todo.done ? 'small-btn done-todo-btn fa fa-check-circle' :
-      'small-btn undone-toto-btn fa fa-check-circle'"
-        @click="toggleDone({id: todo.id, done: todo.done, lastUpdate: timeStemp()})"
+        :class="
+          todo.done
+            ? 'small-btn done-todo-btn fa fa-check-circle'
+            : 'small-btn undone-toto-btn fa fa-check-circle'
+        "
+        @click="toggleDone({ id: todo.id, done: todo.done, lastUpdate: timeStemp() })"
       ></div>
     </div>
     <!-- 文本内容 -->
-    <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">{{todo.text}}</span>
+    <span :class="todo.done ? 'todo-txt done-todo-txt' : 'todo-txt'">{{ todo.text }}</span>
     <!-- 删除按钮 -->
     <div class="ctrl-box">
-      <div class="small-btn del-btn fa fa-times-circle" @click="delTodo({id: todo.id})"></div>
+      <div class="small-btn del-btn fa fa-times-circle" @click="delTodo({ id: todo.id })"></div>
     </div>
   </div>
 </template>

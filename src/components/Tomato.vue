@@ -2,10 +2,13 @@
   <div class="content c-edition">
     <div class="img-bg"></div>
     <div class="time-box">
-      <span class="time">{{formatMin}}:{{formatSec}}</span>
+      <span class="time">{{ formatMin }}:{{ formatSec }}</span>
       <div class="control-box">
-        <i class="btn fa fa-play" v-show="time.status === 1 || time.status === 3"
-          @click="handleStart"></i>
+        <i
+          class="btn fa fa-play"
+          v-show="time.status === 1 || time.status === 3"
+          @click="handleStart"
+        ></i>
         <i class="btn fa fa-pause" v-show="time.status === 2" @click="handleStop"></i>
         <i class="btn fa fa-undo" v-show="time.status === 3" @click="handleRestart"></i>
         <i class="btn fa fa-forward" v-show="time.status === 4" @click="handleJump"></i>
@@ -21,14 +24,9 @@ export default {
   name: 'Tomato',
 
   computed: {
-    ...mapState([
-      'time',
-    ]),
+    ...mapState(['time']),
 
-    ...mapGetters([
-      'formatMin',
-      'formatSec',
-    ]),
+    ...mapGetters(['formatMin', 'formatSec']),
   },
 
   methods: {
@@ -57,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/lib/scss/config.scss';
+@import "../assets/lib/scss/config.scss";
 
 .content {
   position: relative;
@@ -72,9 +70,9 @@ export default {
   .img-bg {
     width: 90%;
     height: 90%;
-    background: center / contain no-repeat url('../assets/img/irregularity-1.svg'),
-                center / contain no-repeat url('../assets/img/irregularity-2.svg'),
-                center / contain no-repeat url('../assets/img/irregularity-3.svg');
+    background: center / contain no-repeat url("../assets/img/irregularity-1.svg"),
+      center / contain no-repeat url("../assets/img/irregularity-2.svg"),
+      center / contain no-repeat url("../assets/img/irregularity-3.svg");
   }
 
   .time-box {
@@ -112,10 +110,10 @@ export default {
         line-height: 38px;
         color: $cl-main1;
         font-size: 20px;
-        -webkit-user-select:none; /*webkit浏览器*/
-        -moz-user-select:none; /*火狐*/
-        -ms-user-select:none; /*IE10*/
-        user-select:none;
+        -webkit-user-select: none; /*webkit浏览器*/
+        -moz-user-select: none; /*火狐*/
+        -ms-user-select: none; /*IE10*/
+        user-select: none;
         cursor: pointer;
       }
     }

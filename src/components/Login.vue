@@ -1,32 +1,50 @@
 <template>
   <div class="login-box">
     <div class="title">
-      <span :class="!isSignup ? 'tit select active' : 'tit select'"
-        @click="changeToLogin()">{{ msg.login }}</span>
+      <span :class="!isSignup ? 'tit select active' : 'tit select'" @click="changeToLogin()">{{
+        msg.login
+      }}</span>
       <span class="tit">/</span>
-      <span :class="isSignup? 'tit select active' : 'tit select'"
-        @click="changeToSignup()">{{ msg.signup }}</span>
+      <span :class="isSignup ? 'tit select active' : 'tit select'" @click="changeToSignup()">{{
+        msg.signup
+      }}</span>
     </div>
     <div class="login">
-      <form class="login-form" >
-        <transition-group name="flip-list"
+      <form class="login-form">
+        <transition-group
+          name="flip-list"
           enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut">
-          <InputBox :key="1"
-            :inputTitle="msg.email" :loginData="loginData.email"
-            :inputType="inputType.text"/>
-          <InputBox :key="2" v-if="isSignup"
-            :inputTitle="msg.username" :loginData="loginData.username"
-            :inputType="inputType.text"/>
-          <InputBox :key="3"
-            :inputTitle="msg.password" :loginData="loginData.password"
-            :inputType="inputType.password"/>
-          <InputBox :key="4" v-if="isSignup"
-            :inputTitle="msg.rewPassword" :loginData="loginData.rewPassword"
-            :inputType="inputType.password"/>
+          leave-active-class="animated fadeOut"
+        >
+          <InputBox
+            :key="1"
+            :inputTitle="msg.email"
+            :loginData="loginData.email"
+            :inputType="inputType.text"
+          />
+          <InputBox
+            :key="2"
+            v-if="isSignup"
+            :inputTitle="msg.username"
+            :loginData="loginData.username"
+            :inputType="inputType.text"
+          />
+          <InputBox
+            :key="3"
+            :inputTitle="msg.password"
+            :loginData="loginData.password"
+            :inputType="inputType.password"
+          />
+          <InputBox
+            :key="4"
+            v-if="isSignup"
+            :inputTitle="msg.rewPassword"
+            :loginData="loginData.rewPassword"
+            :inputType="inputType.password"
+          />
         </transition-group>
         <a href="" class="forget">{{ msg.forget }}</a>
-        <input class="sub-btn" @click="loginSubmit" type="button" value="登录">
+        <input class="sub-btn" @click="loginSubmit" type="button" value="登录" />
       </form>
     </div>
   </div>
@@ -87,34 +105,21 @@ export default {
     },
     signupSubmit() {
       this.$router.push({ name: 'Home' });
-
-      // this.$axios({
-      //   method: 'post',
-      //   url: 'https://www.easy-mock.com/mock/5dfb455f8b2a6e75d01746e0/example/signup', // 接口地址
-      //   // data: {
-      //   //   email: this.loginData.email,
-      //   //   password: this.loginData.password,
-      //   // },
-      // })
-      //   .then((response) => {
-      //     // eslint-disable-next-line no-console
-      //     console.log(response, 'success'); // 成功的返回
-      //   })
-      //   // eslint-disable-next-line no-console
-      //   .catch(error => console.log(error, 'error')); // 失败的返回
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/lib/scss/config.scss';
+@import "../assets/lib/scss/config.scss";
 
 // 覆盖默认时间
-.animated {animation-duration: 0.5s;}
+.animated {
+  animation-duration: 0.5s;
+}
 
 .flip-list-move {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .login-box {
