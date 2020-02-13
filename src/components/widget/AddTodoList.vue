@@ -101,7 +101,6 @@ export default {
 .input-box {
   display: flex;
   flex-wrap: nowrap;
-  margin: 36px auto;
   width: 95%;
   height: 64px;
   padding: 0 24px;
