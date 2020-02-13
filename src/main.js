@@ -2,6 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import 'animate.css';
 import 'font-awesome/scss/font-awesome.scss';
+import TextareaAutosize from 'vue-textarea-autosize';
 import App from './App.vue';
 import router from './router';
 import store from './store/index';
@@ -12,6 +13,8 @@ import './assets/lib/global.css';
 Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false;
+
+Vue.use(TextareaAutosize);
 
 /* eslint-disable no-new */
 new Vue({

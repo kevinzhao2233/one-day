@@ -78,6 +78,9 @@ export default {
     font-size: 30px;
     color: $cl-main1;
   }
+  &:hover {
+    box-shadow: 0 16px 24px -18px $cl-shallow1;
+  }
 
   @include respond-to(lg) {
     &.list {
@@ -95,8 +98,6 @@ export default {
     }
 
     &:hover {
-      box-shadow: 0 20px 24px -18px $cl-shallow1;
-
       .del-btn {
         opacity: 1;
         visibility: visible;
