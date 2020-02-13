@@ -4,7 +4,7 @@
       <span :class="!isSignup ? 'tit select active' : 'tit select'" @click="changeToLogin()">{{
         msg.login
       }}</span>
-      <span class="tit">/</span>
+      <span class="tit gap">/</span>
       <span :class="isSignup ? 'tit select active' : 'tit select'" @click="changeToSignup()">{{
         msg.signup
       }}</span>
@@ -149,6 +149,10 @@ export default {
 
       &.active {
         color: $cl-main1;
+      }
+
+      &.gap {
+        margin: 0 8px;
       }
     }
   }
