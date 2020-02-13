@@ -1,6 +1,6 @@
 <template>
   <div class="content c-edition">
-    <div class="img-bg"></div>
+    <div class="img-center"></div>
     <div class="time-box">
       <span class="time">{{ formatMin }}:{{ formatSec }}</span>
       <div class="control-box">
@@ -14,6 +14,7 @@
         <i class="btn fa fa-forward" v-show="time.status === 4" @click="handleJump"></i>
       </div>
     </div>
+    <div class="img-bottom"></div>
   </div>
 </template>
 
@@ -56,6 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/lib/scss/config.scss";
+@import "../assets/lib/scss/mixins.scss";
 
 .content {
   position: relative;
@@ -67,12 +69,26 @@ export default {
   height: 420px;
   background-color: $cl-aux5;
 
-  .img-bg {
+  .img-center {
     width: 90%;
     height: 90%;
     background: center / contain no-repeat url("../assets/img/irregularity-1.svg"),
       center / contain no-repeat url("../assets/img/irregularity-2.svg"),
       center / contain no-repeat url("../assets/img/irregularity-3.svg");
+    z-index: 10;
+  }
+
+  .img-bottom {
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+    height: 50vh;
+    background: bottom / contain no-repeat url("../assets/img/bottom.svg");
+
+    @include respond-to(lg) {
+      background: bottom / cover no-repeat url("../assets/img/bottom.svg");
+    }
   }
 
   .time-box {
@@ -85,9 +101,9 @@ export default {
     height: 220px;
     border-radius: 50%;
     background-color: $cl-aux1;
+    z-index: 100;
 
     .time {
-      // margin-top: 160px;
       color: $cl-main1;
       font-size: 66px;
       line-height: 110px;
