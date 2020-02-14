@@ -9,6 +9,8 @@ import Statistic from '@/components/Statistic.vue';
 import Notdefine from '@/components/NotDefine.vue';
 
 const Login = () => import('@/components/Login.vue');
+const About = () => import('@/components/About.vue');
+const Agreement = () => import('@/components/Agreement.vue');
 
 Vue.use(Router);
 
@@ -44,8 +46,23 @@ export default new Router({
       path: '/login',
       name: 'Login',
       components: {
-        header: Header,
         login: Login,
+      },
+    },
+    {
+      path: '/about',
+      name: 'About',
+      components: {
+        header: Header,
+        about: About,
+      },
+    },
+    {
+      path: '/agreement',
+      name: 'Agreement',
+      components: {
+        header: Header,
+        agreement: Agreement,
       },
     },
     {

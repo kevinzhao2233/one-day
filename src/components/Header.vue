@@ -10,16 +10,36 @@
       <router-link class="link" :to="{ name: 'Statistic' }">
         <i class="icon fa fa-area-chart"></i>
       </router-link>
-      <router-link class="link" :to="{ name: 'Login' }">
-        <i class="icon fa fa-user-o"></i>
-      </router-link>
+      <div class="link _show-opt-box" @mousedown="toggleOptBox">
+        <i class="icon _show-opt-box fa fa-user-o"></i>
+        <i class="icon icon-t _show-opt-box fa fa-angle-down"></i>
+      </div>
+      <OptBox class="opt-box" @not-show="notShow($event)" :isShow="isShowOptBox"></OptBox>
     </div>
   </div>
 </template>
 
 <script>
+import OptBox from './widget/OptBox.vue';
+
 export default {
   name: 'Header',
+  components: {
+    OptBox,
+  },
+  data() {
+    return {
+      isShowOptBox: false,
+    };
+  },
+  methods: {
+    toggleOptBox() {
+      this.isShowOptBox = !this.isShowOptBox;
+    },
+    notShow(e) {
+      this.isShowOptBox = e;
+    },
+  },
 };
 </script>
 
@@ -55,6 +75,7 @@ export default {
   }
 
   .right-con {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
@@ -63,29 +84,42 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
+      padding: 0 10px;
+      margin: 0 2px;
       height: 100%;
-      margin: 0 8px;
+      margin-top: 4px;
+      border-bottom: 4px solid transparent;
+      transition: all 0.2s ease;
       cursor: pointer;
 
       &:hover {
-        margin-top: 4px;
         border-bottom: 4px solid $cl-main1;
+        background-color: $cl-aux1;
       }
 
       @include respond-to(lg) {
-        margin: 0 16px;
+        margin: 0 10px;
       }
 
       .icon {
         display: block;
-        width: 36px;
+        margin: 0 4px;
         height: 46px;
         font-size: 20px;
         text-align: center;
         line-height: 42px;
         color: $cl-main1;
+
+        &.icon-t {
+          width: auto;
+        }
       }
+    }
+
+    .opt-box {
+      position: absolute;
+      top: 54px;
+      right: 10px;
     }
   }
 }
