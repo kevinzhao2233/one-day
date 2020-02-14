@@ -6,8 +6,9 @@ import HeadNav from '@/components/widget/HeadNav.vue';
 import Note from '@/components/Note.vue';
 import Tomato from '@/components/Tomato.vue';
 import Statistic from '@/components/Statistic.vue';
-import Login from '@/components/Login.vue';
 import Notdefine from '@/components/NotDefine.vue';
+
+const Login = () => import('@/components/Login.vue');
 
 Vue.use(Router);
 

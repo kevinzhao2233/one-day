@@ -52,7 +52,7 @@ export default {
   align-items: flex-start;
   margin: 0;
   width: 100%;
-  height: 80px;
+  height: 70px;
 
   .descript {
     position: absolute;

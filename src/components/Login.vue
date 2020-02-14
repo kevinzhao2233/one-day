@@ -1,56 +1,61 @@
 <template>
-  <div class="login-box">
-    <div class="title">
-      <span :class="!isSignup ? 'tit select active' : 'tit select'" @click="changeToLogin()">{{
-        msg.login
-      }}</span>
-      <span class="tit gap">/</span>
-      <span :class="isSignup ? 'tit select active' : 'tit select'" @click="changeToSignup()">{{
-        msg.signup
-      }}</span>
+  <div class="bg">
+
+    <div class="login-box">
+      <div class="title">
+        <span :class="!isSignup ? 'tit select active' : 'tit select'" @click="changeToLogin()">{{
+          msg.login
+        }}</span>
+        <span class="tit gap">/</span>
+        <span :class="isSignup ? 'tit select active' : 'tit select'" @click="changeToSignup()">{{
+          msg.signup
+        }}</span>
+      </div>
+      <div class="login">
+        <form class="login-form">
+          <transition-group
+            name="flip-list"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+          >
+            <InputBox
+              :key="1"
+              :inputTitle="msg.email"
+              :loginData="loginData.email"
+              :inputType="inputType.text"
+            />
+            <InputBox
+              :key="2"
+              v-if="isSignup"
+              :inputTitle="msg.username"
+              :loginData="loginData.username"
+              :inputType="inputType.text"
+            />
+            <InputBox
+              :key="3"
+              :inputTitle="msg.password"
+              :loginData="loginData.password"
+              :inputType="inputType.password"
+            />
+            <InputBox
+              :key="4"
+              v-if="isSignup"
+              :inputTitle="msg.rewPassword"
+              :loginData="loginData.rewPassword"
+              :inputType="inputType.password"
+            />
+          </transition-group>
+          <a href="" class="forget">{{ msg.forget }}</a>
+          <input class="sub-btn" @click="loginSubmit" type="button" value="登录" />
+        </form>
+      </div>
     </div>
-    <div class="login">
-      <form class="login-form">
-        <transition-group
-          name="flip-list"
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-        >
-          <InputBox
-            :key="1"
-            :inputTitle="msg.email"
-            :loginData="loginData.email"
-            :inputType="inputType.text"
-          />
-          <InputBox
-            :key="2"
-            v-if="isSignup"
-            :inputTitle="msg.username"
-            :loginData="loginData.username"
-            :inputType="inputType.text"
-          />
-          <InputBox
-            :key="3"
-            :inputTitle="msg.password"
-            :loginData="loginData.password"
-            :inputType="inputType.password"
-          />
-          <InputBox
-            :key="4"
-            v-if="isSignup"
-            :inputTitle="msg.rewPassword"
-            :loginData="loginData.rewPassword"
-            :inputType="inputType.password"
-          />
-        </transition-group>
-        <a href="" class="forget">{{ msg.forget }}</a>
-        <input class="sub-btn" @click="loginSubmit" type="button" value="登录" />
-      </form>
-    </div>
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
 <script>
+import Visual from '@/assets/lib/js/canvasAni';
 import InputBox from './widget/InputBox.vue';
 
 export default {
@@ -107,6 +112,11 @@ export default {
       this.$router.push({ name: 'Home' });
     },
   },
+
+  mounted() {
+    /* eslint-disable no-new */
+    new Visual();
+  },
 };
 </script>
 
@@ -122,76 +132,91 @@ export default {
   transition: all 0.5s;
 }
 
-.login-box {
-  margin: 10% auto;
-  padding: 40px 0;
-  width: 300px;
-  border-radius: 12px;
-  background-color: $cl-aux1;
-  box-shadow: 0 12px 40px -10px $cl-shallow1;
+.bg {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 54px);
 
-  .title {
+  #canvas {
+    display: block;
     width: 100%;
-    text-align: center;
-
-    .tit {
-      font-size: 20px;
-      color: $cl-font3;
-      line-height: 80px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-
-      &.select {
-        cursor: pointer;
-      }
-
-      &.active {
-        color: $cl-main1;
-      }
-
-      &.gap {
-        margin: 0 8px;
-      }
-    }
+    height: 100%;
   }
 
-  .login {
-    padding: 0 40px;
-    width: 100%;
+  .login-box {
+    position: absolute;
+    margin: 10% auto 20% auto;
+    left: 50%;
+    transform: translateX(-150px);
+    padding: 40px 0;
+    width: 300px;
+    border-radius: 12px;
+    background-color: $cl-aux1;
+    box-shadow: 0 12px 40px -10px $cl-shallow1;
 
-    .login-form {
-      display: flex;
-      flex-direction: column;
+    .title {
       width: 100%;
+      text-align: center;
 
-      .forget {
-        display: inline-block;
-        margin-top: 36px;
-        width: 5em;
-        font-size: 14px;
-        color: $cl-font4;
+      .tit {
+        font-size: 20px;
+        color: $cl-font3;
+        line-height: 80px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
-        &:visited {
-          color: $cl-font4;
+        &.select {
+          cursor: pointer;
         }
-        &:hover {
-          color: $cl-font2;
+
+        &.active {
+          color: $cl-main1;
+        }
+
+        &.gap {
+          margin: 0 8px;
         }
       }
+    }
 
-      .sub-btn {
-        margin-top: 40px;
+    .login {
+      padding: 0 40px;
+      width: 100%;
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 46px;
-        border: none;
-        border-radius: 100px;
-        background: linear-gradient(-120deg, $cl-main1, $cl-shallow1);
-        box-shadow: 0 12px 24px -14px $cl-main1;
-        font-size: 16px;
-        color: $cl-aux1;
-        cursor: pointer;
+
+        .forget {
+          display: inline-block;
+          margin-top: 36px;
+          width: 5em;
+          font-size: 14px;
+          color: $cl-font4;
+
+          &:visited {
+            color: $cl-font4;
+          }
+          &:hover {
+            color: $cl-font2;
+          }
+        }
+
+        .sub-btn {
+          margin-top: 40px;
+          width: 100%;
+          height: 46px;
+          border: none;
+          border-radius: 100px;
+          background: linear-gradient(-120deg, $cl-main1, $cl-shallow1);
+          box-shadow: 0 12px 24px -14px $cl-main1;
+          font-size: 16px;
+          color: $cl-aux1;
+          cursor: pointer;
+        }
       }
     }
   }
