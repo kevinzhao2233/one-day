@@ -2,10 +2,9 @@
 <div class="home c-edition">
   <!-- 输入框组件 -->
   <AddTodoList/>
-
   <!-- List -->
   <!-- 未完成的TODO -->
-  <draggable v-model="todos" forceFallvack: true>
+  <draggable v-model="todos" forceFallvack: true handle=".color-label">
     <transition-group name="flip-list"
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut">

@@ -124,7 +124,7 @@ export default {
 
   .color-label {
     margin: 0 14px 0 -24px;
-    width: 10px;
+    width: 12px;
     height: 100%;
     border-radius: 8px 0px 0px 8px;
   }
