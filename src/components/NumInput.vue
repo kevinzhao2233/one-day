@@ -59,6 +59,10 @@ export default {
   .s-tit {
     display: inline-block;
     flex: 1;
+    -webkie-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   .s-input {

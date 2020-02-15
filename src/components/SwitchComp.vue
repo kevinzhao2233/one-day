@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'RadioConp.vue',
+  name: 'SwitchComp',
 
   props: {
     settingItem: {
