@@ -35,7 +35,7 @@ export default {
 
 .s-container {
   display: flex;
-  padding: 8px 0;
+  padding: 10px 0;
 
   .s-tit {
     display: inline-block;
@@ -51,6 +51,7 @@ export default {
     border: 1px solid $cl-shallow1;
     background-color: $cl-aux2;
     transition: all 0.3s ease-in;
+    cursor: pointer;
 
     &.open {
       border: 1px solid $cl-main1;

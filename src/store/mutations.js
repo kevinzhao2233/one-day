@@ -1,7 +1,8 @@
 import {
   ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
-  CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
+  CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
+  CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
+  CHANGE_INITMIN, CHANGE_RESTMIN,
 } from './mutations-types';
 
 const mutations = {
@@ -42,7 +43,6 @@ const mutations = {
   [UPDATE_TODOS](state, payload) {
     state.todos = JSON.parse(JSON.stringify(payload));
   },
-
 
   /**
    * ========= 以下为 番茄钟页面的 mutation
@@ -95,10 +95,22 @@ const mutations = {
   [CHANGE_STATUS_TO_END](state) {
     state.time.status = 4;
   },
-
+  /**
+   * 以下为侧边栏部分
+   */
   // 切换显示侧边栏
   [TOGGLE_SHOW_SIDEBAR](state, payload) {
     state.sidebar.isShowSidebar = payload;
+  },
+
+  // 设置工作番茄时间
+  [CHANGE_INITMIN](state, payload) {
+    console.log(state, payload);
+  },
+
+  // 设置休息番茄时间
+  [CHANGE_RESTMIN](state, payload) {
+    console.log(state, payload);
   },
 };
 
