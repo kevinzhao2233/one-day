@@ -1,7 +1,7 @@
 import {
   ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME, UPDATE_TODOS,
+  CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
 } from './mutations-types';
 
 const mutations = {
@@ -94,6 +94,11 @@ const mutations = {
   },
   [CHANGE_STATUS_TO_END](state) {
     state.time.status = 4;
+  },
+
+  // 切换显示侧边栏
+  [TOGGLE_SHOW_SIDEBAR](state, payload) {
+    state.sidebar.isShowSidebar = payload;
   },
 };
 

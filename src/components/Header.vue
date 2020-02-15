@@ -14,12 +14,18 @@
         <i class="icon _show-opt-box fa fa-user-o"></i>
         <i class="icon icon-t _show-opt-box fa fa-angle-down"></i>
       </div>
-      <OptBox class="opt-box" @not-show="notShow($event)" :isShow="isShowOptBox"></OptBox>
+      <OptBox
+        class="opt-box"
+        @not-show="notShow($event)"
+        @open-sidebar="toggleShowSidebar($event)"
+        :isShow="isShowOptBox"
+      ></OptBox>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 import OptBox from './OptBox.vue';
 
 export default {
@@ -30,15 +36,21 @@ export default {
   data() {
     return {
       isShowOptBox: false,
-      feedback: 'https://github.com/kevinzhao2233/one-day/issues/new',
+      feedback: 'https://github.com/kevinzhao2233/todo/issues/new',
+      // feedback: 'https://github.com/kevinzhao2233/one-day/issues/new',
     };
   },
   methods: {
+    ...mapMutations(['toggleShowSidebar']),
+
     toggleOptBox() {
       this.isShowOptBox = !this.isShowOptBox;
     },
     notShow(e) {
       this.isShowOptBox = e;
+    },
+    openSidebar(e) {
+      console.log(e);
     },
   },
 };

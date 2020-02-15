@@ -2,11 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from '@/pages/Home.vue';
-import Header from '@/components/Header.vue';
-import HeadNav from '@/components/HeadNav.vue';
 import Note from '@/pages/Note.vue';
 import Tomato from '@/pages/Tomato.vue';
 import Notdefine from '@/pages/NotDefine.vue';
+import Header from '@/components/Header.vue';
+import HeadNav from '@/components/HeadNav.vue';
+import Sidebar from '@/components/Sidebar.vue';
 
 const User = () => import('@/pages/User.vue');
 const Login = () => import('@/pages/Login.vue');
@@ -24,6 +25,7 @@ export default new Router({
         header: Header,
         headNav: HeadNav,
         home: Home,
+        sidebar: Sidebar,
       },
     },
     // 番茄钟
@@ -33,6 +35,7 @@ export default new Router({
       components: {
         header: Header,
         tomato: Tomato,
+        sidebar: Sidebar,
       },
     },
     // 笔记随笔
@@ -43,6 +46,7 @@ export default new Router({
         header: Header,
         headNav: HeadNav,
         note: Note,
+        sidebar: Sidebar,
       },
     },
     // 登录
@@ -60,6 +64,7 @@ export default new Router({
       components: {
         header: Header,
         about: About,
+        sidebar: Sidebar,
       },
     },
     // 服务协议
@@ -69,6 +74,7 @@ export default new Router({
       components: {
         header: Header,
         agreement: Agreement,
+        sidebar: Sidebar,
       },
     },
     // 统计
@@ -78,6 +84,7 @@ export default new Router({
       components: {
         header: Header,
         user: User,
+        sidebar: Sidebar,
       },
     },
     {

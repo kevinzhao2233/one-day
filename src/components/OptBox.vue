@@ -10,7 +10,7 @@
         <span class="tit">退出登录</span>
       </div>
     </div>
-    <div class="s-box s-small">设置</div>
+    <div class="s-box s-small" id="_showSidebar" @click="openSetting">设置</div>
     <div class="s-box s-small" @click="switchRouter('Agreement')">使用协议</div>
     <div class="s-box s-small" @click="switchRouter('About')">关于我们</div>
   </div>
@@ -38,11 +38,19 @@ export default {
   },
 
   methods: {
+    // 切换路由
     switchRouter(target) {
       this.notShowThisComp();
       this.$router.push({ name: target });
     },
 
+    // 打开设置侧边栏
+    openSetting() {
+      this.notShowThisComp();
+      this.$emit('open-sidebar', true);
+    },
+
+    // 不显示这个组件
     notShowThisComp() {
       this.$emit('not-show', false);
     },
