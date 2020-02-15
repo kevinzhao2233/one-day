@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import NoteCard from './widget/NoteCard.vue';
+import NoteCard from '@/components/NoteCard.vue';
 
 export default {
   name: 'Note',
@@ -38,8 +38,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/lib/scss/config.scss";
-@import "../assets/lib/scss/mixins.scss";
+@import "@/assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/mixins.scss";
 
 .card-box {
   width: 95%;

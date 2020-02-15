@@ -1,16 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home.vue';
-import Header from '@/components/Header.vue';
-import HeadNav from '@/components/widget/HeadNav.vue';
-import Note from '@/components/Note.vue';
-import Tomato from '@/components/Tomato.vue';
-import Statistic from '@/components/Statistic.vue';
-import Notdefine from '@/components/NotDefine.vue';
 
-const Login = () => import('@/components/Login.vue');
-const About = () => import('@/components/About.vue');
-const Agreement = () => import('@/components/Agreement.vue');
+import Home from '@/pages/Home.vue';
+import Note from '@/pages/Note.vue';
+import Tomato from '@/pages/Tomato.vue';
+import Notdefine from '@/pages/NotDefine.vue';
+import Header from '@/components/Header.vue';
+import HeadNav from '@/components/HeadNav.vue';
+import Sidebar from '@/components/Sidebar.vue';
+
+const User = () => import('@/pages/User.vue');
+const Login = () => import('@/pages/Login.vue');
+const About = () => import('@/pages/About.vue');
+const Agreement = () => import('@/pages/Agreement.vue');
 
 Vue.use(Router);
 
@@ -23,16 +25,20 @@ export default new Router({
         header: Header,
         headNav: HeadNav,
         home: Home,
+        sidebar: Sidebar,
       },
     },
+    // 番茄钟
     {
       path: '/tomato',
       name: 'Tomato',
       components: {
         header: Header,
         tomato: Tomato,
+        sidebar: Sidebar,
       },
     },
+    // 笔记随笔
     {
       path: '/note',
       name: 'Note',
@@ -40,8 +46,10 @@ export default new Router({
         header: Header,
         headNav: HeadNav,
         note: Note,
+        sidebar: Sidebar,
       },
     },
+    // 登录
     {
       path: '/login',
       name: 'Login',
@@ -49,28 +57,34 @@ export default new Router({
         login: Login,
       },
     },
+    // 关于我们
     {
       path: '/about',
       name: 'About',
       components: {
         header: Header,
         about: About,
+        sidebar: Sidebar,
       },
     },
+    // 服务协议
     {
       path: '/agreement',
       name: 'Agreement',
       components: {
         header: Header,
         agreement: Agreement,
+        sidebar: Sidebar,
       },
     },
+    // 统计
     {
-      path: '/statistic',
-      name: 'Statistic',
+      path: '/user',
+      name: 'User',
       components: {
         header: Header,
-        statistic: Statistic,
+        user: User,
+        sidebar: Sidebar,
       },
     },
     {

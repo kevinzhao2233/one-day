@@ -7,7 +7,7 @@
     <router-view name="tomato" />
     <router-view name="note" />
     <router-view name="login" />
-    <router-view name="statistic" />
+    <router-view name="user" />
     <router-view name="about" />
     <router-view name="agreement" />
     <router-view name="notdefine" />

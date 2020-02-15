@@ -42,6 +42,10 @@ const store = new Vuex.Store({
       color5: '#325bf0',
       color6: '#a04cf7',
     },
+    sidebar: {
+      isShowSidebar: false,
+      setting: {},
+    },
   },
   getters: {
     doneTodos: (state) => state.todos.filter((todo) => todo.done),

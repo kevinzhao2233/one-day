@@ -1,16 +1,16 @@
 <template>
   <div class="box" v-show="isShow">
     <div class="s-box s-big">
-      <div class="img-box">
+      <div class="img-box" @click="switchRouter('User')">
         <img :src="account.profile" class="img" alt="头像" srcset="" />
       </div>
-      <span class="tit">{{ account.name }}</span>
+      <span class="tit"  @click="switchRouter('User')">{{ account.name }}</span>
       <span class="subtit">{{ account.accountNum }}</span>
       <div class="exit-box" @click="switchRouter('Login')">
         <span class="tit">退出登录</span>
       </div>
     </div>
-    <div class="s-box s-small">设置</div>
+    <div class="s-box s-small" id="_showSidebar" @click="openSetting">设置</div>
     <div class="s-box s-small" @click="switchRouter('Agreement')">使用协议</div>
     <div class="s-box s-small" @click="switchRouter('About')">关于我们</div>
   </div>
@@ -38,11 +38,19 @@ export default {
   },
 
   methods: {
+    // 切换路由
     switchRouter(target) {
       this.notShowThisComp();
       this.$router.push({ name: target });
     },
 
+    // 打开设置侧边栏
+    openSetting() {
+      this.notShowThisComp();
+      this.$emit('open-sidebar', true);
+    },
+
+    // 不显示这个组件
     notShowThisComp() {
       this.$emit('not-show', false);
     },
@@ -53,7 +61,7 @@ export default {
     document.addEventListener('mousedown', (e) => {
       if (
         !this.$el.contains(e.target)
-        && e.target.className.split(' ').indexOf('_show-opt-box') < 0
+        && Array.from(e.target.classList).indexOf('_show-opt-box') < 0
       ) {
         this.showThisConp = false;
         // 如果点击的target不是这个组件，就收起来
@@ -65,8 +73,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/lib/scss/config.scss";
-@import "../../assets/lib/scss/mixins.scss";
+@import "@/assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/mixins.scss";
 
 .box {
   padding: 12px 0;
@@ -85,7 +93,7 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 12px 0;
+      padding: 12px 0 24px 0;
       margin-bottom: 8px;
       border-bottom: 1px solid $cl-aux4;
 
@@ -116,6 +124,7 @@ export default {
 
       .subtit {
         color: $cl-font3;
+        font-size: 14px;
       }
 
       .exit-box {

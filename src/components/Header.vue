@@ -7,20 +7,26 @@
       <!-- TODO: 这里需要一个 logo -->
     </div>
     <div class="right-con">
-      <router-link class="link" :to="{ name: 'Statistic' }">
-        <i class="icon fa fa-area-chart"></i>
-      </router-link>
+      <a class="link" :href="feedback">
+        <i class="icon fa fa-commenting-o"></i>
+      </a>
       <div class="link _show-opt-box" @mousedown="toggleOptBox">
         <i class="icon _show-opt-box fa fa-user-o"></i>
         <i class="icon icon-t _show-opt-box fa fa-angle-down"></i>
       </div>
-      <OptBox class="opt-box" @not-show="notShow($event)" :isShow="isShowOptBox"></OptBox>
+      <OptBox
+        class="opt-box"
+        @not-show="notShow($event)"
+        @open-sidebar="toggleShowSidebar($event)"
+        :isShow="isShowOptBox"
+      ></OptBox>
     </div>
   </div>
 </template>
 
 <script>
-import OptBox from './widget/OptBox.vue';
+import { mapMutations } from 'vuex';
+import OptBox from './OptBox.vue';
 
 export default {
   name: 'Header',
@@ -30,14 +36,21 @@ export default {
   data() {
     return {
       isShowOptBox: false,
+      feedback: 'https://github.com/kevinzhao2233/todo/issues/new',
+      // feedback: 'https://github.com/kevinzhao2233/one-day/issues/new',
     };
   },
   methods: {
+    ...mapMutations(['toggleShowSidebar']),
+
     toggleOptBox() {
       this.isShowOptBox = !this.isShowOptBox;
     },
     notShow(e) {
       this.isShowOptBox = e;
+    },
+    openSidebar(e) {
+      console.log(e);
     },
   },
 };
@@ -84,10 +97,9 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 10px;
+      padding: 4px 10px 0 10px;
       margin: 0 2px;
       height: 100%;
-      margin-top: 4px;
       border-bottom: 4px solid transparent;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -118,8 +130,8 @@ export default {
 
     .opt-box {
       position: absolute;
-      top: 54px;
-      right: 10px;
+      top: 58px;
+      right: 0;
     }
   }
 }
