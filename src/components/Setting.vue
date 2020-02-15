@@ -1,46 +1,43 @@
 <template>
   <div class="container">
+    <!-- TODO 和 NOTE 部分 -->
     <div class="box">
-      <RadioConp
+      <SwitchComp
         :settingItem="setting.isPlayAudio"
         @toggle-state="toggleState($event)"
-      ></RadioConp>
+      ></SwitchComp>
     </div>
-    <hr>
+    <hr />
+    <!-- 番茄钟部分 -->
     <div class="box">
-      <RadioConp
+      <SwitchComp
         :settingItem="setting.isAutoRest"
         @toggle-state="toggleState($event)"
-      ></RadioConp>
-      <NumInput
-        :settingItem="setting.workTomato"
-        @change-num="changeTime($event)"
-      ></NumInput>
-      <NumInput
-        :settingItem="setting.restTomato"
-        @change-num="changeTime($event)"
-      ></NumInput>
+      ></SwitchComp>
+      <NumInput :settingItem="setting.restTomato" @change-num="changeTime($event)"></NumInput>
+      <NumInput :settingItem="setting.restTomato" @change-num="changeTime($event)"></NumInput>
     </div>
-    <hr>
+    <hr />
+    <!-- 白噪声部分 -->
     <div class="box">
-      <RadioConp
-        :settingItem="setting.keepPlay"
-        @toggle-state="toggleState($event)"
-      ></RadioConp>
+      <SwitchComp :settingItem="setting.keepPlay" @toggle-state="toggleState($event)"></SwitchComp>
+      <RadioComp :settingItem="setting.whiteNoise"></RadioComp>
     </div>
   </div>
 </template>
 
 <script>
-import RadioConp from './RadioConp.vue';
+import SwitchComp from './SwitchComp.vue';
 import NumInput from './NumInput.vue';
+import RadioComp from './RadioComp.vue';
 
 export default {
   name: 'Setting',
 
   components: {
-    RadioConp,
+    SwitchComp,
     NumInput,
+    RadioComp,
   },
 
   methods: {
@@ -69,7 +66,7 @@ export default {
         },
         keepPlay: {
           name: 'keepPlay',
-          tit: '一直播放音乐',
+          tit: '休息时依然播放音乐',
           state: false,
         },
         workTomato: {
@@ -82,15 +79,29 @@ export default {
           tit: '休息番茄时长(分)',
           time: 5,
         },
-        selectWhiteNoise: {
+        whiteNoise: {
+          name: 'whiteNoise',
           tit: '选择喜欢的白噪声',
+          defaultSelect: 'mountain',
           items: [
             {
-              name: '雨天',
+              name: 'rainy',
+              tit: '雨天',
               src: '',
             },
             {
-              name: '森林',
+              name: 'mountain',
+              tit: '山野',
+              src: '',
+            },
+            {
+              name: 'bonfire',
+              tit: '篝火',
+              src: '',
+            },
+            {
+              name: 'sun',
+              tit: '阳光',
               src: '',
             },
           ],
@@ -102,6 +113,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .container {
   width: 100%;
   display: flex;
