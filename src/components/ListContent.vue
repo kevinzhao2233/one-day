@@ -25,7 +25,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
-import { getTimeStemp } from '../../assets/lib/myLib';
+import { getTimeStemp } from '@/assets/lib/myLib';
 
 export default {
   name: 'ListContent',
@@ -56,8 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/lib/scss/config.scss";
-@import "../../assets/lib/scss/mixins.scss";
+@import "@/assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/mixins.scss";
 
 .list {
   display: flex;

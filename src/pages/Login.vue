@@ -56,7 +56,7 @@
 
 <script>
 import Visual from '@/assets/lib/js/canvasAni';
-import InputBox from './widget/InputBox.vue';
+import InputBox from '../components/InputBox.vue';
 
 export default {
   name: 'Login',
