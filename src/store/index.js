@@ -43,7 +43,7 @@ const store = new Vuex.Store({
       color6: '#a04cf7',
     },
     sidebar: {
-      isShowSidebar: false,
+      isShowSidebar: true,
       setting: {},
     },
   },
