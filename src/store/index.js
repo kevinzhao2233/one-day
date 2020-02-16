@@ -4,6 +4,7 @@ import mutations from './mutations';
 import actions from './actions';
 
 import todos from './state/todos';
+import notes from './state/notes';
 import time from './state/time';
 import sidebar from './state/sidebar';
 import colors from './state/otherItems';
@@ -14,6 +15,7 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
     todos,
+    notes,
     time,
     colors,
     sidebar,

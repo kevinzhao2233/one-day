@@ -1,13 +1,23 @@
 <template>
-  <textarea-autosize
-    :class="isFocused ? 'focused card' : 'card'"
-    placeholder="Type something here..."
-    v-model="propNote"
-    :min-height="30"
-    :max-height="350"
-    @focus.native="focused"
-    @blur.native="unFocused"
-  />
+  <div class="box">
+    <textarea-autosize
+      :class="isFocused ? 'focused card' : 'card'"
+      placeholder="Type something here..."
+      v-model="propNote"
+      :min-height="20"
+      :max-height="350"
+      @focus.native="focused"
+      @blur.native="unFocused"
+    />
+    <div class="option">
+      <div class="icon-box">
+        <i class="icon fa fa-ellipsis-v"></i>
+      </div>
+      <div class="opt-box" @click="delNote">
+        <span class="item">删除</span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,11 +25,13 @@ export default {
   neme: 'NoteCard',
 
   props: {
-    note: String,
+    // { id: String, content: String }
+    note: Object,
   },
+
   data() {
     return {
-      propNote: this.note,
+      propNote: this.note.content,
       isFocused: false,
     };
   },
@@ -31,6 +43,9 @@ export default {
     unFocused() {
       this.isFocused = false;
     },
+    delNote() {
+      this.$emit('delete-note', this.note.id);
+    },
   },
 };
 </script>
@@ -38,28 +53,84 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/lib/scss/config.scss";
 
-.card {
-  display: block;
+.box {
+  display: flex;
   margin: 0 auto 30px 0;
-  padding: 12px 24px 2px 24px;
+  padding: 12px 12px 2px 24px;
   width: 100%;
   background-color: #fff;
   border-radius: 12px;
   border: 1px solid #efefef;
   box-shadow: 0 10px 15px $cl-aux3;
-  font-size: 18px;
-  font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  line-height: 1.7;
-  transition: box-shadow 0.3s ease-in-out,
-              transform 0.3s linear;
+  transition: box-shadow 0.3s ease-in-out;
 
   &:hover {
-    transform: translateY(-2px);
     box-shadow: 0 16px 24px -18px $cl-shallow1;
   }
-}
 
-.focused {
-  border-color: $cl-shallow1;
+  .card {
+    flex: 1;
+    display: block;
+    border: none;
+    font-size: 18px;
+    font-family: "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    line-height: 1.7;
+  }
+
+  .option {
+    position: relative;
+    flex: 0 0 1;
+    margin-left: 12px;
+    width: 30px;
+    height: 36px;
+    color: $cl-font3;
+    cursor: pointer;
+
+    .icon-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 30px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .opt-box {
+      position: absolute;
+      right: 0;
+      top: 34px;
+      width: 60px;
+      height: 32px;
+      background-color: $cl-aux1;
+      border: 1px solid $cl-font3;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px -4px $cl-shallow1;
+
+      .item {
+        line-height: 30px;
+      }
+
+      &:hover {
+        background-color: $cl-main1;
+        color: $cl-aux1;
+      }
+    }
+
+    &:hover {
+      .icon-box {
+        background-color: $cl-main1;
+        color: $cl-aux1;
+      }
+
+      .opt-box {
+        border-color: $cl-main1;
+        display: block;
+      }
+    }
+  }
 }
 </style>
