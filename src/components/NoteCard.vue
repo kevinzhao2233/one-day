@@ -42,10 +42,15 @@ export default {
     },
     unFocused() {
       this.isFocused = false;
+      this.$emit('edit-note', { id: this.note.id, content: this.propNote });
     },
     delNote() {
       this.$emit('delete-note', this.note.id);
     },
+  },
+  beforeDestroy() {
+    // 组件即将销毁时对所有note都保存一次
+    this.unFocused();
   },
 };
 </script>

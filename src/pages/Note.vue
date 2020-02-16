@@ -1,7 +1,11 @@
 <template>
   <div class="c-edition card-box">
     <div class="content" v-for="note in notes" :key="note.id">
-      <NoteCard :note="note" @delete-note="delNote($event)"></NoteCard>
+      <NoteCard
+        :note="note"
+        @delete-note="delNote($event)"
+        @edit-note="editNote($event)"
+      ></NoteCard>
     </div>
   </div>
 </template>
@@ -23,11 +27,15 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['deleteNote']),
+    ...mapMutations(['deleteNote', 'updateNote']),
 
     delNote(e) {
       // id
       this.deleteNote({ id: e });
+    },
+    editNote(e) {
+      // 一个note对象
+      this.updateNote(e);
     },
   },
 };
