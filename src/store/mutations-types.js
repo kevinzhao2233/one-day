@@ -12,6 +12,4 @@ export const CHANGE_STATUS_TO_STOP = 'changeStatusToStop';
 export const CHANGE_STATUS_TO_END = 'changeStatusToEnd';
 export const CHANGE_CURRENT_TIME = 'changeCurrentTime';
 export const TOGGLE_SHOW_SIDEBAR = 'toggleShowSidebar';
-// export const CHANGE_INITMIN = 'changeInitMin';
-// export const CHANGE_RESTMIN = 'changeRestMin';
 export const MODIFY_SETTING = 'modifySetting';

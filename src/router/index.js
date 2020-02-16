@@ -16,81 +16,115 @@ const Agreement = () => import('@/pages/Agreement.vue');
 
 Vue.use(Router);
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      components: {
-        header: Header,
-        headNav: HeadNav,
-        home: Home,
-        sidebar: Sidebar,
-      },
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    components: {
+      header: Header,
+      headNav: HeadNav,
+      home: Home,
+      sidebar: Sidebar,
     },
-    // 番茄钟
-    {
-      path: '/tomato',
-      name: 'Tomato',
-      components: {
-        header: Header,
-        tomato: Tomato,
-        sidebar: Sidebar,
-      },
+    meta: {
+      title: '首页 - One Day',
     },
-    // 笔记随笔
-    {
-      path: '/note',
-      name: 'Note',
-      components: {
-        header: Header,
-        headNav: HeadNav,
-        note: Note,
-        sidebar: Sidebar,
-      },
+  },
+  // 番茄钟
+  {
+    path: '/tomato',
+    name: 'Tomato',
+    components: {
+      header: Header,
+      tomato: Tomato,
+      sidebar: Sidebar,
     },
-    // 登录
-    {
-      path: '/login',
-      name: 'Login',
-      components: {
-        login: Login,
-      },
+    meta: {
+      title: '番茄钟 - One Day',
     },
-    // 关于我们
-    {
-      path: '/about',
-      name: 'About',
-      components: {
-        header: Header,
-        about: About,
-        sidebar: Sidebar,
-      },
+  },
+  // 笔记随笔
+  {
+    path: '/note',
+    name: 'Note',
+    components: {
+      header: Header,
+      headNav: HeadNav,
+      note: Note,
+      sidebar: Sidebar,
     },
-    // 服务协议
-    {
-      path: '/agreement',
-      name: 'Agreement',
-      components: {
-        header: Header,
-        agreement: Agreement,
-        sidebar: Sidebar,
-      },
+    meta: {
+      title: '轻笔记 - One Day',
     },
-    // 统计
-    {
-      path: '/user',
-      name: 'User',
-      components: {
-        header: Header,
-        user: User,
-        sidebar: Sidebar,
-      },
+  },
+  // 登录
+  {
+    path: '/login',
+    name: 'Login',
+    components: {
+      login: Login,
     },
-    {
-      path: '*',
-      name: 'NotDefine',
-      components: Notdefine,
+    meta: {
+      title: '登录 - One Day',
     },
-  ],
+  },
+  // 关于我们
+  {
+    path: '/about',
+    name: 'About',
+    components: {
+      header: Header,
+      about: About,
+      sidebar: Sidebar,
+    },
+    meta: {
+      title: '关于我们 - One Day',
+    },
+  },
+  // 服务协议
+  {
+    path: '/agreement',
+    name: 'Agreement',
+    components: {
+      header: Header,
+      agreement: Agreement,
+      sidebar: Sidebar,
+    },
+    meta: {
+      title: '服务协议 - One Day',
+    },
+  },
+  // 统计
+  {
+    path: '/user',
+    name: 'User',
+    components: {
+      header: Header,
+      user: User,
+      sidebar: Sidebar,
+    },
+    meta: {
+      title: '我的 - One Day',
+    },
+  },
+  {
+    path: '*',
+    name: 'NotDefine',
+    components: Notdefine,
+    meta: {
+      title: '网页走丢了 - One Day',
+    },
+  },
+];
+
+const router = new Router({
+  routes,
 });
+
+router.afterEach((to) => {
+  // 若取不到meta，就到 to.matched[0].meta.title
+  console.log(to);
+  document.title = to.meta.title;
+});
+
+export default router;
