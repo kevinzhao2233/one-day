@@ -2,7 +2,7 @@ import {
   ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
   CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
-  CHANGE_INITMIN, CHANGE_RESTMIN,
+  MODIFY_SETTING,
 } from './mutations-types';
 
 const mutations = {
@@ -102,15 +102,9 @@ const mutations = {
   [TOGGLE_SHOW_SIDEBAR](state, payload) {
     state.sidebar.isShowSidebar = payload;
   },
-
-  // 设置工作番茄时间
-  [CHANGE_INITMIN](state, payload) {
-    console.log(state, payload);
-  },
-
-  // 设置休息番茄时间
-  [CHANGE_RESTMIN](state, payload) {
-    console.log(state, payload);
+  // 修改设置
+  [MODIFY_SETTING](state, payload) {
+    state.sidebar.setting[payload.name][payload.item] = payload.value;
   },
 };
 
