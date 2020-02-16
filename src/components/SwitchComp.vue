@@ -1,7 +1,7 @@
 <template>
   <div class="s-container">
     <span class="s-tit">{{ settingItem.tit }}</span>
-    <div :class="settingItem.state ? 'open s-radio' : 's-radio'" @mousedown="toggleState">
+    <div :class="settingItem.state ? 'open s-switch' : 's-switch'" @mousedown="toggleState">
       <div class="s-part"></div>
     </div>
   </div>
@@ -42,7 +42,7 @@ export default {
     flex: 1;
   }
 
-  .s-radio {
+  .s-switch {
     flex: 0 0 1;
     padding: 1px;
     width: 48px;

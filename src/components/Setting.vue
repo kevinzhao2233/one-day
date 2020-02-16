@@ -14,14 +14,17 @@
         :settingItem="setting.isAutoRest"
         @toggle-state="toggleState($event)"
       ></SwitchComp>
-      <NumInput :settingItem="setting.restTomato" @change-num="changeTime($event)"></NumInput>
+      <NumInput :settingItem="setting.workTomato" @change-num="changeTime($event)"></NumInput>
       <NumInput :settingItem="setting.restTomato" @change-num="changeTime($event)"></NumInput>
     </div>
     <hr />
     <!-- 白噪声部分 -->
     <div class="box">
       <SwitchComp :settingItem="setting.keepPlay" @toggle-state="toggleState($event)"></SwitchComp>
-      <RadioComp :settingItem="setting.whiteNoise"></RadioComp>
+      <RadioComp
+        :settingItem="setting.whiteNoise"
+        @change-pick="changeDefaultWN($event)"
+      ></RadioComp>
     </div>
   </div>
 </template>
@@ -48,6 +51,10 @@ export default {
     // 改变番茄钟时间
     changeTime(e) {
       this.setting[e.name].time = e.time;
+    },
+    // 改变默认白噪声
+    changeDefaultWN(e) {
+      this.setting[e.name].defaultSelect = e.default;
     },
   },
 
@@ -113,7 +120,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
   width: 100%;
   display: flex;
