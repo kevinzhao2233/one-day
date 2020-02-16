@@ -24,8 +24,11 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    console.log(this.settingItem);
+  methods: {},
+  watch: {
+    picked() {
+      this.$emit('change-pick', { name: this.settingItem.name, default: this.picked });
+    },
   },
 };
 </script>
@@ -42,11 +45,11 @@ export default {
 }
 
 .radios-label {
+  display: inline-block;
   position: relative;
-  margin: 0 18px;
+  margin: 5px 18px;
   padding: 2px 0;
   font-size: 16px;
-  line-height: 30px;
   -webkie-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
