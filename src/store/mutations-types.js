@@ -8,6 +8,7 @@ export const SORTED_TODOS = 'sortedTodos';
 export const UPDATE_TODOS = 'updateTodos';
 export const DELETE_NOTE = 'deleteNote';
 export const UPDATE_NOTE = 'updateNote';
+export const ADD_A_NOTE = 'addANote';
 
 export const CHANGE_STATUS_TO_RESTART = 'changeStatusToRestart';
 export const CHANGE_STATUS_TO_START = 'changeStatusToStart';

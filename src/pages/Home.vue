@@ -77,9 +77,6 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/lib/scss/mixins.scss';
 
-// 覆盖默认时间
-.animated {animation-duration: 0.5s;}
-
 .flip-list-move {
   transition: transform .5s;
 }
