@@ -31,6 +31,11 @@ export default {
       this.$router.replace('/');
     },
   },
+  mounted() {
+    if (this.$route.name === 'Note') {
+      this.isTodo = false;
+    }
+  },
 };
 </script>
 

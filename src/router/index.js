@@ -123,7 +123,6 @@ const router = new Router({
 
 router.afterEach((to) => {
   // 若取不到meta，就到 to.matched[0].meta.title
-  console.log(to);
   document.title = to.meta.title;
 });
 
