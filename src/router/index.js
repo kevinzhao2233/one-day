@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from '@/pages/Home.vue';
 import Note from '@/pages/Note.vue';
 import Tomato from '@/pages/Tomato.vue';
+import Music from '@/pages/Music.vue';
 import Notdefine from '@/pages/NotDefine.vue';
 import Header from '@/components/Header.vue';
 import HeadNav from '@/components/HeadNav.vue';
@@ -30,19 +31,6 @@ const routes = [
       title: '首页 - One Day',
     },
   },
-  // 番茄钟
-  {
-    path: '/tomato',
-    name: 'Tomato',
-    components: {
-      header: Header,
-      tomato: Tomato,
-      sidebar: Sidebar,
-    },
-    meta: {
-      title: '番茄钟 - One Day',
-    },
-  },
   // 笔记随笔
   {
     path: '/note',
@@ -55,6 +43,33 @@ const routes = [
     },
     meta: {
       title: '轻笔记 - One Day',
+    },
+  },
+  // 音乐 - One Day
+  {
+    path: '/music',
+    name: 'Music',
+    components: {
+      header: Header,
+      headNav: HeadNav,
+      music: Music,
+      sidebar: Sidebar,
+    },
+    meta: {
+      title: '音乐 | 白噪声 - One Day',
+    },
+  },
+  // 番茄钟
+  {
+    path: '/tomato',
+    name: 'Tomato',
+    components: {
+      header: Header,
+      tomato: Tomato,
+      sidebar: Sidebar,
+    },
+    meta: {
+      title: '番茄钟 - One Day',
     },
   },
   // 登录

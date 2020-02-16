@@ -1,13 +1,9 @@
 <template>
   <div class="nav-box">
-    <span
-    :class="isTodo ? 'active nav' : 'nav'"
-    @mousedown="toTodo"
-    >Todo</span>
-    <span
-    :class="isTodo ? 'nav' : 'active nav'"
-    @mousedown="toNote"
-    >Note</span>
+    <span :class="currNav === 'Home' ? 'active nav' : 'nav'" @mousedown="toPage('Home')">待办</span>
+    <span :class="currNav === 'Note' ? 'active nav' : 'nav'" @mousedown="toPage('Note')">便签</span>
+    <span :class="currNav === 'Music' ? 'active nav' : 'nav'" @mousedown="toPage('Music')">音乐</span
+    >
   </div>
 </template>
 
@@ -17,26 +13,31 @@ export default {
 
   data() {
     return {
-      isTodo: true,
+      currNav: '',
     };
   },
 
   methods: {
-    toNote() {
-      this.isTodo = false;
-      this.$router.replace('/note');
-    },
-    toTodo() {
-      this.isTodo = true;
-      this.$router.replace('/');
+    // 切换路由
+    toPage(page) {
+      if (this.$route.name !== page) {
+        this.$router.replace({ name: page });
+        this.currNav = page;
+      }
     },
   },
+
+  watch: {
+    // 监听路由变化，改变样式
+    $route(to) {
+      this.currNav = to.name;
+    },
+  },
+
   mounted() {
-    if (this.$route.name === 'Note') {
-      this.isTodo = false;
-    }
+    // 初始化
+    this.currNav = this.$route.name;
   },
-  // TODO: 导航守卫解决上面这个问题
 };
 </script>
 
@@ -57,6 +58,7 @@ export default {
     color: $cl-font3;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       text-shadow: 0px 5px 10px $cl-shallow1;
