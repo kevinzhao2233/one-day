@@ -39,3 +39,6 @@ html, body {
 ::-webkit-selection {
   background:#ff4e8860; 
 }
+
+/* 覆盖动画时常 */
+.animated {animation-duration: 0.5s;}

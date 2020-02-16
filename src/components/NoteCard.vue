@@ -2,7 +2,7 @@
   <div class="box">
     <textarea-autosize
       :class="isFocused ? 'focused card' : 'card'"
-      placeholder="Type something here..."
+      placeholder="在这里写点什么吧~~"
       v-model="propNote"
       :min-height="20"
       :max-height="350"
@@ -114,6 +114,7 @@ export default {
       display: none;
       transition: all 0.2s ease;
       box-shadow: 0 4px 12px -4px $cl-shallow1;
+      color: $cl-main1;
 
       .item {
         line-height: 30px;

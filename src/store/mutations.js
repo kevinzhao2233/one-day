@@ -2,7 +2,7 @@ import {
   ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
   CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
-  MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE,
+  MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE,
 } from './mutations-types';
 
 const mutations = {
@@ -98,6 +98,12 @@ const mutations = {
   /**
    * 以下是Note部分的
    */
+
+  // 添加Note
+  [ADD_A_NOTE](state, payload) {
+    const newNote = { id: payload.id, content: '' };
+    state.notes.push(newNote);
+  },
 
   // 删除Note
   [DELETE_NOTE](state, payload) {
