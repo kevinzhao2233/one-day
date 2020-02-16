@@ -6,6 +6,7 @@
     <router-view name="home" />
     <router-view name="tomato" />
     <router-view name="note" />
+    <router-view name="music" />
     <router-view name="login" />
     <router-view name="user" />
     <router-view name="about" />
