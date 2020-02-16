@@ -1,5 +1,5 @@
 const sidebar = {
-  isShowSidebar: true,
+  isShowSidebar: false,
   setting: {
     isPlayAudio: {
       name: 'isPlayAudio',
