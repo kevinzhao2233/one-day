@@ -106,9 +106,7 @@ const mutations = {
   },
   // 更新Note
   [UPDATE_NOTE](state, payload) {
-    console.log(payload);
     const willUpdateNote = state.notes.findIndex((note) => note.id === payload.id);
-    console.log(willUpdateNote);
     state.notes[willUpdateNote].content = payload.content;
   },
 
