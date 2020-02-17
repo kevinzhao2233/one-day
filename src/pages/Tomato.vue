@@ -56,8 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/lib/scss/config.scss";
-@import "../assets/lib/scss/mixins.scss";
+@import "@/assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/mixins.scss";
 
 .content {
   position: relative;

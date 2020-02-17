@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/config.scss";
 
 .s-container {
   padding: 10px 0;

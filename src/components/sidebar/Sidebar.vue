@@ -12,7 +12,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex';
-import Setting from '@/components/Setting.vue';
+import Setting from '@/components/sidebar/Setting.vue';
 
 export default {
   name: 'Sidebar',
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/config.scss";
 // @import "../assets/lib/scss/mixins.scss";
 
 // 覆盖默认动画时间

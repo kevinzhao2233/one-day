@@ -6,9 +6,9 @@ import Note from '@/pages/Note.vue';
 import Tomato from '@/pages/Tomato.vue';
 import Music from '@/pages/Music.vue';
 import Notdefine from '@/pages/NotDefine.vue';
-import Header from '@/components/Header.vue';
-import HeadNav from '@/components/HeadNav.vue';
-import Sidebar from '@/components/Sidebar.vue';
+import Header from '@/components/header/Header.vue';
+import HeadNav from '@/components/header/HeadNav.vue';
+import Sidebar from '@/components/sidebar/Sidebar.vue';
 
 const User = () => import('@/pages/User.vue');
 const Login = () => import('@/pages/Login.vue');
