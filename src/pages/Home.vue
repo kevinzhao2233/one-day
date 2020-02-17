@@ -34,8 +34,8 @@
 <script>
 import draggable from 'vuedraggable';
 import { mapGetters } from 'vuex';
-import ListContent from '../components/ListContent.vue';
-import AddTodoList from '../components/AddTodoList.vue';
+import ListContent from '../components/todolist/ListContent.vue';
+import AddTodoList from '../components/todolist/AddTodoList.vue';
 import SmallTomato from '../components/SmallTomato.vue';
 
 export default {

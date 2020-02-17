@@ -23,7 +23,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex';
 import { createId } from '@/assets/lib/myLib';
-import NoteCard from '@/components/NoteCard.vue';
+import NoteCard from '@/components/note/NoteCard.vue';
 
 export default {
   name: 'Note',
