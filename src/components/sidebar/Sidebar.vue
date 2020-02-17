@@ -50,6 +50,7 @@ export default {
 .container {
   position: fixed;
   right: 0;
+  bottom: 0;
   padding: 24px 12px;
   width: 300px;
   height: calc(100vh - 54px);

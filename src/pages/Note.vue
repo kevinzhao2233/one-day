@@ -69,6 +69,7 @@ export default {
 }
 
 .card-box {
+  padding-top: 120px;
   padding-bottom: 160px;
   width: 95%;
   height: 100%;

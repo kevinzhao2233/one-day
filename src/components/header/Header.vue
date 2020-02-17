@@ -61,11 +61,15 @@ export default {
 @import "@/assets/lib/scss/mixins.scss";
 
 .header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   padding: 0 2%;
   width: 100%;
   height: 54px;
+  background-color: $cl-aux5;
   box-shadow: 0 4px 12px $cl-aux3;
 
   @include respond-to(lg) {
