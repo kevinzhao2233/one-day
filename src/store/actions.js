@@ -1,7 +1,8 @@
+import axios from 'axios';
 import {
   DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME,
+  CHANGE_CURRENT_TIME, SAVE_SONG,
 } from './mutations-types';
 
 let countDown = null;
@@ -50,10 +51,31 @@ const actions = {
     commit(CHANGE_CURRENT_TIME, 'restart');
   },
 
+  // 跳过休息 || 清除 interval、重置状态
   jumpTime({ commit }) {
     clearInterval(countDown);
     commit(CHANGE_STATUS_TO_RESTART);
     commit(CHANGE_CURRENT_TIME, 'restart');
+  },
+
+  // 异步获取歌曲 || axios Get请求、放到state中
+  getSong({ commit }) {
+    axios({
+      method: 'get',
+      url: 'https://api.uomg.com/api/rand.music',
+      params: {
+        sort: '热歌榜',
+        format: 'json',
+      },
+    })
+      .then((response) => {
+        console.log(response.data.data);
+        commit(SAVE_SONG, response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log('未能获取歌曲');
+      });
   },
 };
 

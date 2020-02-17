@@ -1,6 +1,6 @@
 <template>
   <div class="bg-box">
-    <div class="bg" :style="{backgroundImage: 'url(' + imgSrc + ')'}"></div>
+    <div class="bg" :style="{backgroundImage: 'url(' + song.picUrl + ')'}"></div>
     <div class="content">
       <PlayBox></PlayBox>
     </div>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PlayBox from '@/components/music/PlayBox.vue';
 
 export default {
@@ -15,10 +16,8 @@ export default {
   components: {
     PlayBox,
   },
-  data() {
-    return {
-      imgSrc: 'http://p1.music.126.net/94ofbrM9sC9cQzKf2rO2GQ==/109951164297796644.jpg',
-    };
+  computed: {
+    ...mapState(['song']),
   },
 };
 </script>

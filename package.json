@@ -4,7 +4,13 @@
   "version": "1.0.0",
   "description": "一个集Todo、番茄钟、白噪声于一体的 Web App",
   "author": "kevinzhao2233 <2939575326@qq.com>",
-  "keywords":["OneDay", "在线待办工具", "在线番茄钟", "白噪声", "高效工作"],
+  "keywords": [
+    "OneDay",
+    "在线待办工具",
+    "在线番茄钟",
+    "白噪声",
+    "高效工作"
+  ],
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",

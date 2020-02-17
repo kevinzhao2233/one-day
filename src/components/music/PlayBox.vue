@@ -1,18 +1,19 @@
 <template>
   <div class="box">
     <div class="circle">
-      <playerDisc :isPlay="isPlay"></playerDisc>
+      <playerDisc :isPlay="isPlay" :pic="song.picUrl"></playerDisc>
     </div>
     <div class="control">
       <playerControl :isPlay="isPlay" @player-cmd="playerCtrl($event)"></playerControl>
     </div>
     <div :class="isPlay ? 'track active' : 'track'">
-      <playerTrack :isPlay="isPlay"></playerTrack>
+      <playerTrack :isPlay="isPlay" :song="song"></playerTrack>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import playerDisc from './playerDisc.vue';
 import playerControl from './playerControl.vue';
 import playerTrack from './playerTrack.vue';
@@ -29,12 +30,15 @@ export default {
       isPlay: false,
     };
   },
+  computed: {
+    ...mapState(['song']),
+  },
   methods: {
     playerCtrl(e) {
       if (typeof e === 'boolean') {
         this.isPlay = e;
       } else if (e === 'next') {
-        console.log('下一曲');
+        this.getSong();
       } else if (e === 'prev') {
         console.log('上一曲');
       } else {
@@ -42,12 +46,16 @@ export default {
       }
     },
     getSong() {
-
+      this.$store.dispatch({
+        type: 'getSong',
+      });
     },
   },
   mounted() {
     // 组件挂载后默认加载一首歌
-    this.getSong();
+    if (this.song.name.length < 1) {
+      this.getSong();
+    }
   },
 };
 </script>
