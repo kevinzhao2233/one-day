@@ -17,3 +17,4 @@ export const CHANGE_STATUS_TO_END = 'changeStatusToEnd';
 export const CHANGE_CURRENT_TIME = 'changeCurrentTime';
 export const TOGGLE_SHOW_SIDEBAR = 'toggleShowSidebar';
 export const MODIFY_SETTING = 'modifySetting';
+export const SAVE_SONG = 'saveSong';

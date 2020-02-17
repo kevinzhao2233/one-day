@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   color1: '#ff4e88',
   color2: '#ff6700',
   color3: '#ffe300',
@@ -7,4 +7,9 @@ const colors = {
   color6: '#a04cf7',
 };
 
-export default colors;
+export const song = {
+  name: '',
+  url: '',
+  picUrl: '',
+  artName: '',
+};

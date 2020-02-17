@@ -2,7 +2,7 @@
   <div class="p-box">
     <div
       :class="isPlay ? 'outer active' : 'outer'"
-      :style="{ backgroundImage: 'url(' + imgSrc + ')' }"
+      :style="{ backgroundImage: 'url(' + pic + ')' }"
     ></div>
   </div>
 </template>
@@ -19,6 +19,9 @@ export default {
     isPlay: {
       type: Boolean,
       required: true,
+    },
+    pic: {
+      type: String,
     },
   },
 };

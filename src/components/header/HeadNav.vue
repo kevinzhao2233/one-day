@@ -64,6 +64,7 @@ export default {
     user-select: none;
 
     &:hover {
+      color: $cl-font2;
       text-shadow: 0px 5px 10px $cl-shallow1;
     }
 
