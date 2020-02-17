@@ -3,17 +3,18 @@
     <textarea-autosize
       :class="isFocused ? 'focused card' : 'card'"
       placeholder="在这里写点什么吧~~"
-      v-model="propNote"
+      :value="propNote"
       :min-height="20"
       :max-height="350"
       @focus.native="focused"
       @blur.native="unFocused"
+      @input="inputChange"
     />
     <div class="option">
       <div class="icon-box">
         <i class="icon fa fa-ellipsis-v"></i>
       </div>
-      <div class="opt-box" @click="delNote">
+      <div class="opt-box" @mousedown="delNote">
         <span class="item">删除</span>
       </div>
     </div>
@@ -42,10 +43,12 @@ export default {
     },
     unFocused() {
       this.isFocused = false;
-      this.$emit('edit-note', { id: this.note.id, content: this.propNote });
     },
     delNote() {
       this.$emit('delete-note', this.note.id);
+    },
+    inputChange() {
+      this.$emit('edit-note', { id: this.note.id, content: this.propNote });
     },
   },
   beforeDestroy() {
