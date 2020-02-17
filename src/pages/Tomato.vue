@@ -64,9 +64,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  padding-top: 160px;
   width: 100%;
-  height: 420px;
+  height: 580px;
   background-color: $cl-aux5;
 
   .img-center {

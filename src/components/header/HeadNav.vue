@@ -45,11 +45,14 @@ export default {
 @import "@/assets/lib/scss/config.scss";
 
 .nav-box {
+  position: absolute;
+  margin-top: 54px;
   width: 100%;
   height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 
   .nav {
     margin: 0 30px;

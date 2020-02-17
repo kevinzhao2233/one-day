@@ -83,6 +83,7 @@ export default {
 
 .home {
   padding-bottom: 160px;
+  padding-top: 120px;
   width: 100%;
   height: 100%;
   overflow: hidden;
