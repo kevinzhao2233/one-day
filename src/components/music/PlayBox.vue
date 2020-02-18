@@ -1,14 +1,15 @@
 <template>
   <div class="box">
     <div class="circle">
-      <playerDisc :isPlay="isPlay" :pic="song.picUrl"></playerDisc>
+      <playerDisc :isPlay="isPlay" :pic="song.currSong.picurl"></playerDisc>
     </div>
     <div class="control">
       <playerControl :isPlay="isPlay" @player-cmd="playerCtrl($event)"></playerControl>
     </div>
     <div :class="isPlay ? 'track active' : 'track'">
-      <playerTrack :isPlay="isPlay" :song="song"></playerTrack>
+      <playerTrack :isPlay="isPlay" :song="song.currSong" :audio="song.audio"></playerTrack>
     </div>
+    <audio :src="song.currSong.url" ref="audioCC"></audio>
   </div>
 </template>
 
@@ -28,23 +29,34 @@ export default {
   data() {
     return {
       isPlay: false,
+      music: this.song,
     };
   },
   computed: {
     ...mapState(['song']),
   },
+  watch: {
+
+  },
   methods: {
     playerCtrl(e) {
       if (typeof e === 'boolean') {
         this.isPlay = e;
+        this.$nextTick(() => (this.song.audio.paused
+          ? this.song.audio.play()
+          : this.song.audio.pause()));
+        this.$store.dispatch({
+          type: 'updateProgress',
+        });
       } else if (e === 'next') {
-        this.getSong();
+        this.$nextTick(() => this.getSong());
       } else if (e === 'prev') {
         console.log('上一曲');
       } else {
         console.error('????? 还能有别的？');
       }
     },
+    // dispatch，获取歌曲
     getSong() {
       this.$store.dispatch({
         type: 'getSong',
@@ -53,7 +65,7 @@ export default {
   },
   mounted() {
     // 组件挂载后默认加载一首歌
-    if (this.song.name.length < 1) {
+    if (this.song.currSong.name.length < 1) {
       this.getSong();
     }
   },

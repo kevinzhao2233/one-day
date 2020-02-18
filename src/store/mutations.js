@@ -2,7 +2,7 @@ import {
   ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
   CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
-  MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE, SAVE_SONG,
+  MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE, SAVE_SONG, UPDATE_PROPRESS,
 } from './mutations-types';
 
 const mutations = {
@@ -136,11 +136,13 @@ const mutations = {
    */
   // 将异步获取的歌曲保存到state中
   [SAVE_SONG](state, payload) {
-    state.song.name = payload.name;
-    state.song.url = payload.url;
-    state.song.picUrl = payload.picurl;
-    state.song.artName = payload.artistsname;
-    console.log(state.song);
+    state.song.currSong = payload.res;
+    state.song.audio = payload.audio;
+  },
+  // 更新进度条
+  [UPDATE_PROPRESS](state) {
+    state.song.currSong.currentTime = state.song.audio.currentTime;
+    state.song.currSong.duration = state.song.audio.duration;
   },
 };
 

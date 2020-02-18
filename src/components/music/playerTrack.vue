@@ -2,17 +2,17 @@
   <div class="p-box">
     <div class="empty"></div>
     <div class="content">
-      <span class="msc-name">父亲写的散文诗</span>
-      <span class="art-name">许飞</span>
+      <span class="msc-name">{{ song.name }}</span>
+      <span class="art-name">{{ song.artistsname }}</span>
       <div class="progress-box">
         <div class="time">
-          <span>00:00</span>
-          <span>03:00</span>
+          <span>{{ mscTime.currTime }}</span>
+          <span>{{ mscTime.totalTime }}</span>
         </div>
         <div class="progress">
           <div class="pro total"></div>
           <div class="pro hover"></div>
-          <div class="pro current"></div>
+          <div class="pro current" :style="{width: mscTime.progress}"></div>
         </div>
       </div>
     </div>
@@ -20,12 +20,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'playerTrack',
+  computed: {
+    ...mapGetters(['mscTime']),
+  },
   props: {
     isPlay: {
       type: Boolean,
       required: true,
+    },
+    song: {
+      type: Object,
     },
   },
 };
@@ -51,11 +59,17 @@ export default {
     .msc-name {
       font-weight: bold;
       font-size: 17px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .art-name {
       margin: 6px 0 6px 0;
       font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .time {
@@ -86,12 +100,12 @@ export default {
         }
 
         &.hover {
-          width: 60%;
+          width: 0;
           background-color: $cl-shallow1;
         }
 
         &.current {
-          width: 20%;
+          width: 0;
           background-color: $cl-main1;
           box-shadow: 2px 0 2px $cl-main1;
         }

@@ -10,11 +10,6 @@
 <script>
 export default {
   name: 'playerDisc',
-  data() {
-    return {
-      imgSrc: 'http://p1.music.126.net/94ofbrM9sC9cQzKf2rO2GQ==/109951164297796644.jpg',
-    };
-  },
   props: {
     isPlay: {
       type: Boolean,
@@ -22,6 +17,7 @@ export default {
     },
     pic: {
       type: String,
+      default: '',
     },
   },
 };
