@@ -2,10 +2,11 @@ import axios from 'axios';
 import {
   DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
-  CHANGE_CURRENT_TIME, SAVE_SONG,
+  CHANGE_CURRENT_TIME, SAVE_SONG, UPDATE_PROPRESS,
 } from './mutations-types';
 
 let countDown = null;
+let progessInterval = null;
 
 const actions = {
 
@@ -68,14 +69,30 @@ const actions = {
         format: 'json',
       },
     })
-      .then((response) => {
-        console.log(response.data.data);
-        commit(SAVE_SONG, response.data.data);
+      .then(async (response) => {
+        const res = response.data.data;
+        // 创建Audio对象
+        const audio = new Audio();
+        audio.src = res.url;
+        res.currentTime = 0;
+        res.duration = 0;
+        commit(SAVE_SONG, { res, audio });
       })
       .catch((err) => {
         console.log(err);
         console.log('未能获取歌曲');
       });
+  },
+  // 更新进度条 || 一秒更新一次
+  updateProgress({ state, commit }) {
+    if (state.song.audio.paused) {
+      commit(UPDATE_PROPRESS);
+      progessInterval = setInterval(() => {
+        commit(UPDATE_PROPRESS);
+      }, 1000);
+    } else {
+      clearInterval(progessInterval);
+    }
   },
 };
 

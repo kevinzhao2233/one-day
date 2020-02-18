@@ -1,6 +1,6 @@
 <template>
   <div class="bg-box">
-    <div class="bg" :style="{backgroundImage: 'url(' + song.picUrl + ')'}"></div>
+    <div class="bg" :style="{backgroundImage: 'url(' + song.currSong.picurl + ')'}"></div>
     <div class="content">
       <PlayBox></PlayBox>
     </div>

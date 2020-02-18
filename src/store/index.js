@@ -22,9 +22,12 @@ const store = new Vuex.Store({
     sidebar,
   },
   getters: {
+    /**
+     * 以下为TODO和番茄钟部分
+     */
     doneTodos: (state) => state.todos.filter((todo) => todo.done),
     undoneTodos: (state) => state.todos.filter((todo) => !todo.done),
-
+    // 格式化分
     formatMin: (state) => {
       const { min } = state.time;
       let strMin = '';
@@ -37,7 +40,7 @@ const store = new Vuex.Store({
       }
       return strMin;
     },
-
+    // 格式化秒
     formatSec: (state) => {
       const { sec } = state.time;
       let strSec = '';
@@ -47,6 +50,28 @@ const store = new Vuex.Store({
         strSec = `${sec}`;
       }
       return strSec;
+    },
+
+    /**
+     * 以下为歌曲部分
+     */
+    // 音乐轨道上的时间
+    mscTime: (state) => {
+      const { currentTime, duration } = state.song.currSong;
+      if (duration) {
+        const viewSec = (sec) => {
+          const s = Math.floor(sec % 60);
+          return s < 10 ? `0${s}` : s;
+        };
+        const currTime = `${Math.floor(currentTime / 60)}:${viewSec(currentTime)}`;
+        const totalTime = `${Math.floor(duration / 60)}:${viewSec(duration)}`;
+        const progress = `${(currentTime / duration) * 100}%`;
+        return { currTime, totalTime, progress };
+      }
+      const currTime = '00:00';
+      const totalTime = '00:00';
+      const progress = '0%';
+      return { currTime, totalTime, progress };
     },
   },
   mutations,

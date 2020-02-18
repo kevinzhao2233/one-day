@@ -8,8 +8,14 @@ export const colors = {
 };
 
 export const song = {
-  name: '',
-  url: '',
-  picUrl: '',
-  artName: '',
+  audio: null,
+  currSong: {
+    name: '',
+    url: '',
+    picurl: 'http://www.ziliao6.com/fm/images/1.jpg',
+    artistsname: '',
+    currentTime: 0,
+    duration: 0,
+  },
+  list: [],
 };
