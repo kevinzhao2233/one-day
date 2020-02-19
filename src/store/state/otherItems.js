@@ -9,13 +9,18 @@ export const colors = {
 
 export const song = {
   audio: null,
+
   currSong: {
+    index: 0,
+    currentTime: 0,
+    duration: 0,
+    readyState: false,
+    isPlay: false,
+  },
+  list: [{
     name: '',
     url: '',
     picurl: 'http://www.ziliao6.com/fm/images/1.jpg',
     artistsname: '',
-    currentTime: 0,
-    duration: 0,
-  },
-  list: [],
+  }],
 };

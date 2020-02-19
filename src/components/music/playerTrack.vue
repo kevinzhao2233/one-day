@@ -1,9 +1,8 @@
 <template>
   <div class="p-box">
-    <div class="empty"></div>
     <div class="content">
-      <span class="msc-name">{{ song.name }}</span>
-      <span class="art-name">{{ song.artistsname }}</span>
+      <span class="msc-name">{{ song.list[song.currSong.index].name }}</span>
+      <span class="art-name">{{ song.list[song.currSong.index].artistsname }}</span>
       <div class="progress-box">
         <div class="time">
           <span>{{ mscTime.currTime }}</span>
@@ -43,17 +42,12 @@ export default {
 @import "@/assets/lib/scss/config.scss";
 
 .p-box {
-  display: flex;
   width: 100%;
   height: 100%;
-
-  .empty {
-    flex: 3;
-  }
   .content {
-    flex: 4;
     display: flex;
     flex-direction: column;
+    margin-left: 40%;
     padding: 12px;
 
     .msc-name {
