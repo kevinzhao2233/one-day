@@ -79,8 +79,8 @@ export default {
       width: 100%;
       height: 12px;
       line-height: 10px;
-      background-color: #fff;
-      cursor: pointer;
+      // background-color: #fff;
+      // cursor: pointer;
 
       .pro {
         position: absolute;

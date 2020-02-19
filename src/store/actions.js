@@ -84,8 +84,7 @@ const actions = {
           commit(PLAYER_READY_STATE, true);
           resolve(state.song);
         })
-        .catch((err) => {
-          console.log(`${err} \n\n 未能获取歌曲`);
+        .catch(() => {
           reject(Error('歌曲获取失败'));
         });
     });
@@ -96,6 +95,7 @@ const actions = {
       // 创建Audio对象
       const audio = new Audio();
       audio.src = res.url;
+      // eslint-disable-next-line no-console
       console.log(state.song.list);
       const loop = setInterval(() => {
         let count = 0;
@@ -154,6 +154,7 @@ const actions = {
       commit(PLAYER_READY_STATE, true);
       commit(PLAY_OR_PAUSE, { isPlay: true });
     } else {
+      // eslint-disable-next-line no-console
       console.log('前面没歌了');
     }
   },
