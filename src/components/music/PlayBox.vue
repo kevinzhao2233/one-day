@@ -38,9 +38,16 @@ export default {
     },
   },
   watch: {
-    playState() {
+    playState(newVal) {
       // 每次切换play的时候更新一次进度条
       this.updateProg();
+      if (newVal) {
+        this.song.audio.addEventListener('ended', () => {
+          this.$store.dispatch({
+            type: 'nextSong',
+          });
+        });
+      }
     },
   },
   methods: {
