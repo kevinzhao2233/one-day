@@ -1,20 +1,20 @@
 <template>
   <div class="box">
     <div class="circle">
-      <playerDisc :isPlay="isPlay" :pic="song.currSong.picurl"></playerDisc>
+      <playerDisc :isPlay="playState" :pic="song.list[song.currSong.index].picurl"></playerDisc>
     </div>
     <div class="control">
-      <playerControl :isPlay="isPlay" @player-cmd="playerCtrl($event)"></playerControl>
+      <playerControl :isPlay="playState" @player-cmd="playerCtrl($event)"></playerControl>
     </div>
-    <div :class="isPlay ? 'track active' : 'track'">
-      <playerTrack :isPlay="isPlay" :song="song.currSong" :audio="song.audio"></playerTrack>
+    <div :class="playState ? 'track active' : 'track'">
+      <playerTrack :isPlay="playState" :song="song" :audio="song.audio"></playerTrack>
     </div>
     <audio :src="song.currSong.url" ref="audioCC"></audio>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import playerDisc from './playerDisc.vue';
 import playerControl from './playerControl.vue';
 import playerTrack from './playerTrack.vue';
@@ -28,32 +28,56 @@ export default {
   },
   data() {
     return {
-      isPlay: false,
       music: this.song,
     };
   },
   computed: {
     ...mapState(['song']),
+    playState() {
+      return this.song.currSong.isPlay;
+    },
   },
   watch: {
-
+    playState() {
+      // 每次切换play的时候更新一次进度条
+      this.updateProg();
+    },
   },
   methods: {
-    playerCtrl(e) {
-      if (typeof e === 'boolean') {
-        this.isPlay = e;
-        this.$nextTick(() => (this.song.audio.paused
-          ? this.song.audio.play()
-          : this.song.audio.pause()));
+    ...mapMutations(['playOrPause']),
+
+    // 更新进度条
+    updateProg() {
+      this.$nextTick(() => {
         this.$store.dispatch({
           type: 'updateProgress',
         });
-      } else if (e === 'next') {
-        this.$nextTick(() => this.getSong());
-      } else if (e === 'prev') {
-        console.log('上一曲');
-      } else {
-        console.error('????? 还能有别的？');
+      });
+    },
+
+    playerCtrl(e) {
+      switch (e) {
+        case true:
+          this.playOrPause({ isPlay: true });
+          this.$nextTick(() => this.song.audio.play());
+          break;
+        case false:
+          this.playOrPause({ isPlay: false });
+          this.$nextTick(() => this.song.audio.pause());
+          // this.updateProg();
+          break;
+        case 'next':
+          this.$store.dispatch({
+            type: 'nextSong',
+          });
+          break;
+        case 'prev':
+          this.$store.dispatch({
+            type: 'prevSong',
+          });
+          break;
+        default:
+          break;
       }
     },
     // dispatch，获取歌曲
@@ -65,7 +89,7 @@ export default {
   },
   mounted() {
     // 组件挂载后默认加载一首歌
-    if (this.song.currSong.name.length < 1) {
+    if (this.song.currSong.index < 1) {
       this.getSong();
     }
   },

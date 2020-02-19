@@ -3,6 +3,7 @@ import {
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
   CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
   MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE, SAVE_SONG, UPDATE_PROPRESS,
+  PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE, UPDATE_SONG,
 } from './mutations-types';
 
 const mutations = {
@@ -134,15 +135,36 @@ const mutations = {
   /**
    * 以下为歌曲页面
    */
-  // 将异步获取的歌曲保存到state中
+  // 保存歌曲，并获得歌曲在list中的索引
   [SAVE_SONG](state, payload) {
-    state.song.currSong = payload.res;
+    const index = state.song.list.push(payload.res);
+    state.song.currSong.index = index - 1;
     state.song.audio = payload.audio;
+  },
+  [UPDATE_SONG](state, payload) {
+    state.song.currSong.index = payload.index;
+    state.song.audio = payload.audio;
+  },
+  [PLAYER_READY_STATE](state, payload) {
+    state.song.currSong.readyState = payload;
   },
   // 更新进度条
   [UPDATE_PROPRESS](state) {
     state.song.currSong.currentTime = state.song.audio.currentTime;
     state.song.currSong.duration = state.song.audio.duration;
+  },
+  // 清除audio
+  [CLEAR_AUDIO](state) {
+    state.song.audio.src = '';
+  },
+  [PLAY_OR_PAUSE](state, payload) {
+    if (payload.isPlay) {
+      state.song.audio.play();
+      state.song.currSong.isPlay = true;
+    } else {
+      state.song.audio.pause();
+      state.song.currSong.isPlay = false;
+    }
   },
 };
 

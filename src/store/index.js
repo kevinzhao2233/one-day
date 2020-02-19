@@ -58,7 +58,7 @@ const store = new Vuex.Store({
     // 音乐轨道上的时间
     mscTime: (state) => {
       const { currentTime, duration } = state.song.currSong;
-      if (duration) {
+      if (duration && currentTime) {
         const viewSec = (sec) => {
           const s = Math.floor(sec % 60);
           return s < 10 ? `0${s}` : s;
