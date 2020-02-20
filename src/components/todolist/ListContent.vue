@@ -9,7 +9,7 @@
             ? 'small-btn done-todo-btn fa fa-check-circle'
             : 'small-btn undone-toto-btn fa fa-check-circle'
         "
-        @click="toggleDone({ id: todo.id, done: todo.done, lastUpdate: timeStemp() })"
+        @click="handleClickDone"
       ></div>
     </div>
     <!-- 文本内容 -->
@@ -37,6 +37,17 @@ export default {
 
   methods: {
     ...mapMutations(['toggleDone', 'delTodo']),
+
+    handleClickDone() {
+      if (!this.todo.done) {
+        this.$emit('play-ding');
+      }
+      this.toggleDone({
+        id: this.todo.id,
+        done: this.todo.done,
+        lastUpdate: this.timeStemp(),
+      });
+    },
 
     timeStemp() {
       const time = getTimeStemp();
