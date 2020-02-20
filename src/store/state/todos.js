@@ -9,7 +9,7 @@ const todos = [
     id: '1578027031614-38447-9025', text: '点击右侧可以删除这条TODO', done: false, buildTime: 1578027031614, lastUpdate: 1578027031614, color: '#a04cf7',
   },
   {
-    id: '1581431462620-86193-19ac', text: '拖动可以排序', done: false, buildTime: 1581431462620, lastUpdate: 1581431462620, color: '#ffe300',
+    id: '1581431462620-86193-19ac', text: '拖动左侧彩签可以排序', done: false, buildTime: 1581431462620, lastUpdate: 1581431462620, color: '#ffe300',
   },
 ];
 
