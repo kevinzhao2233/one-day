@@ -43,11 +43,13 @@ export default {
   watch: {
     songIndex() {
       // 发生切歌
-      this.song.audio.addEventListener('ended', () => {
-        this.$store.dispatch({
-          type: 'nextSong',
+      if (this.playState) {
+        this.song.audio.addEventListener('ended', () => {
+          this.$store.dispatch({
+            type: 'nextSong',
+          });
         });
-      });
+      }
     },
     playState() {
       this.updateProg();

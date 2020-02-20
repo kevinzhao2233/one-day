@@ -3,7 +3,7 @@ import {
   DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
   CHANGE_CURRENT_TIME, UPDATE_PROPRESS, SAVE_SONG, PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE,
-  UPDATE_SONG,
+  UPDATE_SONG, LOAD_WHITE_NOISE,
 } from './mutations-types';
 
 let countDown = null;
@@ -156,6 +156,18 @@ const actions = {
     } else {
       // eslint-disable-next-line no-console
       console.log('前面没歌了');
+    }
+  },
+
+  // 改变音乐和白噪声
+  toggleNoiseOrMusic({ state, commit }, payload) {
+    // 判断要切换到哪个
+    console.log(state.sidebar.setting.whiteNoise, payload);
+    if (payload.switch === 'noise') {
+      // 将要切换到白噪声
+      commit(LOAD_WHITE_NOISE);
+    } else if (payload.switch === 'music') {
+      // 要切换到音乐
     }
   },
 };

@@ -7,7 +7,7 @@ import todos from './state/todos';
 import notes from './state/notes';
 import time from './state/time';
 import sidebar from './state/sidebar';
-import { colors, song } from './state/otherItems';
+import { colors, song, noise } from './state/otherItems';
 
 Vue.use(Vuex);
 
@@ -19,6 +19,7 @@ const store = new Vuex.Store({
     time,
     colors,
     song,
+    noise,
     sidebar,
   },
   getters: {
