@@ -9,7 +9,7 @@
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut">
       <div v-for="todo in todos" :key="todo.id">
-        <ListContent :todo="todo" v-if="!todo.done"/>
+        <ListContent @play-ding="playDing" :todo="todo" v-if="!todo.done"/>
       </div>
     </transition-group>
   </draggable>
@@ -25,6 +25,8 @@
     </div>
   </transition-group>
 
+  <audio v-if="sidebar.setting.isPlayAudio.state" ref="audio" src="../../public/ding.mp3"></audio>
+
   <footer class="footer">
     <SmallTomato/>
   </footer>
@@ -33,7 +35,7 @@
 
 <script>
 import draggable from 'vuedraggable';
-import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import ListContent from '../components/todolist/ListContent.vue';
 import AddTodoList from '../components/todolist/AddTodoList.vue';
 import SmallTomato from '../components/SmallTomato.vue';
@@ -47,7 +49,17 @@ export default {
     draggable,
   },
 
+  methods: {
+    playDing() {
+      if (this.sidebar.setting.isPlayAudio.state) {
+        this.$refs.audio.currentTime = 0;
+        this.$refs.audio.play();
+      }
+    },
+  },
+
   computed: {
+    ...mapState(['sidebar']),
     ...mapGetters([
       'doneTodos',
       'undoneTodos',
