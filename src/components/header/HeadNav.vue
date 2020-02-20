@@ -59,6 +59,7 @@ export default {
     font-weight: bold;
     font-size: 20px;
     color: $cl-font3;
+    text-shadow: 2px 2px 4px $cl-aux1;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     user-select: none;

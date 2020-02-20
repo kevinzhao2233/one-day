@@ -36,18 +36,21 @@ export default {
     playState() {
       return this.song.currSong.isPlay;
     },
+    songIndex() {
+      return this.song.currSong.index;
+    },
   },
   watch: {
-    playState(newVal) {
-      // 每次切换play的时候更新一次进度条
-      this.updateProg();
-      if (newVal) {
-        this.song.audio.addEventListener('ended', () => {
-          this.$store.dispatch({
-            type: 'nextSong',
-          });
+    songIndex() {
+      // 发生切歌
+      this.song.audio.addEventListener('ended', () => {
+        this.$store.dispatch({
+          type: 'nextSong',
         });
-      }
+      });
+    },
+    playState() {
+      this.updateProg();
     },
   },
   methods: {
