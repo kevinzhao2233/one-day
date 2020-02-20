@@ -24,3 +24,14 @@ export const song = {
     artistsname: '',
   }],
 };
+
+export const noise = {
+  audio: new Audio(),
+  content: {
+    name: '',
+    tit: '',
+    url: '',
+    picurl: 'http://www.ziliao6.com/fm/images/1.jpg',
+    artistsname: '',
+  },
+};

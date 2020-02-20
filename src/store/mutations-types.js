@@ -25,3 +25,5 @@ export const UPDATE_PROPRESS = 'updateProgress';
 export const CLEAR_AUDIO = 'clearAudio';
 export const CHANGE_SONG_INDEX = 'changeSongIndex';
 export const UPDATE_SONG = 'updateSong';
+export const LOAD_WHITE_NOISE = 'loadWhiteNoise';
+export const PLAY_OR_PAUSE_NOISE = 'playOrPauseNoise';

@@ -3,7 +3,8 @@ import {
   CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
   CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
   MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE, SAVE_SONG, UPDATE_PROPRESS,
-  PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE, UPDATE_SONG,
+  PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE, UPDATE_SONG, LOAD_WHITE_NOISE,
+  PLAY_OR_PAUSE_NOISE,
 } from './mutations-types';
 
 const mutations = {
@@ -141,10 +142,12 @@ const mutations = {
     state.song.currSong.index = index - 1;
     state.song.audio = payload.audio;
   },
+  // 更新歌曲
   [UPDATE_SONG](state, payload) {
     state.song.currSong.index = payload.index;
     state.song.audio = payload.audio;
   },
+  // 设置播放器准备状态
   [PLAYER_READY_STATE](state, payload) {
     state.song.currSong.readyState = payload;
   },
@@ -155,6 +158,7 @@ const mutations = {
   },
   // 清除audio
   [CLEAR_AUDIO](state) {
+    state.song.currSong.isPlay = false;
     state.song.audio.src = '';
   },
   [PLAY_OR_PAUSE](state, payload) {
@@ -164,6 +168,21 @@ const mutations = {
     } else {
       state.song.audio.pause();
       state.song.currSong.isPlay = false;
+    }
+  },
+  // 装填白噪声
+  [LOAD_WHITE_NOISE](state) {
+    const noise = state.sidebar.setting.whiteNoise;
+    const noiseIndex = noise.items.findIndex((item) => item.name === noise.defaultSelect);
+    state.noise.content = JSON.parse(JSON.stringify((noise.items[noiseIndex])));
+    state.noise.audio.src = state.noise.content.url;
+    state.noise.audio.loop = true;
+  },
+  [PLAY_OR_PAUSE_NOISE](state, payload) {
+    if (payload.isPlay) {
+      state.noise.audio.play();
+    } else {
+      state.noise.audio.pause();
     }
   },
 };

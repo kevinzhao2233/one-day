@@ -17,6 +17,9 @@
     <div class="empty-box" @mousedown="addNote">
       <i class="icon fa fa-plus"></i>
     </div>
+    <footer class="footer">
+      <SmallTomato/>
+    </footer>
   </div>
 </template>
 
@@ -24,12 +27,14 @@
 import { mapState, mapMutations } from 'vuex';
 import { createId } from '@/assets/lib/myLib';
 import NoteCard from '@/components/note/NoteCard.vue';
+import SmallTomato from '../components/SmallTomato.vue';
 
 export default {
   name: 'Note',
 
   components: {
     NoteCard,
+    SmallTomato,
   },
 
   computed: {
@@ -98,6 +103,11 @@ export default {
       font-size: 36px;
       line-height: 64px;
     }
+  }
+  .footer {
+    position: fixed;
+    width: inherit;
+    bottom: 0;
   }
 }
 </style>
