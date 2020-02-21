@@ -2,9 +2,8 @@
   <div class="header">
     <div class="left-con">
       <router-link :to="{ name: 'Home' }" class="link">
-        <i class="home fa fa-home"></i>
+        <i class="home"></i>
       </router-link>
-      <!-- TODO: 这里需要一个 logo -->
     </div>
     <div class="right-con">
       <a class="link" :href="feedback">
@@ -53,6 +52,12 @@ export default {
       console.log(e);
     },
   },
+  created() {
+    // 这里派发页面localStorage初始化
+    this.$store.dispatch({
+      type: 'loaclDataInit',
+    });
+  },
 };
 </script>
 
@@ -85,8 +90,13 @@ export default {
       height: 100%;
 
       .home {
-        color: $cl-main1;
-        font-size: 24px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../assets/logo.png');
+        background-size: 80%;
+        background-position: center center;
+        background-repeat: no-repeat;
       }
     }
   }

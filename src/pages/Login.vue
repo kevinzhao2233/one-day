@@ -46,6 +46,7 @@
             />
           </transition-group>
           <a href="" class="forget">{{ msg.forget }}</a>
+          <span class="temp-sec">登录功能仅供演示，此APP暂时只有前端部分</span>
           <input class="sub-btn" @click="loginSubmit" type="button" value="登录" />
         </form>
       </div>
@@ -130,6 +131,13 @@ export default {
 
 .flip-list-move {
   transition: all 0.5s;
+}
+
+.temp-sec {
+  margin-top: 12px;
+  color: $cl-main1;
+  font-size: 13px;
+  text-align: center;
 }
 
 .bg {

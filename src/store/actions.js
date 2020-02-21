@@ -3,13 +3,21 @@ import {
   DECREASE_SEC, DECREASE_MIN,
   CHANGE_STATUS_TO_STOP, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_END,
   CHANGE_CURRENT_TIME, UPDATE_PROPRESS, SAVE_SONG, PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE,
-  UPDATE_SONG, LOAD_WHITE_NOISE,
+  UPDATE_SONG, LOAD_WHITE_NOISE, LS_GET_NOTES, LS_GET_TODOS, LS_GET_SETTING, INIT_TOMATO,
 } from './mutations-types';
 
 let countDown = null;
 let progessInterval = null;
 
 const actions = {
+
+  // local 数据初始化
+  loaclDataInit({ commit }) {
+    commit(LS_GET_TODOS);
+    commit(LS_GET_NOTES);
+    commit(LS_GET_SETTING);
+    commit(INIT_TOMATO);
+  },
 
   // 倒计时开始 || 对state中时间进行判断，提交不同的 Mutation
   startTime({ state, commit }) {

@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    关于我们
+    正在开发~
   </div>
 </template>
 
@@ -12,6 +12,8 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  padding-top:100px;
+    padding: 200px;
+  text-align: center;
+  font-size: 24px;
 }
 </style>

@@ -10,6 +10,7 @@ export const DELETE_NOTE = 'deleteNote';
 export const UPDATE_NOTE = 'updateNote';
 export const ADD_A_NOTE = 'addANote';
 
+export const INIT_TOMATO = 'initTomato';
 export const CHANGE_STATUS_TO_RESTART = 'changeStatusToRestart';
 export const CHANGE_STATUS_TO_START = 'changeStatusToStart';
 export const CHANGE_STATUS_TO_STOP = 'changeStatusToStop';
@@ -27,3 +28,10 @@ export const CHANGE_SONG_INDEX = 'changeSongIndex';
 export const UPDATE_SONG = 'updateSong';
 export const LOAD_WHITE_NOISE = 'loadWhiteNoise';
 export const PLAY_OR_PAUSE_NOISE = 'playOrPauseNoise';
+
+export const LS_SET_TODOS = 'lsSetTodos';
+export const LS_GET_TODOS = 'lsGetTodos';
+export const LS_SET_NOTES = 'lsSetNoets';
+export const LS_GET_NOTES = 'lsGetNoets';
+export const LS_SET_SETTING = 'lsSetSetting';
+export const LS_GET_SETTING = 'lsGetSetting';

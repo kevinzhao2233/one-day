@@ -54,6 +54,7 @@ export default {
     },
     editNote(e) {
       // 一个note对象
+      console.log(e);
       this.updateNote(e);
     },
     // 生成一个不会重复的id值
