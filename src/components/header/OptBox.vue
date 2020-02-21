@@ -31,8 +31,8 @@ export default {
     return {
       account: {
         profile: 'http://m.imeitou.com/uploads/allimg/2019012913/ajtq01f3owo.jpg',
-        name: 'Kevin2233',
-        accountNum: 'kevin_2233@qq.com',
+        name: '游客',
+        accountNum: '登录功能仅供演示',
       },
     };
   },

@@ -3,7 +3,7 @@
     <textarea-autosize
       :class="isFocused ? 'focused card' : 'card'"
       placeholder="在这里写点什么吧~~"
-      :value="propNote"
+      v-model="propNote"
       :min-height="20"
       :max-height="350"
       @focus.native="focused"
