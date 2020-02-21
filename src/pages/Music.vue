@@ -42,7 +42,6 @@ export default {
     ...mapMutations(['clearAudio', 'playOrPause', 'playOrPauseNoise', 'loadWhiteNoise']),
 
     toggleNoisePlay(e) {
-      console.log(e, 'eeeeee');
       this.playOrPauseNoise({ isPlay: e });
     },
 

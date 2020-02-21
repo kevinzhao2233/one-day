@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     togglePlay() {
-      console.log(this.noise);
       if (this.noise.audio.paused) {
         this.$emit('togle-noise-play', true);
         this.isPlay = true;
