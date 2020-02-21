@@ -66,11 +66,11 @@ const mutations = {
   // 设置当前计时
   [CHANGE_CURRENT_TIME](state, payload) {
     if (payload === 'restart') {
-      state.time.min = state.time.initMin;
+      state.time.min = state.sidebar.setting.workTomato.time;
       state.time.sec = state.time.initSec;
       state.time.tomatoStatus = 1;
     } else if (payload === 'toRest') {
-      state.time.min = state.time.restMin;
+      state.time.min = state.sidebar.setting.restTomato.time;
       state.time.sec = state.time.restSec;
       state.time.tomatoStatus = 2;
     } else {
@@ -161,6 +161,7 @@ const mutations = {
     state.song.currSong.isPlay = false;
     state.song.audio.src = '';
   },
+  // 播放与暂停
   [PLAY_OR_PAUSE](state, payload) {
     if (payload.isPlay) {
       state.song.audio.play();

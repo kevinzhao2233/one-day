@@ -11,11 +11,6 @@ const sidebar = {
       tit: '自动开始休息番茄',
       state: true,
     },
-    keepPlay: {
-      name: 'keepPlay',
-      tit: '休息时依然播放音乐',
-      state: false,
-    },
     workTomato: {
       name: 'workTomato',
       tit: '工作番茄时长(分)',

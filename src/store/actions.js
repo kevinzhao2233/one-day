@@ -20,22 +20,25 @@ const actions = {
       commit(CHANGE_STATUS_TO_END);
     }
     countDown = setInterval(() => {
-      // 工作番茄结束
-      if (state.time.sec === 0 && state.time.min === 0 && state.time.tomatoStatus === 1) {
-        commit(CHANGE_CURRENT_TIME, 'toRest');
-        // 如果自动进行休息（默认设置）
-        if (state.sidebar.setting.isAutoRest.state) {
-          commit(CHANGE_STATUS_TO_END);
-          // eslint-disable-next-line no-console
-          console.log('自动进入休息番茄');
-        } else {
+      if (state.time.sec === 0 && state.time.min === 0) {
+        // 工作番茄结束
+        if (state.time.tomatoStatus === 1) {
+          commit(CHANGE_CURRENT_TIME, 'toRest');
+          // 如果自动进行休息（默认设置）
+          if (state.sidebar.setting.isAutoRest.state) {
+            commit(CHANGE_STATUS_TO_END);
+            // eslint-disable-next-line no-console
+            console.log('自动进入休息番茄');
+          } else {
+            commit(CHANGE_STATUS_TO_RESTART);
+            clearInterval(countDown);
+          }
+          // 休息番茄结束
+        } else if (state.time.tomatoStatus === 2) {
+          commit(CHANGE_CURRENT_TIME, 'restart');
           commit(CHANGE_STATUS_TO_RESTART);
           clearInterval(countDown);
         }
-        // 休息番茄结束
-      } else if (state.time.sec === 0 && state.time.min === 0 && state.time.tomatoStatus === 2) {
-        commit(CHANGE_STATUS_TO_RESTART);
-        clearInterval(countDown);
         // 结束了一分钟
       } else if (state.time.sec === 0 && state.time.min !== 0) {
         commit(DECREASE_MIN);

@@ -22,14 +22,11 @@
         :settingItem="sidebar.setting.restTomato"
         @change-num="changeTime($event)"
       ></NumInput>
+      <span class="sub">时间更改后会在下一个番茄钟生效</span>
     </div>
     <hr />
     <!-- 白噪声部分 -->
     <div class="box">
-      <SwitchComp
-        :settingItem="sidebar.setting.keepPlay"
-        @toggle-state="toggleState($event)"
-      ></SwitchComp>
       <RadioComp
         :settingItem="sidebar.setting.whiteNoise"
         @change-pick="changeDefaultWN($event)"
@@ -59,7 +56,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['modifySetting']),
+    ...mapMutations(['modifySetting', 'loadWhiteNoise']),
     // 开关按钮
     toggleState(e) {
       this.modifySetting({ name: e.name, item: 'state', value: e.state });
@@ -71,6 +68,7 @@ export default {
     // 改变默认白噪声
     changeDefaultWN(e) {
       this.modifySetting({ name: e.name, item: 'defaultSelect', value: e.default });
+      this.loadWhiteNoise();
     },
   },
 };
@@ -90,5 +88,10 @@ hr {
   border: none;
   outline: none;
   background-color: #ddd;
+}
+
+.sub {
+  font-size: 13px;
+  color: #999;
 }
 </style>
