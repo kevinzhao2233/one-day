@@ -1,12 +1,12 @@
 <template>
   <div class="box">
-    正在开发中~~
+    正在开发~~
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Statistic',
+  neme: 'Agreement',
 };
 </script>
 

@@ -57,6 +57,13 @@ input:hover, input:active {
   outline: none;
 }
 
+textarea {
+  outline: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  resize: none;
+}
+
 .no-display {
   display: none;
 }

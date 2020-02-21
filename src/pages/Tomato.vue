@@ -1,18 +1,20 @@
 <template>
   <div class="content c-edition">
-    <div class="svg svg-1"></div>
-    <div class="svg svg-2"></div>
-    <div class="svg svg-3"></div>
+    <div class="img-center"></div>
     <div class="time-box">
-      <span class="time">{{formatMin}}:{{formatSec}}</span>
+      <span class="time">{{ formatMin }}:{{ formatSec }}</span>
       <div class="control-box">
-        <i class="btn fa fa-play" v-show="time.status === 1 || time.status === 3"
-          @click="handleStart"></i>
+        <i
+          class="btn fa fa-play"
+          v-show="time.status === 1 || time.status === 3"
+          @click="handleStart"
+        ></i>
         <i class="btn fa fa-pause" v-show="time.status === 2" @click="handleStop"></i>
         <i class="btn fa fa-undo" v-show="time.status === 3" @click="handleRestart"></i>
         <i class="btn fa fa-forward" v-show="time.status === 4" @click="handleJump"></i>
       </div>
     </div>
+    <div class="img-bottom"></div>
   </div>
 </template>
 
@@ -23,14 +25,9 @@ export default {
   name: 'Tomato',
 
   computed: {
-    ...mapState([
-      'time',
-    ]),
+    ...mapState(['time']),
 
-    ...mapGetters([
-      'formatMin',
-      'formatSec',
-    ]),
+    ...mapGetters(['formatMin', 'formatSec']),
   },
 
   methods: {
@@ -59,33 +56,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/lib/scss/config.scss';
+@import "@/assets/lib/scss/config.scss";
+@import "@/assets/lib/scss/mixins.scss";
 
 .content {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
-  width: 720px;
-  height: 540px;
+  padding-top: 160px;
+  width: 100%;
+  height: 580px;
   background-color: $cl-aux5;
 
-  .svg {
-    position: absolute;
-    width: 420px;
-    height: 420px;
-    background-position: center center;
-    background-size: contain;
+  .img-center {
+    width: 90%;
+    height: 90%;
+    background: center / contain no-repeat url("../assets/img/irregularity-1.svg"),
+      center / contain no-repeat url("../assets/img/irregularity-2.svg"),
+      center / contain no-repeat url("../assets/img/irregularity-3.svg");
+    z-index: 10;
+  }
 
-    &.svg-1 {
-      background:  url('../assets/img/irregularity-1.svg') no-repeat;
-    }
-    &.svg-2 {
-      background:  url('../assets/img/irregularity-2.svg') no-repeat;
-    }
-    &.svg-3 {
-      background:  url('../assets/img/irregularity-3.svg') no-repeat;
+  .img-bottom {
+    position: fixed;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+    height: 50vh;
+    background: bottom / contain no-repeat url("../assets/img/bottom.svg");
+
+    @include respond-to(lg) {
+      background: bottom / cover no-repeat url("../assets/img/bottom.svg");
     }
   }
 
@@ -95,13 +97,13 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background-color: $cl-aux1;
+    z-index: 100;
 
     .time {
-      // margin-top: 160px;
       color: $cl-main1;
       font-size: 66px;
       line-height: 110px;
@@ -124,10 +126,10 @@ export default {
         line-height: 38px;
         color: $cl-main1;
         font-size: 20px;
-        -webkit-user-select:none; /*webkit浏览器*/
-        -moz-user-select:none; /*火狐*/
-        -ms-user-select:none; /*IE10*/
-        user-select:none;
+        -webkit-user-select: none; /*webkit浏览器*/
+        -moz-user-select: none; /*火狐*/
+        -ms-user-select: none; /*IE10*/
+        user-select: none;
         cursor: pointer;
       }
     }

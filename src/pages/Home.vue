@@ -2,15 +2,14 @@
 <div class="home c-edition">
   <!-- 输入框组件 -->
   <AddTodoList/>
-
   <!-- List -->
   <!-- 未完成的TODO -->
-  <draggable v-model="todos" forceFallvack: true>
+  <draggable v-model="todos" forceFallvack: true handle=".color-label">
     <transition-group name="flip-list"
       enter-active-class="animated zoomIn"
       leave-active-class="animated zoomOut">
       <div v-for="todo in todos" :key="todo.id">
-        <ListContent :todo="todo" v-if="!todo.done"/>
+        <ListContent @play-ding="playDing" :todo="todo" v-if="!todo.done"/>
       </div>
     </transition-group>
   </draggable>
@@ -26,6 +25,8 @@
     </div>
   </transition-group>
 
+  <audio v-if="sidebar.setting.isPlayAudio.state" ref="audio" src="../../public/ding.mp3"></audio>
+
   <footer class="footer">
     <SmallTomato/>
   </footer>
@@ -34,10 +35,10 @@
 
 <script>
 import draggable from 'vuedraggable';
-import { mapGetters } from 'vuex';
-import ListContent from './widget/ListContent.vue';
-import AddTodoList from './widget/AddTodoList.vue';
-import SmallTomato from './widget/SmallTomato.vue';
+import { mapState, mapGetters } from 'vuex';
+import ListContent from '../components/todolist/ListContent.vue';
+import AddTodoList from '../components/todolist/AddTodoList.vue';
+import SmallTomato from '../components/SmallTomato.vue';
 
 export default {
   name: 'Home',
@@ -48,7 +49,17 @@ export default {
     draggable,
   },
 
+  methods: {
+    playDing() {
+      if (this.sidebar.setting.isPlayAudio.state) {
+        this.$refs.audio.currentTime = 0;
+        this.$refs.audio.play();
+      }
+    },
+  },
+
   computed: {
+    ...mapState(['sidebar']),
     ...mapGetters([
       'doneTodos',
       'undoneTodos',
@@ -78,15 +89,13 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/lib/scss/mixins.scss';
 
-// 覆盖默认时间
-.animated {animation-duration: 0.5s;}
-
 .flip-list-move {
   transition: transform .5s;
 }
 
 .home {
   padding-bottom: 160px;
+  padding-top: 120px;
   width: 100%;
   height: 100%;
   overflow: hidden;
