@@ -35,8 +35,7 @@ export default {
   data() {
     return {
       isShowOptBox: false,
-      feedback: 'https://github.com/kevinzhao2233/todo/issues/new',
-      // feedback: 'https://github.com/kevinzhao2233/one-day/issues/new',
+      feedback: 'https://github.com/kevinzhao2233/one-day/issues/new',
     };
   },
   methods: {
