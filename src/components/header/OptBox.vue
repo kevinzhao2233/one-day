@@ -2,7 +2,7 @@
   <div class="box" v-show="isShow">
     <div class="s-box s-big">
       <div class="img-box" @click="switchRouter('User')">
-        <img :src="account.profile" class="img" alt="头像" srcset="" />
+        <img src="@/assets/img/profile.jpg" class="img" alt="头像" srcset="" />
       </div>
       <span class="tit"  @click="switchRouter('User')">{{ account.name }}</span>
       <span class="subtit">{{ account.accountNum }}</span>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       account: {
-        profile: 'http://m.imeitou.com/uploads/allimg/2019012913/ajtq01f3owo.jpg',
+        profile: '@/assets/img/profile.jpg',
         name: '游客',
         accountNum: '登录功能仅供演示',
       },

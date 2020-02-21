@@ -178,9 +178,8 @@ const actions = {
   },
 
   // 改变音乐和白噪声
-  toggleNoiseOrMusic({ state, commit }, payload) {
+  toggleNoiseOrMusic({ commit }, payload) {
     // 判断要切换到哪个
-    console.log(state.sidebar.setting.whiteNoise, payload);
     if (payload.switch === 'noise') {
       // 将要切换到白噪声
       commit(LOAD_WHITE_NOISE);
