@@ -48,9 +48,6 @@ export default {
     notShow(e) {
       this.isShowOptBox = e;
     },
-    openSidebar(e) {
-      console.log(e);
-    },
   },
   created() {
     // 这里派发页面localStorage初始化

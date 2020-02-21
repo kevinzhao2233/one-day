@@ -233,12 +233,14 @@ const mutations = {
   },
   // get setting
   [LS_GET_SETTING](state) {
-    const setting = JSON.parse(localStorage.getItem('setting'));
-    state.sidebar.setting.isPlayAudio = setting.isPlayAudio;
-    state.sidebar.setting.isAutoRest = setting.isAutoRest;
-    state.sidebar.setting.workTomato = setting.workTomato;
-    state.sidebar.setting.restTomato = setting.restTomato;
-    state.sidebar.setting.whiteNoise.defaultSelect = setting.whiteNoiseDefault;
+    if (localStorage.getItem('setting')) {
+      const setting = JSON.parse(localStorage.getItem('setting'));
+      state.sidebar.setting.isPlayAudio = setting.isPlayAudio;
+      state.sidebar.setting.isAutoRest = setting.isAutoRest;
+      state.sidebar.setting.workTomato = setting.workTomato;
+      state.sidebar.setting.restTomato = setting.restTomato;
+      state.sidebar.setting.whiteNoise.defaultSelect = setting.whiteNoiseDefault;
+    }
   },
 };
 

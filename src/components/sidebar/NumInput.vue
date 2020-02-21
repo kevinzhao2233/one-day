@@ -39,8 +39,6 @@ export default {
         this.time += 1;
       } else if (params.target.value > 0 && params.target.value < 121) {
         this.time = Math.floor(params.target.value);
-      } else {
-        console.error('数字超出范围');
       }
       this.$emit('change-num', { name: this.settingItem.name, time: this.time });
     },
