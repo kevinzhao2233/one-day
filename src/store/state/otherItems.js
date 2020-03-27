@@ -1,3 +1,5 @@
+import img from '../../assets/img/profile.jpg';
+
 export const colors = {
   color1: '#ff4e88',
   color2: '#ff6700',
@@ -17,12 +19,14 @@ export const song = {
     readyState: false,
     isPlay: false,
   },
-  list: [{
-    name: '',
-    url: '',
-    picurl: 'http://www.ziliao6.com/fm/images/1.jpg',
-    artistsname: '',
-  }],
+  list: [
+    {
+      name: '',
+      url: '',
+      picurl: img,
+      artistsname: '',
+    },
+  ],
 };
 
 export const noise = {
@@ -31,7 +35,7 @@ export const noise = {
     name: '',
     tit: '',
     url: '',
-    picurl: 'http://www.ziliao6.com/fm/images/1.jpg',
+    picurl: img,
     artistsname: '',
   },
 };

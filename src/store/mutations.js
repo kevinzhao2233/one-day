@@ -1,11 +1,36 @@
 import {
-  ADD_TODO, TOGGLE_DONE, DEL_TODO, DECREASE_SEC, DECREASE_MIN, TIME_OVER,
-  CHANGE_STATUS_TO_RESTART, CHANGE_STATUS_TO_START, CHANGE_STATUS_TO_STOP,
-  CHANGE_STATUS_TO_END, CHANGE_CURRENT_TIME, UPDATE_TODOS, TOGGLE_SHOW_SIDEBAR,
-  MODIFY_SETTING, DELETE_NOTE, UPDATE_NOTE, ADD_A_NOTE, SAVE_SONG, UPDATE_PROPRESS,
-  PLAYER_READY_STATE, CLEAR_AUDIO, PLAY_OR_PAUSE, UPDATE_SONG, LOAD_WHITE_NOISE,
-  PLAY_OR_PAUSE_NOISE, LS_SET_TODOS, LS_GET_TODOS, LS_SET_NOTES, LS_GET_NOTES,
-  LS_SET_SETTING, LS_GET_SETTING, INIT_TOMATO,
+  ADD_TODO,
+  TOGGLE_DONE,
+  DEL_TODO,
+  DECREASE_SEC,
+  DECREASE_MIN,
+  TIME_OVER,
+  CHANGE_STATUS_TO_RESTART,
+  CHANGE_STATUS_TO_START,
+  CHANGE_STATUS_TO_STOP,
+  CHANGE_STATUS_TO_END,
+  CHANGE_CURRENT_TIME,
+  UPDATE_TODOS,
+  TOGGLE_SHOW_SIDEBAR,
+  MODIFY_SETTING,
+  DELETE_NOTE,
+  UPDATE_NOTE,
+  ADD_A_NOTE,
+  SAVE_SONG,
+  UPDATE_PROPRESS,
+  PLAYER_READY_STATE,
+  CLEAR_AUDIO,
+  PLAY_OR_PAUSE,
+  UPDATE_SONG,
+  LOAD_WHITE_NOISE,
+  PLAY_OR_PAUSE_NOISE,
+  LS_SET_TODOS,
+  LS_GET_TODOS,
+  LS_SET_NOTES,
+  LS_GET_NOTES,
+  LS_SET_SETTING,
+  LS_GET_SETTING,
+  INIT_TOMATO,
 } from './mutations-types';
 
 const mutations = {
@@ -45,7 +70,6 @@ const mutations = {
     state.todos = JSON.parse(JSON.stringify(payload));
     this.commit(LS_SET_TODOS);
   },
-
 
   /**
    * ========= 以下为 番茄钟页面的 mutation
@@ -128,7 +152,6 @@ const mutations = {
     this.commit(LS_SET_NOTES);
   },
 
-
   /**
    * 以下为侧边栏部分
    */
@@ -184,7 +207,7 @@ const mutations = {
   [LOAD_WHITE_NOISE](state) {
     const noise = state.sidebar.setting.whiteNoise;
     const noiseIndex = noise.items.findIndex((item) => item.name === noise.defaultSelect);
-    state.noise.content = JSON.parse(JSON.stringify((noise.items[noiseIndex])));
+    state.noise.content = JSON.parse(JSON.stringify(noise.items[noiseIndex]));
     state.noise.audio.src = state.noise.content.url;
     state.noise.audio.loop = true;
   },
@@ -195,7 +218,6 @@ const mutations = {
       state.noise.audio.pause();
     }
   },
-
 
   /**
    * localStorage 操作

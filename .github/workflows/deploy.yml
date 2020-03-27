@@ -1,41 +1,41 @@
-# This is a basic workflow to help you get started with Actions
+# # This is a basic workflow to help you get started with Actions
 
-name: deploy app to server
-on:
-  push:
-    branches:
-      - master
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      # 切换分支
-      - name: Checkout
-        uses: actions/checkout@master
-      # 下载 git submodule
-      - uses: srt32/git-actions@v0.0.3
-        with:
-          args: git submodule update --init --recursive
-      # 使用 node:12
-      - name: use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      # npm install & build
-      - name: npm install & build
-        run: |
-          npm install
-          npm run build
-        env:
-          CI: true
+# name: deploy app to server
+# on:
+#   push:
+#     branches:
+#       - master
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       # 切换分支
+#       - name: Checkout
+#         uses: actions/checkout@master
+#       # 下载 git submodule
+#       - uses: srt32/git-actions@v0.0.3
+#         with:
+#           args: git submodule update --init --recursive
+#       # 使用 node:12
+#       - name: use Node.js 12
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 12
+#       # npm install & build
+#       - name: npm install & build
+#         run: |
+#           npm install
+#           npm run build
+#         env:
+#           CI: true
 
-      # Deploy
-      - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.0.7
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
-          ARGS: "-avz --delete"
-          SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.TARGET }}
+#       # Deploy
+#       - name: Deploy
+#         uses: easingthemes/ssh-deploy@v2.0.7
+#         env:
+#           SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+#           ARGS: "-avz --delete"
+#           SOURCE: "dist/"
+#           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+#           REMOTE_USER: ${{ secrets.REMOTE_USER }}
+#           TARGET: ${{ secrets.TARGET }}

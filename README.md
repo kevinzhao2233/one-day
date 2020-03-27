@@ -4,9 +4,11 @@
 
 一个集TODO、便签、番茄钟、白噪声、在线音乐于一体的效率工具，助你更有效率的的学习工作每一天
 
-[:chestnut:DEMO](https://ikevin.top/#/)
+[:chestnut:DEMO](https://todo.ikevin.top/#/)
 
-网站部署在腾讯云的学生机上，只有1M的带宽，若你感到比较慢，请谅解哈:stuck_out_tongue_closed_eyes:
+网站暂时部署在 Coding pages 上，访问可能很慢或者直接拉闸，嗯，，，，等备案信息吧
+
+~~被管局给禁了，网站部署在腾讯云的学生机上，只有1M的带宽，若你感到比较慢，请谅解哈:stuck_out_tongue_closed_eyes: ~~
 
 ## 特色功能
 

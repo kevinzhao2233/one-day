@@ -1,3 +1,10 @@
+import bigsurfurl from '../../assets/msc/bigsurf.mp3';
+import birdsurl from '../../assets/msc/birds.mp3';
+import coffeeurl from '../../assets/msc/coffee.mp3';
+import rainbesturl from '../../assets/msc/rainbest.mp3';
+import snowurl from '../../assets/msc/snow.mp3';
+import thunderurl from '../../assets/msc/thunder.mp3';
+
 const sidebar = {
   isShowSidebar: false,
   setting: {
@@ -29,42 +36,42 @@ const sidebar = {
         {
           name: 'bigsurf',
           tit: '大海',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/bigsurf.mp3',
+          url: bigsurfurl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/bigsurf.jpg',
           artistsname: '澎湃的大海声',
         },
         {
           name: 'birds',
           tit: '山野',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/birds.mp3',
+          url: birdsurl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/birds.jpg',
           artistsname: '山野间的虫鸣鸟叫',
         },
         {
           name: 'coffee',
           tit: '咖啡',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/coffee.mp3',
+          url: coffeeurl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/coffee.jpg',
           artistsname: '繁忙的咖啡馆',
         },
         {
           name: 'rainbest',
           tit: '暴雨',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/rainbest.mp3',
+          url: rainbesturl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/rainbest.jpg',
           artistsname: '急切的暴雨',
         },
         {
           name: 'snow',
           tit: '雪',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/snow.mp3',
+          url: snowurl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/snow.png',
           artistsname: '宁静的雪花',
         },
         {
           name: 'thunder',
           tit: '雷雨',
-          url: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/noise/thunder.mp3',
+          url: thunderurl,
           picurl: 'https://gitee.com/kevin_zhao_2233/one-day-static/raw/master/img/thunder.jpg',
           artistsname: '盛夏的雷雨天',
         },
